@@ -1,0 +1,814 @@
+Accession,Kingdom,Ncbi.Phylum,Ncbi.Class,Ncbi.Order,Ncbi.Family,Ncbi.Genus,Ncbi.Species,Strain,Sequencing_coverage,Scaffolds_number,Scaffold_N50,Scaffold_L50,Genome_size,Exo_amylase,Endo_amylase,Exo_cellulase,Endo_cellulase,Exo_hemicellulose,Endo_hemicellulose,Exo_chitosanase,Endo_chitosanase,Ligninase,TEA_Oxygen,TEA_Nitrate,TEA_Sulfite
+GCA_020736535.1,Fungi,Ascomycota,Dothideomycetes,Pleosporales,Pleosporaceae,Alternaria,Alternaria alternata,Alternaria alternata MPI-PUGE-AT-0064,206.13,26,3089288,5,33441249,1,2,18,4,17,19,5,10,4,0,0,0
+GCA_001642055.1,Fungi,Ascomycota,Dothideomycetes,Pleosporales,Pleosporaceae,Alternaria,Alternaria alternata,Alternaria alternata SRC1lrK2f,147.1,79,1097884,12,32986874,1,2,20,4,15,19,4,11,4,0,0,0
+GCA_001572055.1,Fungi,Ascomycota,Dothideomycetes,Pleosporales,Pleosporaceae,Alternaria,Alternaria alternata,Alternaria alternata Z7,200,156,1182709,9,34355870,1,2,18,4,16,18,5,11,4,0,0,0
+GCA_024043155.1,Fungi,Ascomycota,Dothideomycetes,Pleosporales,Pleosporaceae,Alternaria,Alternaria arbusti,Alternaria arbusti BMP 1465,60,75,1678447,7,33977650,2,2,18,4,15,15,4,13,4,0,0,0
+GCA_907166805.1,Fungi,Ascomycota,Dothideomycetes,Pleosporales,Pleosporaceae,Alternaria,Alternaria atra,Alternaria atra NA,100,43,3893166,4,39267842,1,2,19,4,16,18,4,16,4,0,0,0
+GCA_013036055.1,Fungi,Ascomycota,Dothideomycetes,Pleosporales,Pleosporaceae,Alternaria,Alternaria burnsii,Alternaria burnsii CBS107.38,146,67,1805719,7,32957603,1,2,16,4,16,19,4,8,4,0,0,0
+GCA_024043145.1,Fungi,Ascomycota,Dothideomycetes,Pleosporales,Pleosporaceae,Alternaria,Alternaria conjuncta,Alternaria conjuncta BMP 0040,60,175,1896824,8,36109741,2,1,16,3,15,16,3,9,4,0,0,0
+GCA_042100115.1,Fungi,Ascomycota,Dothideomycetes,Pleosporales,Pleosporaceae,Alternaria,Alternaria dauci,Alternaria dauci A2016,460,10,3442401,4,34906709,1,2,18,4,13,14,4,7,4,0,0,0
+GCA_004156025.2,Fungi,Ascomycota,Dothideomycetes,Pleosporales,Pleosporaceae,Alternaria,Alternaria gaisen,Alternaria gaisen FERA 650,78.5,27,2110033,6,34346950,1,2,19,4,17,19,4,11,4,0,0,0
+GCA_023758085.1,Fungi,Ascomycota,Dothideomycetes,Pleosporales,Pleosporaceae,Alternaria,Alternaria hordeiaustralica,Alternaria hordeiaustralica BMP 2776,60,188,1053854,10,36957753,1,2,16,4,14,16,3,11,4,0,0,0
+GCA_024043165.1,Fungi,Ascomycota,Dothideomycetes,Pleosporales,Pleosporaceae,Alternaria,Alternaria incomplexa,Alternaria incomplexa BMP 0042,60,91,1850413,7,33457154,2,1,17,4,17,16,4,8,4,0,0,0
+GCA_023757995.1,Fungi,Ascomycota,Dothideomycetes,Pleosporales,Pleosporaceae,Alternaria,Alternaria metachromatica,Alternaria metachromatica BMP 0045,60,189,1012319,12,37283645,2,2,16,4,16,16,4,10,4,0,0,0
+GCA_024043135.1,Fungi,Ascomycota,Dothideomycetes,Pleosporales,Pleosporaceae,Alternaria,Alternaria rosae,Alternaria rosae BMP 2777,60,194,938135,12,32848641,1,2,17,4,14,15,4,9,4,0,0,0
+GCA_020736505.1,Fungi,Ascomycota,Dothideomycetes,Pleosporales,Pleosporaceae,Alternaria,Alternaria rosae,Alternaria rosae MPI-PUGE-AT-0040,138.21,52,3278090,4,33831682,1,2,18,4,15,16,4,12,4,0,0,0
+GCA_023758125.1,Fungi,Ascomycota,Dothideomycetes,Pleosporales,Pleosporaceae,Alternaria,Alternaria sp.,Alternaria sp. Ai002NY15,60,174,1255567,10,36921378,2,2,15,4,15,14,4,9,4,0,0,0
+GCA_023758005.1,Fungi,Ascomycota,Dothideomycetes,Pleosporales,Pleosporaceae,Alternaria,Alternaria sp.,Alternaria sp. BMP 0032,60,196,976338,10,37291560,1,2,16,4,14,16,4,9,4,0,0,0
+GCA_003574525.1,Fungi,Ascomycota,Dothideomycetes,Pleosporales,Pleosporaceae,Alternaria,Alternaria sp.,Alternaria sp. MG1,138,130,1661510,7,34004700,1,2,18,4,16,19,5,10,4,0,0,0
+GCA_004156035.1,Fungi,Ascomycota,Dothideomycetes,Pleosporales,Pleosporaceae,Alternaria,Alternaria tenuissima,Alternaria tenuissima FERA 1166,103.46,22,2583941,6,35704180,1,2,19,4,18,18,5,11,4,0,0,0
+GCA_004154735.1,Fungi,Ascomycota,Dothideomycetes,Pleosporales,Pleosporaceae,Alternaria,Alternaria tenuissima,Alternaria tenuissima FERA 24350,30,167,608082,17,33066176,1,2,19,4,16,19,4,13,4,0,0,0
+GCA_004154765.1,Fungi,Ascomycota,Dothideomycetes,Pleosporales,Pleosporaceae,Alternaria,Alternaria tenuissima,Alternaria tenuissima FERA 648,43,124,1340965,10,33508343,1,2,20,4,17,18,4,10,4,0,0,0
+GCA_023758065.1,Fungi,Ascomycota,Dothideomycetes,Pleosporales,Pleosporaceae,Alternaria,Alternaria ventricosa,Alternaria ventricosa BMP 2768,60,89,1329355,9,34687246,1,1,18,4,16,15,4,9,4,0,0,0
+GCA_023758015.1,Fungi,Ascomycota,Dothideomycetes,Pleosporales,Pleosporaceae,Alternaria,Alternaria viburni,Alternaria viburni BMP 2772,60,188,1053821,12,36351767,2,2,16,4,14,16,4,10,4,0,0,0
+GCA_039105305.1,Fungi,Ascomycota,Sordariomycetes,Amphisphaeriales,Apiosporaceae,Apiospora,Apiospora arundinis,Apiospora arundinis AAU 773,202,9,5301101,4,48741668,1,2,20,9,17,15,5,14,1,0,0,0
+GCA_037075025.1,Fungi,Ascomycota,Sordariomycetes,Amphisphaeriales,Apiosporaceae,Apiospora,Apiospora arundinis,Apiospora arundinis CBS 124788,31,21,3412585,5,52971060,1,2,21,10,17,16,5,10,1,0,0,0
+GCA_038362815.1,Fungi,Ascomycota,Sordariomycetes,Amphisphaeriales,Apiosporaceae,Apiospora,Apiospora arundinis,Apiospora arundinis CBS 45092,36,10,5193807,4,46881178,1,2,20,9,17,15,5,12,1,0,0,0
+GCA_038362765.1,Fungi,Ascomycota,Sordariomycetes,Amphisphaeriales,Apiosporaceae,Apiospora,Apiospora arundinis,Apiospora arundinis IBT 11852,69,12,5250165,4,53447312,1,2,20,10,17,16,5,10,0,0,0,0
+GCA_038362705.1,Fungi,Ascomycota,Sordariomycetes,Amphisphaeriales,Apiosporaceae,Apiospora,Apiospora aurea,Apiospora aurea CBS 24483,31,11,5466563,4,49776134,1,3,21,8,17,14,5,18,1,0,0,0
+GCA_038364125.1,Fungi,Ascomycota,Sordariomycetes,Amphisphaeriales,Apiosporaceae,Apiospora,Apiospora kogelbergensis,Apiospora kogelbergensis CBS 117206,44,12,5138191,4,44893622,1,2,21,10,18,15,5,16,1,0,0,0
+GCA_038362885.1,Fungi,Ascomycota,Sordariomycetes,Amphisphaeriales,Apiosporaceae,Apiospora,Apiospora marii,Apiospora marii CBS 20057,68,24,3348614,5,50201137,1,2,20,9,18,15,5,17,1,0,0,0
+GCA_038362585.1,Fungi,Ascomycota,Sordariomycetes,Amphisphaeriales,Apiosporaceae,Apiospora,Apiospora marii,Apiospora marii CBS 49790,42,15,5090723,5,51094086,1,2,21,9,18,15,5,22,1,0,0,0
+GCA_038363885.1,Fungi,Ascomycota,Sordariomycetes,Amphisphaeriales,Apiosporaceae,Apiospora,Apiospora rasikravindrae,Apiospora rasikravindrae CBS 33761,35,14,5079597,5,46378008,1,3,21,9,18,16,5,15,1,0,0,0
+GCA_038362655.1,Fungi,Ascomycota,Sordariomycetes,Amphisphaeriales,Apiosporaceae,Apiospora,Apiospora saccharicola,Apiospora saccharicola CBS 33486,34,14,5789449,4,52616589,1,2,22,7,17,15,5,17,1,0,0,0
+GCA_038363915.1,Fungi,Ascomycota,Sordariomycetes,Amphisphaeriales,Apiosporaceae,Apiospora,Apiospora saccharicola,Apiospora saccharicola CBS 83171,70,11,5902260,4,51869161,1,2,21,7,18,15,5,18,1,0,0,0
+GCA_038364195.1,Fungi,Ascomycota,Sordariomycetes,Amphisphaeriales,Apiosporaceae,Apiospora,Apiospora sp.,Apiospora sp. CBS 14255,95,15,4997050,5,50607532,1,2,20,9,19,15,5,20,1,0,0,0
+GCA_003184765.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus aculeatinus,Aspergillus aculeatinus CBS 121060,95.8,121,493913,25,36442703,2,5,16,5,16,8,6,14,0,0,0,0
+GCA_047715705.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus ambiguus,Aspergillus ambiguus CBS 117.58,92.6,149,550646,16,29362761,2,2,15,8,22,15,5,14,0,0,0,0
+GCA_001889945.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus brasiliensis,Aspergillus brasiliensis CBS 101740,156.8,103,2027382,6,35651645,1,5,20,3,15,11,7,15,0,0,0,0
+GCA_003184695.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus brunneoviolaceus,Aspergillus brunneoviolaceus CBS 621.78,106.5,153,411666,34,37451358,2,5,16,4,16,8,6,10,0,0,0,0
+GCA_001511075.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus calidoustus,Aspergillus calidoustus NA,300,78,3207549,6,40564004,1,8,35,7,29,17,5,15,0,0,0,0
+GCA_016861735.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus chevalieri,Aspergillus chevalieri M1,357.6,8,3787471,4,29697343,1,2,11,2,6,8,3,6,0,0,0,0
+GCA_003184835.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus costaricaensis,Aspergillus costaricaensis CBS 115574,95.4,86,817474,16,36926566,1,5,16,4,15,10,6,14,0,0,0,0
+GCA_001717485.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus cristatus,Aspergillus cristatus GZAAS20.1005,100,68,2316641,4,28318774,2,3,8,2,7,7,2,6,0,0,0,0
+GCA_003184825.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus fijiensis,Aspergillus fijiensis CBS 313.89,93.2,149,411512,28,36500514,2,5,16,4,16,8,6,13,0,0,0,0
+GCA_014117485.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus flavus,Aspergillus flavus AF13,70,8,4650921,4,37438524,2,4,21,5,21,13,6,14,0,0,0,0
+GCA_014784225.2,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus flavus,Aspergillus flavus CA14,140,8,6268206,3,37762961,2,3,21,5,22,13,8,19,0,0,0,0
+GCA_009017415.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus flavus,Aspergillus flavus NRRL 3357,600,8,4810201,4,37749288,2,4,22,4,20,13,6,15,0,0,0,0
+GCA_014117465.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus flavus,Aspergillus flavus NRRL3357,70,8,4658713,4,36995182,2,3,21,5,21,13,6,15,0,0,0,0
+GCA_040142875.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus fumigatus,Aspergillus fumigatus 08-19-02-30,195.719,16,3646459,4,29063333,3,4,17,8,19,12,10,15,0,0,0,0
+GCA_040142855.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus fumigatus,Aspergillus fumigatus 47-10,235,12,3780118,4,29164066,3,4,17,7,18,12,8,14,0,0,0,0
+GCA_040142865.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus fumigatus,Aspergillus fumigatus 47-4,258,26,2638439,5,29095063,3,4,17,8,16,12,8,15,0,0,0,0
+GCA_029618195.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus fumigatus,Aspergillus fumigatus 5.1TA,373,182,769267,13,28295305,3,3,16,7,17,11,6,13,0,0,0,0
+GCA_040126065.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus fumigatus,Aspergillus fumigatus AF100-9B,147,8,3760025,4,28304265,3,4,17,7,17,12,7,13,0,0,0,0
+GCA_040142885.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus fumigatus,Aspergillus fumigatus ATCC 13073,252,9,3905879,4,28627188,3,4,18,7,17,13,8,12,0,0,0,0
+GCA_040142845.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus fumigatus,Aspergillus fumigatus ATCC 42202,270,15,4706161,3,28891284,3,4,15,8,18,13,10,13,0,0,0,0
+GCA_040142955.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus fumigatus,Aspergillus fumigatus ATCC 46645,63,20,1959777,5,30526740,3,4,17,7,17,12,6,15,0,0,0,0
+GCA_040142945.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus fumigatus,Aspergillus fumigatus B5233,288,13,3948310,4,28837349,3,4,18,7,17,12,9,12,0,0,0,0
+GCA_040167805.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus fumigatus,Aspergillus fumigatus D141,201,25,2017413,5,28688567,3,4,16,9,16,12,7,12,0,0,0,0
+GCA_040142975.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus fumigatus,Aspergillus fumigatus H237,250,23,3846868,4,29197406,3,4,18,8,19,13,6,13,0,0,0,0
+GCA_040167795.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus fumigatus,Aspergillus fumigatus W72310,115,10,3808109,4,28150788,3,3,17,7,18,12,9,17,0,0,0,0
+GCA_001029325.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus fumigatus,Aspergillus fumigatus Z5,30,24,2295917,6,29303499,3,4,16,6,16,12,6,13,0,0,0,0
+GCA_001890805.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus glaucus,Aspergillus glaucus CBS 516.65,175.9,82,1040687,10,27781411,1,2,10,2,6,7,3,9,0,0,0,0
+GCA_003184865.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus homomorphus,Aspergillus homomorphus CBS 101889,96.6,152,535630,19,34020472,2,4,12,5,15,8,6,12,0,0,0,0
+GCA_003184845.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus ibericus,Aspergillus ibericus CBS 121593,100.9,116,622403,20,33425899,1,6,13,4,11,7,4,18,1,0,0,0
+GCA_003184785.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus japonicus,Aspergillus japonicus CBS 114.51,100.9,163,412690,25,36080550,2,5,18,4,17,8,7,15,0,0,0,0
+GCA_001890685.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus luchuensis,Aspergillus luchuensis CBS 106.47,65.7,100,2197438,6,37304755,1,6,16,4,15,10,6,15,0,0,0,0
+GCA_016861625.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus luchuensis,Aspergillus luchuensis IFO 4308,497.9,8,4830482,4,37256495,1,7,16,4,16,9,6,14,0,0,0,0
+GCA_016865315.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus luchuensis,Aspergillus luchuensis RIB2601,373.3,8,4484724,4,35477511,1,6,16,4,14,9,5,15,0,0,0,0
+GCA_047715735.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus multicolor,Aspergillus multicolor CBS 133.54,84.9,113,817749,12,35249567,1,6,24,5,20,11,4,22,0,0,0,0
+GCA_003369625.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus mulundensis,Aspergillus mulundensis DSM 5745,100,160,2829575,6,44209275,1,5,25,6,18,12,4,24,0,0,0,0
+GCA_003184625.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus neoniger,Aspergillus neoniger CBS 115656,151.4,169,707186,18,35398163,1,6,14,4,15,10,6,14,0,0,0,0
+GCA_003344705.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus niger,Aspergillus niger ATCC 13496,116.5,133,705420,18,35671207,1,7,16,4,16,11,7,9,0,0,0,0
+GCA_003184595.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus niger,Aspergillus niger CBS 101883,117.4,107,878705,12,35830544,1,7,15,4,16,11,7,10,0,0,0,0
+GCA_023134475.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus niger,Aspergillus niger CBS 113.50,63,168,403187,30,35621212,1,6,16,4,15,11,7,9,0,0,0,0
+GCA_023137675.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus niger,Aspergillus niger CBS 147343,58,158,362096,33,35348511,1,6,16,4,15,10,6,9,0,0,0,0
+GCA_002211485.2,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus niger,Aspergillus niger FDAARGOS_311,144,25,3443606,5,35806243,1,6,17,4,16,8,6,13,0,0,0,0
+GCA_900248155.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus niger,Aspergillus niger N402 (ATCC 64974),160,19,2899611,4,35561663,1,5,18,4,15,8,7,11,0,0,0,0
+GCA_024862975.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus niger,Aspergillus niger WU-2020,169,11,4404340,4,35884609,1,6,15,4,16,11,7,8,0,0,0,0
+GCA_002007945.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus oryzae,Aspergillus oryzae BCC7051,162.335,25,4278514,5,38507590,2,5,19,5,20,14,6,13,0,0,0,0
+GCA_003344505.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus phoenicis,Aspergillus phoenicis ATCC 13157,116.4,55,1344691,10,35747734,1,6,16,4,16,10,6,14,0,0,0,0
+GCA_003184755.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus piperis,Aspergillus piperis CBS 112811,102.9,47,1121342,9,35269699,1,6,15,4,15,10,6,14,0,0,0,0
+GCA_044049435.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus pseudodeflectus,Aspergillus pseudodeflectus CBS 756.74,79.6,179,528257,22,39066696,1,8,44,7,27,15,5,16,0,0,0,0
+GCA_018340605.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus pseudoviridinutans,Aspergillus pseudoviridinutans IFM 55266,179,24,4753445,4,33272285,3,6,18,7,24,11,6,23,0,0,0,0
+GCA_016861865.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus puulaauensis,Aspergillus puulaauensis MK2,333.1,8,4388637,4,34318862,2,6,19,3,26,13,4,21,0,0,0,0
+GCA_000600275.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus ruber,Aspergillus ruber CBS 135680,39.7,110,623674,14,26075740,1,2,8,2,5,7,3,6,0,0,0,0
+GCA_003184585.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus saccharolyticus,Aspergillus saccharolyticus JOP 1030-1,116.4,120,591538,16,31063439,2,4,10,4,11,8,6,7,0,0,0,0
+GCA_003184635.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus sclerotiicarbonarius,Aspergillus sclerotiicarbonarius CBS 121057,91.6,166,362770,33,37594984,1,6,18,4,13,8,5,14,0,0,0,0
+GCA_001890705.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus sydowii,Aspergillus sydowii CBS 593.65,95.1,97,2288531,5,34349148,2,7,25,3,28,12,5,14,0,0,0,0
+GCA_003426965.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus tanneri,Aspergillus tanneri NIH1004,30,14,4499170,4,38719388,2,3,6,2,8,4,6,20,0,0,0,0
+GCA_016808415.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus terreus,Aspergillus terreus ATCC 20542,100,9,4253827,4,30360750,3,7,17,9,24,13,6,16,0,0,0,0
+GCA_009932835.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus terreus,Aspergillus terreus IFO 6365,170.3,23,2163102,6,28633559,2,6,17,8,23,13,6,17,0,0,0,0
+GCA_009014675.2,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus terreus,Aspergillus terreus TN-484,174.9,24,1952528,7,29605369,2,6,17,8,23,13,6,18,0,0,0,0
+GCA_001890745.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus tubingensis,Aspergillus tubingensis CBS 134.48,155.5,33,2949984,5,35139854,1,6,15,4,15,11,6,14,0,0,0,0
+GCA_049803905.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus tubingensis,Aspergillus tubingensis DFA,92,8,4183659,4,35447888,1,7,17,4,15,10,7,15,0,0,0,0
+GCA_027923605.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus tubingensis,Aspergillus tubingensis IFM 54640,56,183,671203,17,35804281,1,6,15,4,15,10,6,12,0,0,0,0
+GCA_027923885.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus tubingensis,Aspergillus tubingensis IFM 56815,42,26,2415389,6,35196421,1,5,15,4,15,10,6,12,0,0,0,0
+GCA_027923665.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus tubingensis,Aspergillus tubingensis IFM 57143,114,120,570498,20,35013681,1,5,16,4,15,10,6,11,0,0,0,0
+GCA_027923685.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus tubingensis,Aspergillus tubingensis IFM 57258,106,84,828725,16,35493990,1,6,17,4,16,9,6,13,0,0,0,0
+GCA_013340325.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus tubingensis,Aspergillus tubingensis WU-2223L,163,15,3153774,5,35047219,1,5,15,4,15,10,6,13,0,0,0,0
+GCA_001078395.2,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus udagawae,Aspergillus udagawae IFM 46973,90,17,4123300,4,32035701,3,6,14,8,23,16,6,18,0,0,0,0
+GCA_047715775.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus undulatus,Aspergillus undulatus CBS 261.88,79.3,190,407178,24,32107223,2,6,17,4,17,14,3,11,0,0,0,0
+GCA_047715655.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus unguis,Aspergillus unguis CBS 132.55,109,142,1110383,9,26052459,1,4,20,4,14,8,3,15,0,0,0,0
+GCA_003184745.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus uvarum,Aspergillus uvarum CBS 121591,106.4,172,396097,30,35840536,2,5,17,4,16,8,6,15,1,0,0,0
+GCA_003184925.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus vadensis,Aspergillus vadensis CBS 113365,100.8,60,1025125,11,35658646,1,5,15,4,15,11,6,14,0,0,0,0
+GCA_001890125.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus versicolor,Aspergillus versicolor CBS 583.65,178.1,51,2487993,5,33121003,2,8,28,3,29,16,4,16,0,0,0,0
+GCA_018404265.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus viridinutans,Aspergillus viridinutans IFM 47045,142,47,2861404,5,34286126,3,4,14,8,17,10,5,13,0,0,0,0
+GCA_046000195.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus wentii,Aspergillus wentii CBS141173,135,7,4417627,3,31224183,4,3,13,6,11,11,6,12,1,0,0,0
+GCA_001890725.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus wentii,Aspergillus wentii DTO 134E9,95,27,4128426,4,31295010,4,4,14,5,10,11,6,11,1,0,0,0
+GCA_026184555.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Aspergillus,Aspergillus wentii,Aspergillus wentii IMI 49129,50.4,127,1128967,11,31516073,4,4,14,5,10,10,6,11,1,0,0,0
+GCA_000721775.1,Fungi,Ascomycota,Dothideomycetes,Dothideales,Saccotheciaceae,Aureobasidium,Aureobasidium melanogenum,Aureobasidium melanogenum CBS 110374,140.2,150,822863,10,26199752,2,5,14,4,11,8,2,6,3,0,0,0
+GCA_019923975.1,Fungi,Ascomycota,Dothideomycetes,Dothideales,Saccotheciaceae,Aureobasidium,Aureobasidium melanogenum,Aureobasidium melanogenum EXF-10726,148.805,182,404316,23,26860811,2,5,13,4,12,9,2,4,4,0,0,0
+GCA_019925035.1,Fungi,Ascomycota,Dothideomycetes,Dothideales,Saccotheciaceae,Aureobasidium,Aureobasidium melanogenum,Aureobasidium melanogenum EXF-3371,747.421,115,428831,19,25285819,2,5,15,4,12,9,2,3,4,0,0,0
+GCA_019924415.1,Fungi,Ascomycota,Dothideomycetes,Dothideales,Saccotheciaceae,Aureobasidium,Aureobasidium melanogenum,Aureobasidium melanogenum EXF-9262,955.651,138,439174,19,25432707,2,4,13,4,14,8,2,4,4,0,0,0
+GCA_019924175.1,Fungi,Ascomycota,Dothideomycetes,Dothideales,Saccotheciaceae,Aureobasidium,Aureobasidium melanogenum,Aureobasidium melanogenum EXF-9906,262.228,197,316528,29,27011532,2,5,14,4,11,7,2,6,4,0,0,0
+GCA_903819665.1,Fungi,Ascomycota,Dothideomycetes,Dothideales,Saccotheciaceae,Aureobasidium,Aureobasidium mustum,Aureobasidium mustum NA,90,13,2332598,5,27251766,2,2,14,4,15,8,2,4,4,0,0,0
+GCA_000721765.1,Fungi,Ascomycota,Dothideomycetes,Dothideales,Saccotheciaceae,Aureobasidium,Aureobasidium namibiae,Aureobasidium namibiae CBS 147.97,138.7,47,1074982,9,25427801,2,5,18,5,18,9,2,2,3,0,0,0
+GCA_041956735.1,Fungi,Ascomycota,Dothideomycetes,Dothideales,Saccotheciaceae,Aureobasidium,Aureobasidium pullulans,Aureobasidium pullulans ATCC 62921,30,47,2309889,5,27719363,2,5,20,4,16,12,2,3,3,0,0,0
+GCA_004917355.1,Fungi,Ascomycota,Dothideomycetes,Dothideales,Saccotheciaceae,Aureobasidium,Aureobasidium pullulans,Aureobasidium pullulans EXF-10085,56,137,545043,17,27845892,2,4,19,5,18,11,2,3,3,0,0,0
+GCA_000721785.1,Fungi,Ascomycota,Dothideomycetes,Dothideales,Saccotheciaceae,Aureobasidium,Aureobasidium pullulans,Aureobasidium pullulans EXF-150,172.5,186,1166847,10,29585801,2,5,20,4,16,12,2,3,3,0,0,0
+GCA_903819485.1,Fungi,Ascomycota,Dothideomycetes,Dothideales,Saccotheciaceae,Aureobasidium,Aureobasidium pullulans,Aureobasidium pullulans NA,50,15,2588918,5,31036874,2,3,20,5,15,11,2,4,2,0,0,0
+GCA_036418965.1,Fungi,Ascomycota,Dothideomycetes,Dothideales,Saccotheciaceae,Aureobasidium,Aureobasidium pullulans,Aureobasidium pullulans NRRL 62042,104,50,1169448,8,24211114,2,5,15,5,13,9,2,4,3,0,0,0
+GCA_023848595.1,Fungi,Ascomycota,Dothideomycetes,Dothideales,Saccotheciaceae,Aureobasidium,Aureobasidium sp.,Aureobasidium sp. EXF-10727,282,183,292519,30,25420412,2,5,15,4,15,9,2,3,3,0,0,0
+GCA_023848605.1,Fungi,Ascomycota,Dothideomycetes,Dothideales,Saccotheciaceae,Aureobasidium,Aureobasidium sp.,Aureobasidium sp. EXF-10728,425,186,347343,22,25387844,2,4,16,4,15,9,2,3,3,0,0,0
+GCA_019924955.1,Fungi,Ascomycota,Dothideomycetes,Dothideales,Saccotheciaceae,Aureobasidium,Aureobasidium sp.,Aureobasidium sp. EXF-3399,236.504,178,324492,26,25501793,2,5,17,5,19,9,2,2,3,0,0,0
+GCA_024244255.1,Fungi,Ascomycota,Dothideomycetes,Dothideales,Saccotheciaceae,Aureobasidium,Aureobasidium subglaciale,Aureobasidium subglaciale EXF-11962,223,181,302130,27,26113063,2,4,18,4,15,9,2,4,2,0,0,0
+GCA_024244225.1,Fungi,Ascomycota,Dothideomycetes,Dothideales,Saccotheciaceae,Aureobasidium,Aureobasidium subglaciale,Aureobasidium subglaciale EXF-12336,361,198,313573,30,26338116,2,3,19,3,15,9,2,4,3,0,0,0
+GCA_000721755.1,Fungi,Ascomycota,Dothideomycetes,Dothideales,Saccotheciaceae,Aureobasidium,Aureobasidium subglaciale,Aureobasidium subglaciale EXF-2481,814,75,821214,11,25791175,2,5,20,4,17,9,2,4,3,0,0,0
+GCA_024244335.1,Fungi,Ascomycota,Dothideomycetes,Dothideales,Saccotheciaceae,Aureobasidium,Aureobasidium subglaciale,Aureobasidium subglaciale EXF-4632,381,190,361504,24,24698325,2,5,14,4,12,9,2,2,3,0,0,0
+GCA_903853725.1,Fungi,Ascomycota,Dothideomycetes,Dothideales,Saccotheciaceae,Aureobasidium,Aureobasidium uvarum,Aureobasidium uvarum NA,70,19,2049633,5,25618281,2,1,13,2,14,9,2,3,2,0,0,0
+GCA_903819635.1,Fungi,Ascomycota,Dothideomycetes,Dothideales,Saccotheciaceae,Aureobasidium,Aureobasidium vineae,Aureobasidium vineae NA,30,17,2109315,5,25936416,1,0,14,3,13,9,2,3,3,0,0,0
+GCA_014898285.1,Fungi,Ascomycota,Leotiomycetes,Helotiales,Sclerotiniaceae,Botrytis,Botrytis aclada,Botrytis aclada 633,55,16,3028304,7,48314413,3,5,16,6,11,9,2,4,0,0,0,0
+GCA_014898295.1,Fungi,Ascomycota,Leotiomycetes,Helotiales,Sclerotiniaceae,Botrytis,Botrytis byssoidea,Botrytis byssoidea MUCL 94,97,59,1263484,11,42981876,3,4,14,6,13,9,2,5,0,0,0,0
+GCA_000143535.4,Fungi,Ascomycota,Leotiomycetes,Helotiales,Sclerotiniaceae,Botrytis,Botrytis cinerea,Botrytis cinerea B05.10,35,18,2617329,7,42630066,4,5,19,6,12,9,3,5,0,0,0,0
+GCA_037039555.1,Fungi,Ascomycota,Leotiomycetes,Helotiales,Sclerotiniaceae,Botrytis,Botrytis cinerea,Botrytis cinerea BC371,100,106,2469449,8,44656540,3,4,14,5,12,11,2,4,0,0,0,0
+GCA_037039525.1,Fungi,Ascomycota,Leotiomycetes,Helotiales,Sclerotiniaceae,Botrytis,Botrytis cinerea,Botrytis cinerea BC448,100,73,2560315,8,45550921,3,5,15,6,11,9,2,5,0,0,0,0
+GCA_031205075.2,Fungi,Ascomycota,Leotiomycetes,Helotiales,Sclerotiniaceae,Botrytis,Botrytis cinerea,Botrytis cinerea M3a,175,23,2590247,8,43841354,3,5,12,6,10,8,1,3,0,0,0,0
+GCA_014898535.1,Fungi,Ascomycota,Leotiomycetes,Helotiales,Sclerotiniaceae,Botrytis,Botrytis deweyae,Botrytis deweyae B1,96,76,1076441,13,44366920,3,5,14,6,14,9,2,8,0,0,0,0
+GCA_014898555.1,Fungi,Ascomycota,Leotiomycetes,Helotiales,Sclerotiniaceae,Botrytis,Botrytis elliptica,Botrytis elliptica Be9612,79,137,652925,22,47665151,3,5,14,6,12,8,2,8,0,0,0,0
+GCA_013461495.1,Fungi,Ascomycota,Leotiomycetes,Helotiales,Sclerotiniaceae,Botrytis,Botrytis fragariae,Botrytis fragariae BVB16,90,28,2431652,7,41923773,3,5,14,5,11,9,2,5,0,0,0,0
+GCA_014898465.1,Fungi,Ascomycota,Leotiomycetes,Helotiales,Sclerotiniaceae,Botrytis,Botrytis porri,Botrytis porri MUCL 3234,42,31,2706297,8,46789968,3,5,12,6,11,9,2,5,0,0,0,0
+GCA_014898435.1,Fungi,Ascomycota,Leotiomycetes,Helotiales,Sclerotiniaceae,Botrytis,Botrytis sinoallii,Botrytis sinoallii Bc 23,94,47,2252689,10,61289320,3,5,14,6,12,7,2,5,0,0,0,0
+GCA_019359905.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida africana,Candida africana CEC4854,100,7,1768346,3,11762258,0,0,1,1,0,0,1,1,0,0,0,0
+GCA_041438225.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida albicans,Candida albicans 101,61,8,2299895,3,14461588,1,0,2,2,1,0,1,2,0,0,0,0
+GCA_000773845.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida albicans,Candida albicans 12C,121,50,536647,9,14212533,1,0,2,2,1,0,2,2,0,0,0,0
+GCA_000775445.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida albicans,Candida albicans 19F,167,60,551228,9,14303032,1,0,2,2,1,0,2,2,0,0,0,0
+GCA_000691765.2,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida albicans,Candida albicans Ca529L,176,87,1231433,4,14200839,1,0,2,2,1,0,2,2,0,0,0,0
+GCA_000784695.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida albicans,Candida albicans Ca6,179,82,400469,12,14437595,1,0,2,2,0,0,2,2,0,0,0,0
+GCA_014049485.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida albicans,Candida albicans FDAARGOS_656,1085,68,833775,7,16936052,1,0,3,2,0,0,2,1,0,0,0,0
+GCA_000773735.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida albicans,Candida albicans GC75,167,73,559034,9,14374193,1,0,2,2,1,0,2,2,0,0,0,0
+GCA_000775455.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida albicans,Candida albicans L26,139,57,577645,8,14282608,1,0,2,2,1,0,2,2,0,0,0,0
+GCA_000775465.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida albicans,Candida albicans P34048,160,52,554132,8,14233467,1,0,2,2,1,0,2,2,0,0,0,0
+GCA_000773745.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida albicans,Candida albicans P37005,85,45,769828,7,14153954,1,0,2,2,1,0,2,2,0,0,0,0
+GCA_000773825.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida albicans,Candida albicans P37037,179,48,473104,8,14215527,1,0,2,2,1,0,2,2,0,0,0,0
+GCA_000784515.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida albicans,Candida albicans P37039,122,50,791860,7,14260076,1,0,2,2,1,0,2,2,0,0,0,0
+GCA_000775505.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida albicans,Candida albicans P57055,162,56,545440,7,14252832,1,0,2,2,1,0,2,2,0,0,0,0
+GCA_000773805.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida albicans,Candida albicans P57072,198,45,793722,7,14161392,1,0,2,2,0,0,2,2,0,0,0,0
+GCA_000784525.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida albicans,Candida albicans P60002,131,47,1172852,5,14216551,1,0,2,2,0,0,2,2,0,0,0,0
+GCA_000784575.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida albicans,Candida albicans P75010,154,56,910766,5,14216401,1,0,2,2,1,0,2,2,0,0,0,0
+GCA_000784595.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida albicans,Candida albicans P75016,138,50,1306612,5,14146236,1,0,2,2,1,0,2,2,0,0,0,0
+GCA_000775525.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida albicans,Candida albicans P75063,152,51,741340,6,14206097,1,0,2,2,1,0,2,2,0,0,0,0
+GCA_000784505.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida albicans,Candida albicans P76055,161,38,988382,4,14159255,1,0,2,2,0,0,2,2,0,0,0,0
+GCA_000784495.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida albicans,Candida albicans P76067,163,45,784277,6,14179204,1,0,2,2,0,0,2,2,0,0,0,0
+GCA_000784615.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida albicans,Candida albicans P78042,163,70,479789,9,14345325,1,0,2,2,1,0,2,2,0,0,0,0
+GCA_000773725.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida albicans,Candida albicans P78048,176,59,710135,8,14196420,1,0,2,2,1,0,2,2,0,0,0,0
+GCA_000774085.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida albicans,Candida albicans P87,103,44,858745,6,14281212,1,0,2,2,1,0,2,2,0,0,0,0
+GCA_000773755.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida albicans,Candida albicans P94015,176,58,1053458,5,14240314,1,0,2,2,1,0,2,2,0,0,0,0
+GCA_000182965.3,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida albicans,Candida albicans SC5314,700,8,2231883,3,14276407,1,0,2,2,1,0,2,1,0,0,0,0
+GCA_024610255.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida jiufengensis,Candida jiufengensis CBS 10846,200,20,1273379,4,13665735,0,0,1,2,1,0,2,1,0,0,0,0
+GCA_050495715.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida maltosa,Candida maltosa Xu316,100,45,1315209,5,14040896,1,0,2,3,1,0,2,1,0,0,0,0
+GCA_017655625.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida metapsilosis,Candida metapsilosis BP57,150,9,2138570,3,13093264,1,0,1,2,1,0,2,1,0,0,0,0
+GCA_023343755.2,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida oxycetoniae,Candida oxycetoniae CBS 10844,200,102,215035,19,12746247,0,0,1,2,0,0,1,1,0,0,0,0
+GCA_014049585.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida parapsilosis,Candida parapsilosis FDAARGOS_650,2285.29,15,2090316,3,13325358,1,0,1,2,1,0,2,1,0,0,0,0
+GCA_014049455.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida parapsilosis,Candida parapsilosis FDAARGOS_651,520.15,13,1495611,3,13193707,1,0,1,2,1,0,2,1,0,0,0,0
+GCA_014049445.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida parapsilosis,Candida parapsilosis FDAARGOS_652,464.38,13,2092998,3,13253733,1,0,1,2,1,0,2,1,0,0,0,0
+GCA_014049495.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida parapsilosis,Candida parapsilosis FDAARGOS_653,460.73,12,2093445,3,13204426,1,0,1,2,1,0,2,1,0,0,0,0
+GCA_903989565.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida parapsilosis,Candida parapsilosis NA,84,9,2087746,3,13048447,1,0,1,2,1,0,2,1,0,0,0,0
+GCA_964022785.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida parapsilosis,Candida parapsilosis SMI416,133,32,1402579,4,13370779,1,0,1,2,1,0,2,1,0,0,0,0
+GCA_964022765.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida parapsilosis,Candida parapsilosis SMI588,144,29,1400889,4,13437136,1,0,1,2,1,0,2,1,0,0,0,0
+GCA_964022755.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida parapsilosis,Candida parapsilosis SMI596,131,20,2087741,3,13209714,1,0,1,2,1,0,2,1,0,0,0,0
+GCA_964022775.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida parapsilosis,Candida parapsilosis SMI706,327,17,1465361,4,13112520,1,0,1,2,1,0,2,1,0,0,0,0
+GCA_964022805.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida parapsilosis,Candida parapsilosis SMI798,131,27,2006230,3,13351021,1,0,1,2,1,0,2,1,0,0,0,0
+GCA_964022795.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida parapsilosis,Candida parapsilosis SMI828,206,37,1105301,5,13536483,1,0,1,2,1,0,2,1,0,0,0,0
+GCA_963989715.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida parapsilosis,"Candida parapsilosis SR23, CBS 7157",299,8,2092548,3,13037250,1,0,1,2,1,0,2,1,0,0,0,0
+GCA_024610245.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida pseudojiufengensis,Candida pseudojiufengensis CBS 10847,200,54,828659,7,13993313,1,0,1,2,1,0,2,1,0,0,0,0
+GCA_024610275.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida theae,Candida theae CBS 12239,200,178,205210,19,12396429,1,0,1,2,1,0,2,1,0,0,0,0
+GCA_017315405.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida tropicalis,Candida tropicalis MYA-3404,129,16,2216334,3,14486417,1,0,2,3,1,0,2,1,0,0,0,0
+GCA_947670415.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida verbasci,Candida verbasci NA,157,8,1775161,2,12165646,1,0,3,2,1,0,2,1,0,0,0,0
+GCA_003327735.1,Fungi,Ascomycota,Pichiomycetes,Serinales,Debaryomycetaceae,Candida,Candida viswanathii,Candida viswanathii ATCC 20962,67.93,30,2051212,5,24170369,2,0,3,6,2,0,3,2,0,0,0,0
+GCA_000835475.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Cladophialophora,Cladophialophora bantiana,Cladophialophora bantiana CBS 173.52,122,60,1665677,9,36639109,1,2,8,5,9,1,3,2,0,0,0,0
+GCA_000365165.2,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Cladophialophora,Cladophialophora carrionii,Cladophialophora carrionii CBS 160.54,80,19,3197266,4,28979941,1,3,6,3,8,1,4,1,0,0,0,0
+GCA_001700775.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Cladophialophora,Cladophialophora carrionii,Cladophialophora carrionii KSF,30,22,3175452,4,29775793,1,1,6,3,6,1,4,1,0,0,0,0
+GCA_030247875.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Cladophialophora,Cladophialophora chaetospira,Cladophialophora chaetospira TK_41,35.2401,179,1635382,9,35550912,1,3,7,4,15,2,4,1,0,0,0,0
+GCA_000585535.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Cladophialophora,Cladophialophora psammophila,Cladophialophora psammophila CBS 110553,133,123,1349832,10,39333014,1,2,8,5,10,1,3,2,0,0,0,0
+GCA_000585515.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Cladophialophora,Cladophialophora yegresii,Cladophialophora yegresii CBS 114405,132,8,4268086,3,27887733,1,2,6,3,7,1,3,1,0,0,0,0
+GCA_047371005.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum abscissum,Colletotrichum abscissum LW-VAL-2A,100,50,4528207,5,53602113,2,5,32,11,27,16,4,18,5,0,0,0
+GCA_013390185.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum aenigma,Colletotrichum aenigma Cg56,76,79,5181253,5,59189926,2,4,30,10,23,17,4,20,5,0,0,0
+GCA_030867565.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum costaricense,Colletotrichum costaricense IMI 309622,200,70,2423109,8,51623800,2,5,32,11,28,16,4,18,5,0,0,0
+GCA_034447905.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum destructivum,Colletotrichum destructivum CBS 520.97,224,12,5290227,5,51750812,2,4,30,8,17,16,4,18,6,0,0,0
+GCA_026319145.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum fioriniae,Colletotrichum fioriniae ACFK5,103,144,688115,21,49413510,2,3,29,9,22,16,4,14,5,0,0,0
+GCA_027942845.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum fioriniae,Colletotrichum fioriniae IMI 355084,216,46,2983733,6,49445802,2,5,29,9,22,16,4,15,5,0,0,0
+GCA_013390205.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum fructicola,Colletotrichum fructicola Cf413,168,14,4902990,5,56528462,2,4,33,10,26,17,5,21,6,0,0,0
+GCA_000319635.2,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum fructicola,Colletotrichum fructicola Nara gc5,174,12,5461344,5,59542867,2,4,33,10,27,17,5,24,6,0,0,0
+GCA_021432615.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum gloeosporioides,Colletotrichum gloeosporioides 23,49.1,119,2304310,9,58404311,2,4,34,10,27,17,4,22,6,0,0,0
+GCA_011800055.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum gloeosporioides,Colletotrichum gloeosporioides Lc1,110,128,709944,27,61761323,2,4,34,9,26,17,4,20,6,0,0,0
+GCA_030913485.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum godetiae,Colletotrichum godetiae CBS 193.32,235,194,737523,21,51652851,2,5,31,9,25,16,4,19,4,0,0,0
+GCA_029226625.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum graminicola,Colletotrichum graminicola NA,314,13,6444216,5,57426452,2,4,16,7,17,15,4,14,5,0,0,0
+GCA_001672515.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum higginsianum,Colletotrichum higginsianum IMI 349063,133,25,5201688,5,50716103,2,4,27,8,16,16,4,16,6,0,0,0
+GCA_023705605.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum higginsianum,Colletotrichum higginsianum MAFF 245053,73,27,4389193,5,49069799,2,4,27,8,15,19,4,15,6,0,0,0
+GCA_004920355.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum higginsianum,Colletotrichum higginsianum MAFF305635-RFP,65,28,5064939,5,49786461,2,4,27,8,15,16,4,15,6,0,0,0
+GCA_011947395.2,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum karsti,Colletotrichum karsti CkLH20,85,127,857663,21,51849281,2,5,36,9,26,16,5,16,6,0,0,0
+GCA_022179045.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum liriopes,Colletotrichum liriopes MAFF 242679,64,82,1221453,14,52972150,2,5,26,7,20,22,3,19,5,0,0,0
+GCA_030913515.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum lupini,Colletotrichum lupini CBS 109225,97,116,918987,20,58756634,2,5,29,10,23,16,4,17,5,0,0,0
+GCA_023278565.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum lupini,Colletotrichum lupini IMI 504893,300,11,7871922,4,63407421,2,4,31,10,26,16,4,17,5,0,0,0
+GCA_030868995.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum melonis,Colletotrichum melonis NA,200,92,2830390,7,50128905,2,5,32,10,29,16,4,18,5,0,0,0
+GCA_030867605.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum paranaense,Colletotrichum paranaense IMI 384185,200,36,3374443,6,49177916,2,5,29,10,28,16,4,18,5,0,0,0
+GCA_030913505.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum phormii,Colletotrichum phormii CBS 102054,97,71,1798794,10,51666170,2,5,27,10,21,14,4,21,5,0,0,0
+GCA_018906765.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum scovillei,Colletotrichum scovillei Coll-153,105,59,3536762,5,50113453,2,4,29,10,30,15,4,16,5,0,0,0
+GCA_018906675.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum scovillei,Colletotrichum scovillei Coll-365,104,59,3528503,5,49921798,2,4,30,10,29,15,4,16,5,0,0,0
+GCA_018907675.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum scovillei,Colletotrichum scovillei Coll-524,71.9,54,3597184,5,51013638,2,4,29,10,29,15,4,16,5,0,0,0
+GCA_011075155.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum scovillei,Colletotrichum scovillei TJNH1,365,15,4871440,5,52001227,2,4,29,8,33,16,4,18,5,0,0,0
+GCA_013201795.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum siamense,Colletotrichum siamense CAD4,258.02,199,823408,24,58148073,2,4,33,10,26,17,4,20,6,0,0,0
+GCA_013390195.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum siamense,Colletotrichum siamense Cg363,166,22,5441060,5,62936415,2,4,32,10,26,17,4,20,6,0,0,0
+GCA_044063575.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum sp.,Colletotrichum sp. CLE4,408,168,506655,32,48024615,2,5,28,9,18,16,4,15,5,0,0,0
+GCA_022836535.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum spaethianum,Colletotrichum spaethianum MAFF 239500,63,84,1120470,16,50915707,2,4,25,7,14,20,4,15,6,0,0,0
+GCA_036851105.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum tabaci,Colletotrichum tabaci YC1,187,58,3611167,7,52145981,2,4,28,8,17,16,4,16,6,0,0,0
+GCA_022836595.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum tofieldiae,Colletotrichum tofieldiae 0861,81,28,4211846,5,52991954,2,4,28,8,16,22,4,17,6,0,0,0
+GCA_022836555.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum tofieldiae,Colletotrichum tofieldiae MAFF 712333,81,19,6011218,5,54252643,2,5,29,8,20,22,4,17,6,0,0,0
+GCA_022836575.1,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum tofieldiae,Colletotrichum tofieldiae MAFF 712334,79,27,3719715,6,53983402,2,5,30,9,19,21,4,17,6,0,0,0
+GCA_014235925.2,Fungi,Ascomycota,Sordariomycetes,Glomerellales,Glomerellaceae,Colletotrichum,Colletotrichum truncatum,Colletotrichum truncatum CMES1059,200,22,4568912,4,57008971,2,4,32,8,29,18,5,26,7,0,0,0
+GCA_001720205.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus amylolentus,Cryptococcus amylolentus CBS 6039,117,15,1545655,6,20253913,1,4,7,4,5,0,1,3,0,0,0,0
+GCA_001720235.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus amylolentus,Cryptococcus amylolentus CBS 6273,97,18,1529651,6,20189769,1,4,7,3,4,0,1,3,0,0,0,0
+GCA_000836335.2,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus bacillisporus,Cryptococcus bacillisporus CA1280,127,14,1576396,5,17825526,2,4,3,2,0,0,1,3,0,0,0,0
+GCA_000855695.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus bacillisporus,Cryptococcus bacillisporus CA1873,57,33,761613,8,17389909,2,4,3,2,0,0,1,3,0,0,0,0
+GCA_036417295.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus decagattii,Cryptococcus decagattii 7685027,113,14,1768996,5,17768546,2,5,3,2,0,0,1,3,0,0,0,0
+GCA_001720195.2,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus depauperatus,Cryptococcus depauperatus CBS 7841,247,8,2462433,3,16179376,0,4,1,1,0,0,0,3,0,0,0,0
+GCA_001720245.2,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus depauperatus,Cryptococcus depauperatus CBS 7855,130,8,2236658,4,16328170,0,4,1,1,0,0,0,3,0,0,0,0
+GCA_000835815.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus deuterogattii,Cryptococcus deuterogattii 2001/935-1,90,24,1248189,6,17377527,2,4,5,2,0,0,1,2,0,0,0,0
+GCA_000836455.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus deuterogattii,Cryptococcus deuterogattii 99/473,81,105,520419,13,17344500,2,4,6,2,0,0,1,2,0,0,0,0
+GCA_000875795.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus deuterogattii,Cryptococcus deuterogattii CA1014,183,21,1238107,6,17394721,2,4,6,2,0,0,1,2,0,0,0,0
+GCA_000835765.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus deuterogattii,Cryptococcus deuterogattii CBS 10090,62,24,1122164,6,17372417,2,4,6,2,0,0,1,2,0,0,0,0
+GCA_000836315.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus deuterogattii,Cryptococcus deuterogattii LA55,123,134,394791,14,17329976,2,4,6,2,0,0,1,2,0,0,0,0
+GCA_000875855.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus deuterogattii,Cryptococcus deuterogattii MMRL2647,190,25,1214750,6,17358451,2,4,6,2,0,0,1,2,0,0,0,0
+GCA_002954075.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus deuterogattii,Cryptococcus deuterogattii NA,39,14,1316417,5,17549805,2,5,7,0,0,0,1,3,0,0,0,0
+GCA_000836375.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus deuterogattii,Cryptococcus deuterogattii Ram5,57,24,915286,7,17323763,2,4,5,2,0,0,1,2,0,0,0,0
+GCA_000875815.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus gattii,Cryptococcus gattii E566,77,52,717019,10,17646708,2,5,4,2,0,0,1,3,0,0,0,0
+GCA_009650685.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus gattii,Cryptococcus gattii MF34,47,15,1323151,5,17886378,1,5,5,2,0,0,1,3,0,0,0,0
+GCA_000836355.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus gattii,Cryptococcus gattii Ru294,115,53,699094,10,17739339,2,5,5,2,0,0,1,3,0,0,0,0
+GCA_036428525.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus gattii,Cryptococcus gattii WM276,270,14,1333358,5,18044915,2,5,5,2,0,0,1,3,0,0,0,0
+GCA_002215885.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus neoformans,Cryptococcus neoformans 125.91,66,37,836747,8,18461223,2,5,8,1,2,0,1,3,0,0,0,0
+GCA_002222375.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus neoformans,Cryptococcus neoformans A2-102-5,70,47,869879,8,18340945,2,5,8,1,1,0,1,3,0,0,0,0
+GCA_002215775.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus neoformans,Cryptococcus neoformans AD2-60a,86,168,730974,10,18548380,2,5,6,1,1,0,1,3,0,0,0,0
+GCA_002215705.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus neoformans,Cryptococcus neoformans Bt1,91,52,770391,8,18341054,2,5,7,1,1,0,1,3,0,0,0,0
+GCA_002222465.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus neoformans,Cryptococcus neoformans Bt120,34,31,1055601,7,18278067,2,5,6,1,1,0,1,3,0,0,0,0
+GCA_002222335.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus neoformans,Cryptococcus neoformans Bt15,183,33,1109861,7,18405886,2,5,7,1,1,0,1,3,0,0,0,0
+GCA_002234625.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus neoformans,Cryptococcus neoformans Bt63,63,53,775306,10,18367065,2,5,6,1,1,0,1,3,0,0,0,0
+GCA_002215835.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus neoformans,Cryptococcus neoformans Bt85,128,39,948332,8,18466126,2,5,6,1,1,0,1,3,0,0,0,0
+GCA_002215825.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus neoformans,Cryptococcus neoformans C23,74,107,747818,11,18854133,2,5,7,1,1,0,1,3,0,0,0,0
+GCA_002224005.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus neoformans,Cryptococcus neoformans Gb118,100,68,782510,10,18332156,2,5,7,1,1,0,1,3,0,0,0,0
+GCA_002216725.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus neoformans,Cryptococcus neoformans KN99,1140,14,1422463,6,18889624,2,5,9,1,2,0,1,4,0,0,0,0
+GCA_002222315.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus neoformans,Cryptococcus neoformans Th84,122,118,616613,11,18380399,2,5,7,1,1,0,1,3,0,0,0,0
+GCA_002222325.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus neoformans,Cryptococcus neoformans Tu259-1,187,120,794620,10,18366242,2,5,7,1,1,0,1,3,0,0,0,0
+GCA_002222475.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus neoformans,Cryptococcus neoformans Tu401-1,194,49,846909,10,18232777,2,5,6,1,1,0,1,3,0,0,0,0
+GCA_022832995.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus neoformans,Cryptococcus neoformans VNII,246,14,1423448,6,18957373,1,5,4,0,1,0,1,3,0,0,0,0
+GCA_002222385.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus neoformans,Cryptococcus neoformans Ze90-1,207,164,464547,15,18219715,2,5,5,1,1,0,1,3,0,0,0,0
+GCA_002222405.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus neoformans,Cryptococcus neoformans c8,176,158,573455,14,18399545,2,5,7,1,1,0,1,3,0,0,0,0
+GCA_036426225.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus sp.,Cryptococcus sp. DSM 104548,122,14,1474773,6,19153593,1,5,5,2,4,0,1,3,0,0,0,0
+GCA_036427605.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus sp.,Cryptococcus sp. DSM 104549,116,7,4020467,3,24520542,2,5,5,3,3,0,1,4,0,0,0,0
+GCA_000835755.2,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus tetragattii,Cryptococcus tetragattii IND107,91,15,1330454,5,17799622,2,5,6,2,0,0,1,3,0,0,0,0
+GCA_001720155.1,Metazoa,Arthropoda,Insecta,Hemiptera,Eriococcidae,Cryptococcus,Cryptococcus wingfieldii,Cryptococcus wingfieldii CBS 7118,83,83,606306,11,19893900,1,5,3,2,4,0,1,2,0,0,0,0
+GCA_022478825.1,Fungi,Ascomycota,Sordariomycetes,Xylariales,Hypoxylaceae,Daldinia,Daldinia caldariorum,Daldinia caldariorum CBS 122874,124.35,45,1439621,8,35554592,1,1,13,6,12,12,4,12,0,0,0,0
+GCA_008694065.1,Fungi,Ascomycota,Sordariomycetes,Xylariales,Hypoxylaceae,Daldinia,Daldinia childiae,Daldinia childiae JS-1345,556,133,3265584,4,38395488,1,1,18,7,15,9,4,14,1,0,0,0
+GCA_022478715.1,Fungi,Ascomycota,Sordariomycetes,Xylariales,Hypoxylaceae,Daldinia,Daldinia decipiens,Daldinia decipiens CBS 113046,141.86,96,791238,16,35254407,1,1,14,7,15,12,4,11,1,0,0,0
+GCA_037126485.1,Fungi,Ascomycota,Sordariomycetes,Xylariales,Hypoxylaceae,Daldinia,Daldinia eschscholtzii,Daldinia eschscholtzii NA,74,11,4014089,5,37560068,1,1,15,7,14,11,4,12,1,0,0,0
+GCA_022432525.1,Fungi,Ascomycota,Sordariomycetes,Xylariales,Hypoxylaceae,Daldinia,Daldinia grandis,Daldinia grandis CBS 114736,257.6,26,2696365,6,37510053,1,1,14,7,15,12,4,11,0,0,0,0
+GCA_023065755.1,Fungi,Ascomycota,Sordariomycetes,Xylariales,Hypoxylaceae,Daldinia,Daldinia loculata,Daldinia loculata AZ0526,227.27,128,511218,21,35622534,1,1,15,6,14,10,4,9,0,0,0,0
+GCA_000709125.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala aquamarina,Exophiala aquamarina CBS 119918,79,151,2236061,5,40982715,1,1,11,3,13,1,5,2,0,0,0,0
+GCA_035927105.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala bonariae,Exophiala bonariae CCFEE 5792,51.2964,178,938388,14,37886950,1,2,10,3,12,1,5,3,0,0,0,0
+GCA_028024355.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala dermatitidis,Exophiala dermatitidis DCF04,39.1678,44,3672342,4,26623318,0,1,6,3,5,1,3,2,0,0,0,0
+GCA_043234845.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala dermatitidis,Exophiala dermatitidis EXF-10123,140,24,1581879,6,26379579,0,1,6,3,5,1,3,2,0,0,0,0
+GCA_043234795.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala dermatitidis,Exophiala dermatitidis EXF-13310,160,23,2805329,5,26682874,0,1,6,3,5,1,3,2,0,0,0,0
+GCA_043234805.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala dermatitidis,Exophiala dermatitidis EXF-8193,154,25,1845242,6,26417825,0,1,6,3,5,1,3,2,0,0,0,0
+GCA_028025245.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala dermatitidis,Exophiala dermatitidis Ex1,40.9264,69,951691,11,26618662,0,1,6,2,5,1,3,2,0,0,0,0
+GCA_028028245.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala dermatitidis,Exophiala dermatitidis Ex10,38.1142,87,885042,9,26612099,0,1,7,3,5,1,3,2,0,0,0,0
+GCA_028028135.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala dermatitidis,Exophiala dermatitidis Ex11,38.9519,67,1106267,8,26621600,0,1,6,2,5,1,3,2,0,0,0,0
+GCA_028027665.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala dermatitidis,Exophiala dermatitidis Ex12,46.3473,49,1256779,7,23597007,0,1,6,2,5,0,3,2,0,0,0,0
+GCA_028027445.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala dermatitidis,Exophiala dermatitidis Ex14,40.8024,96,965535,10,26637470,0,1,6,3,5,1,4,2,0,0,0,0
+GCA_028027435.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala dermatitidis,Exophiala dermatitidis Ex16,35.7316,155,951437,8,24334296,0,1,6,3,5,0,3,2,0,0,0,0
+GCA_028026935.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala dermatitidis,Exophiala dermatitidis Ex17,34.7777,156,951539,9,24786557,0,1,6,2,5,0,3,2,0,0,0,0
+GCA_028026235.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala dermatitidis,Exophiala dermatitidis Ex19,38.2818,149,832893,9,24839719,0,1,6,3,5,0,3,2,0,0,0,0
+GCA_028024505.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala dermatitidis,Exophiala dermatitidis Ex2,43.4519,64,1002554,9,26618355,0,1,6,2,5,1,3,2,0,0,0,0
+GCA_028025565.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala dermatitidis,Exophiala dermatitidis Ex21,42.6389,61,999909,10,26617672,0,1,6,3,5,1,3,2,0,0,0,0
+GCA_030028065.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala dermatitidis,Exophiala dermatitidis Ex22,36.3513,145,917197,9,24126912,0,1,7,4,5,0,3,2,0,0,0,0
+GCA_028025295.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala dermatitidis,Exophiala dermatitidis Ex23,36.3054,87,952679,9,25768545,0,1,5,2,5,1,3,2,0,0,0,0
+GCA_028024475.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala dermatitidis,Exophiala dermatitidis Ex3,38.6952,64,1002554,9,26618355,0,1,6,2,5,1,3,2,0,0,0,0
+GCA_028024125.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala dermatitidis,Exophiala dermatitidis Ex5,47.1086,75,951690,10,26620876,0,1,7,3,5,1,3,2,0,0,0,0
+GCA_028028335.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala dermatitidis,Exophiala dermatitidis Ex7,37.5206,85,951673,9,27246691,0,1,6,3,5,1,5,2,0,0,0,0
+GCA_030028025.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala dermatitidis,Exophiala dermatitidis Ex8,40.1762,81,1000046,8,26620692,0,1,8,4,5,1,3,2,0,0,0,0
+GCA_028028305.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala dermatitidis,Exophiala dermatitidis Ex9,43.5621,68,1108162,8,26621933,0,1,6,3,5,1,3,2,0,0,0,0
+GCA_000230625.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala dermatitidis,Exophiala dermatitidis NIH/UT8656,151.6,10,3623950,4,26346203,0,1,6,3,6,1,3,2,0,0,0,0
+GCA_000836275.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala mesophila,Exophiala mesophila CBS 40295,270,9,5104443,3,29256826,1,3,9,2,4,0,3,2,0,0,0,0
+GCA_004011775.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala mesophila,Exophiala mesophila CCFEE 6314,58,196,522425,20,30408885,1,2,9,3,4,0,3,2,0,0,0,0
+GCA_000835515.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala oligosperma,Exophiala oligosperma CBS 72588,240,143,3385568,5,37920466,1,3,9,2,12,0,5,3,0,0,0,0
+GCA_000835395.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala sideris,Exophiala sideris CBS 121828,271,5,7897194,2,29484114,1,4,7,2,8,0,5,3,0,0,0,0
+GCA_035927125.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala sideris,Exophiala sideris CCFEE 5749,48.593,198,643224,15,29717896,1,3,6,4,9,1,3,3,0,0,0,0
+GCA_000836115.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala spinifera,Exophiala spinifera CBS 89968,272,28,3791951,4,32873413,0,2,8,2,11,1,3,2,0,0,0,0
+GCA_022695815.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala viscosa,Exophiala viscosa JF 03-3F,147.3,30,2240945,4,28287907,1,1,6,4,9,1,4,2,0,0,0,0
+GCA_022695825.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala viscosa,Exophiala viscosa JF 03-4F,147.2,17,2893788,5,28224348,1,3,5,3,10,1,4,2,0,0,0,0
+GCA_000835505.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala xenobiotica,Exophiala xenobiotica CBS 118157,87,15,5039080,3,31388042,1,2,10,2,11,2,6,3,0,0,0,0
+GCA_038362935.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala xenobiotica,Exophiala xenobiotica CCFEE 6078,392.583,93,1401111,8,29807510,2,2,6,3,8,1,4,2,0,0,0,0
+GCA_035931915.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala xenobiotica,Exophiala xenobiotica CCFEE 6142,363.052,61,1096717,11,29406864,2,2,6,3,9,1,4,2,0,0,0,0
+GCA_035931855.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala xenobiotica,Exophiala xenobiotica CCFEE 6180,66.6589,52,1468875,9,29409029,2,2,6,3,9,1,4,2,0,0,0,0
+GCA_035931885.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala xenobiotica,Exophiala xenobiotica CCFEE 6194,81.3261,70,1631616,8,29441001,2,2,6,3,9,1,4,2,0,0,0,0
+GCA_035928485.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala xenobiotica,Exophiala xenobiotica CCFEE 6233,79.8723,106,1249586,9,30381466,1,1,6,3,8,2,4,2,0,0,0,0
+GCA_035928445.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala xenobiotica,Exophiala xenobiotica CCFEE 6237,86.8019,54,1611842,8,29425850,2,2,6,3,9,1,4,2,0,0,0,0
+GCA_035928465.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala xenobiotica,Exophiala xenobiotica CCFEE 6238,86.2706,60,1557104,8,29412715,2,2,6,3,9,1,4,2,0,0,0,0
+GCA_035928425.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala xenobiotica,Exophiala xenobiotica CCFEE 6333,129.434,57,1445249,7,29439737,1,2,6,3,9,1,4,2,0,0,0,0
+GCA_035928245.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala xenobiotica,Exophiala xenobiotica CCFEE 6336,82.6454,51,1846990,6,29427391,2,2,6,3,9,1,4,2,0,0,0,0
+GCA_035928305.1,Fungi,Ascomycota,Eurotiomycetes,Chaetothyriales,Herpotrichiellaceae,Exophiala,Exophiala xenobiotica,Exophiala xenobiotica CCFEE 6362,93.0532,54,1350356,9,29409082,2,2,6,3,9,1,4,2,0,0,0,0
+GCA_038181435.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium acuminatum,Fusarium acuminatum NA,318.04,11,6113431,3,46698876,2,1,19,8,14,11,5,24,1,0,0,0
+GCA_012959155.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium avenaceum,Fusarium avenaceum KA13,113,34,2236682,7,41699446,2,1,23,8,18,12,5,23,1,0,0,0
+GCA_020744115.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium avenaceum,Fusarium avenaceum MPI-SDFR-AT-0044,179.21,13,4676257,4,42232206,2,1,24,8,20,11,5,24,1,0,0,0
+GCA_047716405.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium chlamydosporum,Fusarium chlamydosporum IraGTOF6,166,23,3339234,5,37798897,2,1,15,6,15,11,5,14,1,0,0,0
+GCA_016952355.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium culmorum,Fusarium culmorum Class2-1B,443,4,9630554,2,37519305,2,1,17,6,14,7,4,14,1,0,0,0
+GCA_003033665.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium culmorum,Fusarium culmorum PV,115,36,5548199,3,38110313,2,1,16,6,13,6,5,14,1,0,0,0
+GCA_027945365.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium equiseti,Fusarium equiseti CF00095,32.3888,89,1904070,8,37108746,2,1,19,7,15,10,5,13,1,0,0,0
+GCA_026873545.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium falciforme,Fusarium falciforme Fu3.1,107.93,14,3875999,6,53563088,1,1,44,10,24,12,4,15,1,0,0,0
+GCA_020744385.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium flagelliforme,Fusarium flagelliforme FIESC 12 MPI-CAGE-AA-0113,172.12,15,5434111,3,40328194,2,1,23,6,18,11,6,21,2,0,0,0
+GCA_900096505.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium fujikuroi,Fusarium fujikuroi B14,64,66,2960472,6,43927523,2,1,25,9,21,11,6,14,1,0,0,0
+GCA_900096645.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium fujikuroi,Fusarium fujikuroi C1995,66,86,4161666,5,45515568,2,1,24,9,22,7,6,14,1,0,0,0
+GCA_900096685.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium fujikuroi,Fusarium fujikuroi FSU48,53,182,2125619,7,45464452,2,1,26,9,20,8,6,15,1,0,0,0
+GCA_009663115.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium fujikuroi,Fusarium fujikuroi I1.3,59.02,12,4426414,5,45524486,2,1,19,8,20,7,6,14,1,0,0,0
+GCA_001023035.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium fujikuroi,Fusarium fujikuroi KSU X-10626,40,187,1202620,12,42915903,2,1,24,9,21,10,6,16,1,0,0,0
+GCA_900096635.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium fujikuroi,Fusarium fujikuroi MRC2276,146,28,4471326,5,44920986,2,1,25,9,21,11,6,14,1,0,0,0
+GCA_000599445.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium graminearum,Fusarium graminearum CS3005,50,199,8791613,2,36593613,2,1,21,6,15,9,5,15,1,0,0,0
+GCA_002352725.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium graminearum,Fusarium graminearum ITEM 124,40,67,1518396,6,36883364,2,1,20,6,14,9,5,17,1,0,0,0
+GCA_037074415.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium graminearum,Fusarium graminearum KSU23389,160,16,8998777,2,37857963,2,1,20,5,13,9,5,14,1,0,0,0
+GCA_037074405.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium graminearum,Fusarium graminearum KSU23468,192,7,9058990,2,37321827,2,1,20,5,14,9,6,15,1,0,0,0
+GCA_037255895.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium graminearum,Fusarium graminearum KSU23473,267,4,9045406,2,36786251,2,1,18,4,14,9,7,16,1,0,0,0
+GCA_037213105.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium graminearum,Fusarium graminearum KSU23522,123,4,9010877,2,37126805,2,1,19,5,15,9,7,16,1,0,0,0
+GCA_900492705.2,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium graminearum,Fusarium graminearum MDC_Fg1,74,96,1646471,9,36807931,2,1,20,6,15,9,5,15,1,0,0,0
+GCA_905332055.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium graminearum,Fusarium graminearum MDC_FgU1,73,139,651714,18,37010759,2,1,20,6,15,9,5,14,0,0,0,0
+GCA_900073075.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium graminearum,Fusarium graminearum NA,220,4,9025752,2,36908675,2,1,20,6,15,9,5,16,1,0,0,0
+GCA_900044135.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium graminearum,Fusarium graminearum PH-1,80,5,9395062,2,37952304,2,1,21,5,15,9,5,16,1,0,0,0
+GCA_012959185.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium graminearum,Fusarium graminearum TaB10,100,54,1672063,7,36759296,2,1,21,6,15,9,5,14,1,0,0,0
+GCA_027945235.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium irregulare,Fusarium irregulare CF00137,41.2619,41,1635733,8,37934761,2,1,19,5,17,9,6,18,1,0,0,0
+GCA_027945245.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium irregulare,Fusarium irregulare CF00143,32.5181,42,1635816,9,38172928,2,1,20,6,17,9,5,19,1,0,0,0
+GCA_025433545.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium keratoplasticum,Fusarium keratoplasticum NA,51.71,25,4213465,5,49462855,1,1,38,9,22,11,3,20,1,0,0,0
+GCA_019915245.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium musae,Fusarium musae F31,250,13,4357084,5,44015302,2,1,23,10,20,9,5,19,1,0,0,0
+GCA_005930515.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium oxysporum,Fusarium oxysporum 160527,246,12,4884632,5,51139495,3,1,34,9,27,13,5,28,1,0,0,0
+GCA_023509805.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium oxysporum,Fusarium oxysporum 9,93.9,114,2949549,9,65559131,1,1,35,7,24,18,4,30,1,0,0,0
+GCA_049000225.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium oxysporum,Fusarium oxysporum BRF1,400,52,4856172,6,59768061,3,2,36,8,23,12,5,16,1,0,0,0
+GCA_013085055.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium oxysporum,Fusarium oxysporum Fo47,341,12,4523040,5,50358849,2,2,37,7,29,13,6,20,1,0,0,0
+GCA_003615085.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium oxysporum,Fusarium oxysporum FoC_Fus2,214,34,4140032,6,53425788,2,1,41,8,28,13,6,24,1,0,0,0
+GCA_001702695.2,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium oxysporum,Fusarium oxysporum Forc016,72,32,4490135,5,52860752,2,1,36,8,24,12,7,29,1,0,0,0
+GCA_031834405.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium oxysporum,Fusarium oxysporum II5,111,53,4484645,5,49423592,2,1,26,7,24,12,5,16,1,0,0,0
+GCA_020744355.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium oxysporum,Fusarium oxysporum MPI-CAGE-CH-0212,186.1,66,4810307,5,55719217,2,2,33,8,27,14,4,20,1,0,0,0
+GCA_020744455.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium oxysporum,Fusarium oxysporum MPI-SDFR-AT-0094,68.91,128,1619373,11,52242347,3,2,34,7,24,15,6,26,1,0,0,0
+GCA_030719095.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium oxysporum,Fusarium oxysporum NA,92,13,4885915,5,49876382,2,1,31,8,23,12,4,22,1,0,0,0
+GCA_049000195.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium oxysporum,Fusarium oxysporum SG1,400,56,4291610,6,54539683,2,2,27,7,22,8,4,15,1,0,0,0
+GCA_007994515.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium oxysporum,Fusarium oxysporum TR4,180,15,4494293,5,48588396,2,1,26,8,23,12,5,17,1,0,0,0
+GCA_019157295.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium oxysporum,Fusarium oxysporum Tf1208,96,25,4227812,6,59760091,2,2,24,9,22,11,5,27,1,0,0,0
+GCA_019157275.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium oxysporum,Fusarium oxysporum Tf1262,41,59,2955369,8,66822448,2,1,39,8,20,10,3,33,1,0,0,0
+GCA_900096695.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium oxysporum,Fusarium oxysporum V64-1,46,49,5177094,4,48788312,2,1,33,8,28,15,4,22,1,0,0,0
+GCA_050370095.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium phalaenopsidis,Fusarium phalaenopsidis FUZ10S,155,54,3659495,6,52236286,2,1,36,9,18,9,3,20,1,0,0,0
+GCA_019609905.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium poae,Fusarium poae DAOMC 252244,161,12,9989830,2,43859651,2,1,15,6,15,8,5,19,1,0,0,0
+GCA_046056315.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium poae,Fusarium poae Fp133,206,6,8641347,3,44910645,2,1,14,6,15,9,5,20,1,0,0,0
+GCA_900067095.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium proliferatum,Fusarium proliferatum ET1,100,32,3311891,5,44903268,2,1,27,9,25,12,6,16,1,0,0,0
+GCA_003290285.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium proliferatum,Fusarium proliferatum ITEM 2341,111,104,1822579,9,45487716,2,1,25,9,23,12,6,16,1,0,0,0
+GCA_017309895.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium proliferatum,Fusarium proliferatum MPVP 328,112,12,4345412,5,43841293,2,1,24,9,21,10,6,12,1,0,0,0
+GCA_900029915.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium proliferatum,Fusarium proliferatum NRRL62905,98,155,874474,16,43164568,2,1,24,9,20,9,6,16,1,0,0,0
+GCA_017309875.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium proliferatum,Fusarium proliferatum R16,117,154,2386667,8,45282541,2,1,25,9,21,10,6,16,1,0,0,0
+GCA_016952305.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium pseudograminearum,Fusarium pseudograminearum Class2-1C,519,4,9153420,2,37805715,2,1,19,6,12,8,4,12,1,0,0,0
+GCA_024752415.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium pseudograminearum,Fusarium pseudograminearum Fp22-2,332,4,9006544,2,37331286,2,1,18,6,13,8,4,14,0,0,0,0
+GCA_020744475.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium redolens,Fusarium redolens MPI-CAGE-AT-0023,105.67,74,1971302,9,52563400,2,2,33,9,23,11,4,24,1,0,0,0
+GCA_041870755.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium sambucinum,Fusarium sambucinum NA,89,4,9530391,2,38374918,2,1,24,7,18,12,5,16,1,0,0,0
+GCA_020744495.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium solani,Fusarium solani FSSC 5 MPI-SDFR-AT-0091,96.89,74,2221287,9,52932111,1,1,37,10,20,10,4,22,1,0,0,0
+GCA_023522795.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium solani,Fusarium solani SB1,225,19,4026673,6,59379714,1,1,37,11,23,10,5,30,1,0,0,0
+GCA_023101225.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium solani-melongenae,Fusarium solani-melongenae CRI 24-3,123.25,12,4496268,5,49477711,1,1,37,9,27,11,4,17,1,0,0,0
+GCA_020744335.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium sp.,Fusarium sp. MPI-SDFR-AT-0072,181.01,19,4717126,5,48370669,2,2,28,9,23,11,4,22,1,0,0,0
+GCA_954870535.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium sp.,Fusarium sp. NA,145,19,4299556,5,42058709,2,1,27,8,19,10,5,21,1,0,0,0
+GCA_027945595.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium torreyae,Fusarium torreyae CF00136,42.525,92,1014291,13,46516240,2,1,32,8,20,10,5,16,1,0,0,0
+GCA_020744515.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium tricinctum,Fusarium tricinctum MPI-SDFR-AT-0068,256.94,21,5209653,4,43693088,2,1,27,8,18,12,5,25,1,0,0,0
+GCA_900007375.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium venenatum,Fusarium venenatum A3/5,100,5,9140027,2,38580753,2,1,23,7,16,12,5,20,1,0,0,0
+GCA_020744135.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium venenatum,Fusarium venenatum MPI-CAGE-CH-0201,317.79,9,9116532,2,37452605,2,1,23,7,17,12,5,21,1,0,0,0
+GCA_003317015.2,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Nectriaceae,Fusarium,Fusarium verticillioides,Fusarium verticillioides BRIP53263,110,153,4129395,5,42321040,1,0,0,0,0,1,0,4,0,0,0,0
+GCA_022578845.1,Fungi,Ascomycota,Sordariomycetes,Xylariales,Hypoxylaceae,Hypoxylon,Hypoxylon cercidicola,Hypoxylon cercidicola CBS 119009,148.116,60,1300530,9,36614325,1,2,15,5,15,8,4,15,2,0,0,0
+GCA_022578875.1,Fungi,Ascomycota,Sordariomycetes,Xylariales,Hypoxylaceae,Hypoxylon,Hypoxylon crocopeplum,Hypoxylon crocopeplum CBS 119004,139.155,180,758131,17,40729601,1,1,19,7,22,13,4,16,2,0,0,0
+GCA_022984875.1,Fungi,Ascomycota,Sordariomycetes,Xylariales,Hypoxylaceae,Hypoxylon,Hypoxylon fragiforme,Hypoxylon fragiforme CBS 206.31,711.02,15,3869588,5,36400909,1,1,13,6,11,7,4,8,2,0,0,0
+GCA_022578575.1,Fungi,Ascomycota,Sordariomycetes,Xylariales,Hypoxylaceae,Hypoxylon,Hypoxylon sp.,Hypoxylon sp. FL0543,124.89,62,1362539,8,38120493,1,1,14,7,15,10,4,9,2,0,0,0
+GCA_022497025.1,Fungi,Ascomycota,Sordariomycetes,Xylariales,Hypoxylaceae,Hypoxylon,Hypoxylon sp.,Hypoxylon sp. FL0890,145.55,83,834990,16,40408409,1,1,16,7,14,12,4,10,2,0,0,0
+GCA_022578955.1,Fungi,Ascomycota,Sordariomycetes,Xylariales,Hypoxylaceae,Hypoxylon,Hypoxylon sp.,Hypoxylon sp. FL1857,135.392,146,682580,22,43392726,1,1,18,7,16,10,5,11,2,0,0,0
+GCA_022432515.1,Fungi,Ascomycota,Sordariomycetes,Xylariales,Hypoxylaceae,Hypoxylon,Hypoxylon sp.,Hypoxylon sp. NC0597,319.09,97,662971,17,35918646,1,1,17,7,16,14,4,9,2,0,0,0
+GCA_022984935.1,Fungi,Ascomycota,Sordariomycetes,Xylariales,Hypoxylaceae,Hypoxylon,Hypoxylon sp.,Hypoxylon sp. NC1633,521.35,139,662074,18,40120527,1,1,13,6,13,9,4,9,2,0,0,0
+GCA_022578975.1,Fungi,Ascomycota,Sordariomycetes,Xylariales,Hypoxylaceae,Hypoxylon,Hypoxylon trugodes,Hypoxylon trugodes CBS 135444,135.878,74,3593318,5,39350287,1,1,16,6,16,12,5,11,2,0,0,0
+GCA_000512585.3,Fungi,Basidiomycota,Tremellomycetes,Tremellales,Cryptococcaceae,Kwoniella,Kwoniella bestiolae,Kwoniella bestiolae CBS 10118,86,8,4033336,2,24551665,4,5,6,5,2,0,0,6,0,0,0,0
+GCA_036426115.1,Fungi,Basidiomycota,Tremellomycetes,Tremellales,Cryptococcaceae,Kwoniella,Kwoniella botswanensis,Kwoniella botswanensis CBS 12716,147,3,18234046,1,23007246,4,5,5,4,2,0,0,4,0,0,0,0
+GCA_000512565.3,Fungi,Basidiomycota,Tremellomycetes,Tremellales,Cryptococcaceae,Kwoniella,Kwoniella dejecticola,Kwoniella dejecticola CBS 10117,149,11,2115541,5,23932770,3,5,8,4,3,0,0,6,0,0,0,0
+GCA_036810415.1,Fungi,Basidiomycota,Tremellomycetes,Tremellales,Cryptococcaceae,Kwoniella,Kwoniella dendrophila,Kwoniella dendrophila CBS 6074,476,11,1989622,5,23026020,4,5,5,4,2,0,0,6,0,0,0,0
+GCA_036810445.1,Fungi,Basidiomycota,Tremellomycetes,Tremellales,Cryptococcaceae,Kwoniella,Kwoniella europaea,Kwoniella europaea PYCC6329,70,3,16668455,1,22833461,3,5,5,4,2,0,0,6,0,0,0,0
+GCA_000507405.3,Fungi,Basidiomycota,Tremellomycetes,Tremellales,Cryptococcaceae,Kwoniella,Kwoniella heveanensis,Kwoniella heveanensis BCC8398,30,67,709378,13,25434930,3,5,7,4,3,1,1,4,0,0,0,0
+GCA_000507885.2,Fungi,Basidiomycota,Tremellomycetes,Tremellales,Cryptococcaceae,Kwoniella,Kwoniella mangroviensis,Kwoniella mangroviensis CBS 10435,68,37,1966685,4,22604858,4,5,7,3,2,0,0,6,0,0,0,0
+GCA_000507465.4,Fungi,Basidiomycota,Tremellomycetes,Tremellales,Cryptococcaceae,Kwoniella,Kwoniella mangroviensis,Kwoniella mangroviensis CBS 8507,150,4,13534336,1,22796923,4,5,7,4,2,0,0,6,0,0,0,0
+GCA_000507485.3,Fungi,Basidiomycota,Tremellomycetes,Tremellales,Cryptococcaceae,Kwoniella,Kwoniella mangroviensis,Kwoniella mangroviensis CBS 8886,102,41,2035775,5,22692505,4,5,6,3,2,0,0,6,0,0,0,0
+GCA_039105145.1,Fungi,Basidiomycota,Tremellomycetes,Tremellales,Cryptococcaceae,Kwoniella,Kwoniella newhampshirensis,Kwoniella newhampshirensis CBS 13917,222,17,1529259,6,20459564,2,5,4,3,2,0,1,4,0,0,0,0
+GCA_000512605.3,Fungi,Basidiomycota,Tremellomycetes,Tremellales,Cryptococcaceae,Kwoniella,Kwoniella pini,Kwoniella pini CBS 10737,302,11,1859852,5,20887338,3,5,4,4,2,0,0,5,0,0,0,0
+GCA_008629635.2,Fungi,Basidiomycota,Tremellomycetes,Tremellales,Cryptococcaceae,Kwoniella,Kwoniella shandongensis,Kwoniella shandongensis CBS 12478,157,14,1599119,6,21305292,2,5,6,3,2,0,1,4,0,0,0,0
+GCA_035658355.1,Fungi,Basidiomycota,Tremellomycetes,Tremellales,Cryptococcaceae,Kwoniella,Kwoniella shivajii,Kwoniella shivajii NA,180,12,2021889,5,22171496,3,5,4,4,2,1,0,5,0,0,0,0
+GCA_036810365.1,Fungi,Basidiomycota,Tremellomycetes,Tremellales,Cryptococcaceae,Kwoniella,Kwoniella sp.,Kwoniella sp. B9013,126,3,18217905,1,23028338,4,5,5,4,3,0,0,5,0,0,0,0
+GCA_036287355.1,Fungi,Basidiomycota,Tremellomycetes,Tremellales,Cryptococcaceae,Kwoniella,Kwoniella sp.,Kwoniella sp. CBS 6097,60,5,13655223,1,26078312,3,5,6,4,3,1,1,4,0,0,0,0
+GCA_036428585.1,Fungi,Basidiomycota,Tremellomycetes,Tremellales,Cryptococcaceae,Kwoniella,Kwoniella sp.,Kwoniella sp. CBS 9459,50,6,13071904,1,25236468,3,5,4,4,2,1,1,4,0,0,0,0
+GCA_036428645.1,Fungi,Basidiomycota,Tremellomycetes,Tremellales,Cryptococcaceae,Kwoniella,Kwoniella sp.,Kwoniella sp. DSM 27419,88,18,1531090,5,18083568,2,4,4,2,2,0,1,4,0,0,0,0
+GCA_038497795.1,Fungi,Ascomycota,Lipomycetes,Lipomycetales,Lipomycetaceae,Lipomyces,Lipomyces arxii,Lipomyces arxii Phaff 12-163,533.48,85,554856,6,11914779,1,0,3,4,3,0,0,2,0,0,0,0
+GCA_038497645.1,Fungi,Ascomycota,Lipomycetes,Lipomycetales,Lipomycetaceae,Lipomyces,Lipomyces chichibuensis,Lipomyces chichibuensis CBS 12929,380.22,169,292209,17,16366228,1,0,1,3,2,0,0,3,0,0,0,0
+GCA_038497905.1,Fungi,Ascomycota,Lipomycetes,Lipomycetales,Lipomycetaceae,Lipomyces,Lipomyces japonicus,Lipomyces japonicus CBS 7319,487.73,172,245202,20,13368889,1,0,2,3,1,3,0,1,0,0,0,0
+GCA_038497805.1,Fungi,Ascomycota,Lipomycetes,Lipomycetales,Lipomycetaceae,Lipomyces,Lipomyces mesembrius,Lipomyces mesembrius CBS 7600,381.9,125,428002,11,16871724,1,1,0,3,1,0,0,4,0,0,0,0
+GCA_038497815.1,Fungi,Ascomycota,Lipomycetes,Lipomycetales,Lipomycetaceae,Lipomyces,Lipomyces oligophaga,Lipomyces oligophaga CBS 7107,447.57,28,1558445,4,13579087,1,1,1,2,1,0,0,2,0,0,0,0
+GCA_001661325.1,Fungi,Ascomycota,Lipomycetes,Lipomycetales,Lipomycetaceae,Lipomyces,Lipomyces starkeyi,Lipomyces starkeyi NRRL Y-11557,48,117,1341299,7,20680201,1,2,6,4,4,0,0,3,0,0,0,0
+GCA_029532465.1,Fungi,Ascomycota,Lipomycetes,Lipomycetales,Lipomycetaceae,Lipomyces,Lipomyces tetrasporus,Lipomyces tetrasporus NRRL Y-64009,267.54,18,1740353,5,20779202,1,1,3,4,5,0,0,3,0,0,0,0
+GCA_029542905.1,Fungi,Basidiomycota,Malasseziomycetes,Malasseziales,Malasseziaceae,Malassezia,Malassezia arunalokei,Malassezia arunalokei CBS 13387,173,9,1224706,3,7331251,0,0,0,0,0,0,0,1,0,0,0,0
+GCA_029542985.1,Fungi,Basidiomycota,Malasseziomycetes,Malasseziales,Malasseziaceae,Malassezia,Malassezia brasiliensis,Malassezia brasiliensis CBS 14135,200,7,1798441,2,8000312,0,0,1,0,0,0,0,1,0,0,0,0
+GCA_029542885.1,Fungi,Basidiomycota,Malasseziomycetes,Malasseziales,Malasseziaceae,Malassezia,Malassezia caprae,Malassezia caprae CBS 10434,157,8,1349452,3,7728824,0,0,1,0,0,0,0,1,1,0,0,0
+GCA_029542805.1,Fungi,Basidiomycota,Malasseziomycetes,Malasseziales,Malasseziaceae,Malassezia,Malassezia cuniculi,Malassezia cuniculi CBS 11721,100,6,1493642,3,7453460,0,0,1,0,0,0,0,1,0,0,0,0
+GCA_029542865.1,Fungi,Basidiomycota,Malasseziomycetes,Malasseziales,Malasseziaceae,Malassezia,Malassezia equina,Malassezia equina CBS 12830,100,8,1363896,3,7775479,0,0,0,0,0,0,0,1,0,0,0,0
+GCA_023510035.1,Fungi,Basidiomycota,Malasseziomycetes,Malasseziales,Malasseziaceae,Malassezia,Malassezia furfur,Malassezia furfur CBS 14141,100,9,1642932,2,8241990,0,0,1,0,0,0,0,1,0,0,0,0
+GCA_023510055.1,Fungi,Basidiomycota,Malasseziomycetes,Malasseziales,Malasseziaceae,Malassezia,Malassezia furfur,Malassezia furfur CBS 9595,100,8,1622862,2,8107776,0,0,1,0,0,0,0,1,0,0,0,0
+GCA_009938135.1,Fungi,Basidiomycota,Malasseziomycetes,Malasseziales,Malasseziaceae,Malassezia,Malassezia furfur,Malassezia furfur NA,72,7,1862503,2,8268083,0,0,1,0,0,0,0,1,0,0,0,0
+GCA_029542785.1,Fungi,Basidiomycota,Malasseziomycetes,Malasseziales,Malasseziaceae,Malassezia,Malassezia japonica,Malassezia japonica CBS 9431,120,9,1024655,3,8433779,0,0,1,0,0,0,0,1,0,0,0,0
+GCA_029542845.1,Fungi,Basidiomycota,Malasseziomycetes,Malasseziales,Malasseziaceae,Malassezia,Malassezia nana,Malassezia nana CBS 9557,200,8,1328904,3,7702145,0,0,1,0,0,0,0,1,0,0,0,0
+GCA_029542945.1,Fungi,Basidiomycota,Malasseziomycetes,Malasseziales,Malasseziaceae,Malassezia,Malassezia obtusa,Malassezia obtusa CBS 7876,200,9,1643954,2,8169464,0,0,1,0,0,0,0,1,0,0,0,0
+GCA_047368035.1,Fungi,Basidiomycota,Malasseziomycetes,Malasseziales,Malasseziaceae,Malassezia,Malassezia pachydermatis,Malassezia pachydermatis ATCC 14522 (CBS 1879),671,6,1455848,3,8403632,0,0,1,0,0,0,0,1,0,0,0,0
+GCA_001278385.1,Fungi,Basidiomycota,Malasseziomycetes,Malasseziales,Malasseziaceae,Malassezia,Malassezia pachydermatis,Malassezia pachydermatis CBS 1879,250,91,1303022,3,8149729,0,0,1,0,0,0,0,1,0,0,0,0
+GCA_029542765.1,Fungi,Basidiomycota,Malasseziomycetes,Malasseziales,Malasseziaceae,Malassezia,Malassezia psittaci,Malassezia psittaci CBS 14136,200,8,1454392,2,8186253,0,0,0,0,0,0,0,1,0,0,0,0
+GCA_003691605.1,Fungi,Basidiomycota,Malasseziomycetes,Malasseziales,Malasseziaceae,Malassezia,Malassezia restricta,Malassezia restricta CBS 7877,165,9,1221154,3,7262887,0,0,0,0,0,0,0,1,0,0,0,0
+GCA_003290485.1,Fungi,Basidiomycota,Malasseziomycetes,Malasseziales,Malasseziaceae,Malassezia,Malassezia restricta,Malassezia restricta KCTC 27527,38.8,9,1222814,3,7330907,0,0,0,0,0,0,0,1,0,0,0,0
+GCA_029542825.1,Fungi,Basidiomycota,Malasseziomycetes,Malasseziales,Malasseziaceae,Malassezia,Malassezia sp.,Malassezia sp. CBS 17886,156,9,1153835,3,9312381,0,0,1,0,0,0,0,1,0,0,0,0
+GCA_900149145.1,Fungi,Basidiomycota,Malasseziomycetes,Malasseziales,Malasseziaceae,Malassezia,Malassezia sympodialis,Malassezia sympodialis ATCC 42132,100,8,1353702,3,7747459,0,0,1,0,0,0,0,1,0,0,0,0
+GCA_029542925.1,Fungi,Basidiomycota,Malasseziomycetes,Malasseziales,Malasseziaceae,Malassezia,Malassezia vespertilionis,Malassezia vespertilionis CBS 15041,76,9,844328,4,7595203,0,0,1,0,0,0,0,1,0,0,0,0
+GCA_002818225.1,Fungi,Basidiomycota,Malasseziomycetes,Malasseziales,Malasseziaceae,Malassezia,Malassezia vespertilionis,Malassezia vespertilionis NWHC:44797-103,575,14,844276,4,7581587,0,0,1,0,0,0,0,1,0,0,0,0
+GCA_029542965.1,Fungi,Basidiomycota,Malasseziomycetes,Malasseziales,Malasseziaceae,Malassezia,Malassezia yamatoensis,Malassezia yamatoensis CBS 9725,200,8,1449273,2,8264016,0,0,0,0,0,0,0,1,0,0,0,0
+GCA_019434415.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Clavicipitaceae,Metarhizium,Metarhizium acridum,Metarhizium acridum ARSEF 324,184,35,2337527,6,44714658,1,0,7,3,5,0,5,13,1,0,0,0
+GCA_013305495.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Clavicipitaceae,Metarhizium,Metarhizium anisopliae,Metarhizium anisopliae JEF-290,237,18,6254943,3,42848098,1,0,6,4,8,0,5,11,0,0,0,0
+GCA_039654215.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Clavicipitaceae,Metarhizium,Metarhizium anisopliae,Metarhizium anisopliae NA,330.7,28,4185747,5,39548408,1,0,6,4,7,0,5,11,1,0,0,0
+GCA_013426205.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Clavicipitaceae,Metarhizium,Metarhizium brunneum,Metarhizium brunneum 4556,100,7,4766907,3,37771916,1,1,5,4,7,0,5,11,1,0,0,0
+GCA_000814965.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Clavicipitaceae,Metarhizium,Metarhizium brunneum,Metarhizium brunneum ARSEF 3297,80.13,92,1825569,6,36967988,1,1,5,4,7,0,5,10,1,0,0,0
+GCA_039795395.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Clavicipitaceae,Metarhizium,Metarhizium brunneum,Metarhizium brunneum V275,80,29,4322898,3,40080245,1,1,6,4,7,0,5,13,1,0,0,0
+GCA_000814975.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Clavicipitaceae,Metarhizium,Metarhizium hybridum,Metarhizium hybridum ARSEF 549,98.34,74,2048875,6,38325361,1,1,6,4,7,0,5,14,1,0,0,0
+GCA_000187425.2,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Clavicipitaceae,Metarhizium,Metarhizium robertsii,Metarhizium robertsii ARSEF 23,147.33,90,4491770,4,38960102,1,1,5,4,7,0,5,16,1,0,0,0
+GCA_000738915.1,Fungi,Microsporidia,NA,NA,NA,Nematocida,Nematocida ausubeli,Nematocida ausubeli ERTm6,118,24,797226,3,4228442,0,0,0,0,0,0,0,0,0,0,0,0
+GCA_001642395.1,Fungi,Microsporidia,NA,NA,NA,Nematocida,Nematocida displodere,Nematocida displodere JUm2807,2500,42,440850,3,3057189,0,0,0,0,0,0,0,0,0,0,0,0
+GCA_021653875.1,Fungi,Microsporidia,NA,NA,NA,Nematocida,Nematocida major,Nematocida major JUm2507,99.3657,111,195657,7,3786700,0,0,0,0,0,0,0,0,0,0,0,0
+GCA_000250985.1,Fungi,Microsporidia,NA,NA,NA,Nematocida,Nematocida parisii,Nematocida parisii ERTm1,45,65,649559,3,4029057,0,0,0,0,0,0,0,0,0,0,0,0
+GCA_000190615.1,Fungi,Microsporidia,NA,NA,NA,Nematocida,Nematocida parisii,Nematocida parisii ERTm3,60,53,567515,3,4121387,0,0,0,0,0,0,0,0,0,0,0,0
+GCA_024244115.1,Fungi,Microsporidia,NA,NA,NA,Nematocida,Nematocida sp.,Nematocida sp. AWRm77,3073.99,84,106150,13,3360487,0,0,0,0,0,0,0,0,0,0,0,0
+GCA_024244045.1,Fungi,Microsporidia,NA,NA,NA,Nematocida,Nematocida sp.,Nematocida sp. AWRm80,1705.28,45,301462,5,3169597,0,0,0,0,0,0,0,0,0,0,0,0
+GCA_024244035.1,Fungi,Microsporidia,NA,NA,NA,Nematocida,Nematocida sp.,Nematocida sp. LUAm1,75.9803,53,186570,6,3080653,0,0,0,0,0,0,0,0,0,0,0,0
+GCA_024244025.1,Fungi,Microsporidia,NA,NA,NA,Nematocida,Nematocida sp.,Nematocida sp. LUAm2,1825.85,42,193215,6,3061782,0,0,0,0,0,0,0,0,0,0,0,0
+GCA_024243985.1,Fungi,Microsporidia,NA,NA,NA,Nematocida,Nematocida sp.,Nematocida sp. LUAm3,2201.04,38,189581,6,3091668,0,0,0,0,0,0,0,0,0,0,0,0
+GCA_033458375.1,Fungi,Ascomycota,Sordariomycetes,Sordariales,Sordariaceae,Neurospora,Neurospora crassa,Neurospora crassa FGSC 4830,50.68,93,2335974,6,37056930,1,3,9,4,6,7,3,8,0,0,0,0
+GCA_033458365.1,Fungi,Ascomycota,Sordariomycetes,Sordariales,Sordariaceae,Neurospora,Neurospora hispaniola,Neurospora hispaniola FGSC 10403,128.45,23,4340205,4,40807401,1,2,11,4,6,6,3,7,0,0,0,0
+GCA_040412205.1,Fungi,Ascomycota,Sordariomycetes,Sordariales,Sordariaceae,Neurospora,Neurospora intermedia,Neurospora intermedia FGSC 2613,96.13,21,4276046,4,39262359,1,4,10,4,5,6,3,8,0,0,0,0
+GCA_000213175.1,Fungi,Ascomycota,Sordariomycetes,Sordariales,Sordariaceae,Neurospora,Neurospora tetrasperma,Neurospora tetrasperma FGSC 2508,31.29,81,5681182,3,38490894,1,2,11,4,6,6,3,7,0,0,0,0
+GCA_033439725.1,Fungi,Ascomycota,Sordariomycetes,Sordariales,Sordariaceae,Neurospora,Neurospora tetraspora,Neurospora tetraspora CBS 560.94,107.74,23,4899046,4,43856413,2,2,11,5,6,9,3,10,0,0,0,0
+GCA_036872755.1,Fungi,Ascomycota,Orbiliomycetes,Orbiliales,Orbiliaceae,Orbilia,Orbilia blumenaviensis,Orbilia blumenaviensis TWF730,143,23,2473961,6,42458278,3,1,10,7,9,12,2,8,0,0,0,0
+GCA_036872635.1,Fungi,Ascomycota,Orbiliomycetes,Orbiliales,Orbiliaceae,Orbilia,Orbilia brochopaga,Orbilia brochopaga TWF696,138,23,2671218,6,36324335,2,1,9,5,5,9,2,6,0,0,0,0
+GCA_036971675.1,Fungi,Ascomycota,Orbiliomycetes,Orbiliales,Orbiliaceae,Orbilia,Orbilia ellipsospora,Orbilia ellipsospora TWF694,61,27,2073609,8,39060477,3,2,12,9,16,15,2,6,0,0,0,0
+GCA_036872735.1,Fungi,Ascomycota,Orbiliomycetes,Orbiliales,Orbiliaceae,Orbilia,Orbilia javanica,Orbilia javanica TWF718,147,17,4184571,4,40706343,3,1,10,7,7,15,2,11,0,0,0,0
+GCA_004768765.1,Fungi,Ascomycota,Orbiliomycetes,Orbiliales,Orbiliaceae,Orbilia,Orbilia oligospora,Orbilia oligospora TWF154,130,10,5390931,3,39619008,3,1,10,10,8,14,2,10,0,0,0,0
+GCA_011066845.1,Fungi,Ascomycota,Orbiliomycetes,Orbiliales,Orbiliaceae,Orbilia,Orbilia oligospora,Orbilia oligospora TWF970,32,191,669589,16,39413184,3,1,10,9,7,14,3,12,0,0,0,0
+GCA_028826965.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium alfredii,Penicillium alfredii IBT 34128,62,11,3327006,4,27430394,1,2,6,1,7,5,3,6,0,0,0,0
+GCA_028827245.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium angulare,Penicillium angulare IBT 27051,80,12,5070470,3,37782843,3,4,18,5,16,10,7,14,0,0,0,0
+GCA_028826755.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium angulare,Penicillium angulare IBT 30069,74,12,5061202,3,38603916,2,4,21,5,22,11,7,21,0,0,0,0
+GCA_028974205.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium antarcticum,Penicillium antarcticum IBT 31339,193,11,3813293,3,30836278,1,5,18,7,12,10,7,13,0,0,0,0
+GCA_028826775.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium argentinense,Penicillium argentinense IBT 30761,45,11,5062079,3,33838379,3,6,16,4,15,12,8,11,0,0,0,0
+GCA_028827265.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium atrosanguineum,Penicillium atrosanguineum IBT 20685,50,8,3894271,4,28612168,3,4,17,5,18,10,6,8,0,0,0,0
+GCA_028827005.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium atrosanguineum,Penicillium atrosanguineum IBT 21472,50,10,3785589,4,30880235,3,3,17,5,19,10,6,9,0,0,0,0
+GCA_028826785.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium atrosanguineum,Penicillium atrosanguineum IBT 31632,48,16,3482637,4,30046757,3,4,16,5,17,10,6,10,0,0,0,0
+GCA_028826765.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium atrosanguineum,Penicillium atrosanguineum IBT 34669,130,10,3846029,4,30509980,3,4,17,5,19,10,6,9,0,0,0,0
+GCA_902713515.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium bialowiezense,Penicillium bialowiezense NA,439,113,563120,16,29196028,1,4,21,7,16,8,4,12,0,0,0,0
+GCA_028826915.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium bovifimosum,Penicillium bovifimosum IBT 22155,73,9,3348542,3,27188871,2,2,9,3,12,8,6,27,0,0,0,0
+GCA_001048715.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium brasilianum,Penicillium brasilianum NA,205,87,3363074,5,35629036,3,4,17,9,19,11,8,13,0,0,0,0
+GCA_028827555.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium brevicompactum,Penicillium brevicompactum IBT 35665,120,9,6130730,3,34726155,1,4,21,4,15,10,4,15,0,0,0,0
+GCA_028827255.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium brevicompactum,Penicillium brevicompactum IBT 35673,213,6,6143785,3,29909766,1,4,18,4,15,8,4,11,0,0,0,0
+GCA_028827515.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium brevicompactum,Penicillium brevicompactum IBT 35675,165,8,5201747,3,32518670,1,4,19,5,15,8,4,8,0,0,0,0
+GCA_000513335.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium camemberti,Penicillium camemberti FM 013,75,180,947716,11,34008276,2,6,17,8,14,12,7,18,1,0,0,0
+GCA_028826845.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium canariense,Penicillium canariense IBT 26290,89,9,4795020,3,31521451,1,2,11,6,17,6,7,13,0,0,0,0
+GCA_028829005.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium canescens,Penicillium canescens IBT 13549,55,15,3697658,4,41574211,1,4,24,8,19,13,6,20,0,0,0,0
+GCA_028828745.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium canescens,Penicillium canescens IBT 15449,36,23,3385166,6,46485972,1,4,28,8,20,13,6,27,0,0,0,0
+GCA_028828735.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium canescens,Penicillium canescens IBT 15450,54,18,4097024,5,46355660,1,5,28,8,20,13,6,11,0,0,0,0
+GCA_028828765.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium canescens,Penicillium canescens IBT 15451,31,15,4366774,5,46284494,1,4,28,8,20,13,6,18,0,0,0,0
+GCA_028829745.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium canescens,Penicillium canescens IBT 15452,46,21,3672962,5,46501943,1,5,24,7,19,13,6,28,0,0,0,0
+GCA_028828795.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium canescens,Penicillium canescens IBT 18980,43,20,3670552,5,41773848,1,5,24,8,19,13,6,15,0,0,0,0
+GCA_028828825.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium canescens,Penicillium canescens IBT 19259,106,10,3493872,4,32834794,2,5,21,8,18,14,6,16,0,0,0,0
+GCA_028826875.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium capsulatum,Penicillium capsulatum IBT 21917,93,10,4701675,3,27537137,2,4,7,3,7,5,6,5,0,0,0,0
+GCA_028828875.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium capsulatum,Penicillium capsulatum IBT 29712,71,9,4707077,3,27651227,2,4,7,2,8,5,6,5,0,0,0,0
+GCA_028827025.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium cataractarum,Penicillium cataractarum IBT 29864,105,11,4659271,4,37446941,4,3,27,10,27,12,8,11,0,0,0,0
+GCA_028826995.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium cf.,Penicillium cf. IBT 16848,30,10,4294340,4,29797777,2,5,10,5,15,13,7,15,0,0,0,0
+GCA_028974015.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium cf.,Penicillium cf. IBT 16849,75,8,5598030,3,29823847,2,5,10,5,14,13,7,16,0,0,0,0
+GCA_028827235.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium cf.,Penicillium cf. IBT 17755,56,12,3542482,3,29442304,2,4,10,5,13,13,7,16,0,0,0,0
+GCA_028974045.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium cf.,Penicillium cf. IBT 20477,78,10,4582560,4,35226502,2,6,16,4,14,13,6,13,1,0,0,0
+GCA_028974085.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium chermesinum,Penicillium chermesinum IBT 19713,30,10,4118209,3,27581382,2,2,6,3,7,7,6,10,0,0,0,0
+GCA_028828955.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium chrysogenum,Penicillium chrysogenum IBT 17219,45,11,4185089,3,33624001,2,5,13,6,11,14,6,8,0,0,0,0
+GCA_028826945.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium chrysogenum,Penicillium chrysogenum IBT 19737,284,15,4879500,3,35181384,2,6,13,6,12,13,6,17,0,0,0,0
+GCA_028827015.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium chrysogenum,Penicillium chrysogenum IBT 3361,205,11,4644700,3,33906189,2,4,13,6,12,14,6,8,0,0,0,0
+GCA_028827035.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium chrysogenum,Penicillium chrysogenum IBT 35668,103,4,9490807,2,32379777,2,6,13,6,12,14,6,9,0,0,0,0
+GCA_000710275.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium chrysogenum,Penicillium chrysogenum P2niaD18,110,4,10455807,2,32497224,2,4,14,6,12,14,7,11,0,0,0,0
+GCA_028974065.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium cinerascens,Penicillium cinerascens IBT 15544,180,16,3994343,4,29467041,3,4,11,6,13,6,6,12,0,0,0,0
+GCA_036320845.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium citrinum,Penicillium citrinum B9,316.8,9,3360406,4,31333751,2,3,13,2,18,6,3,14,0,0,0,0
+GCA_028827155.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium citrinum,Penicillium citrinum IBT 23319,168,12,3834662,4,31396546,2,4,16,3,15,8,5,10,0,0,0,0
+GCA_028827145.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium concentricum,Penicillium concentricum IBT 3081,104,6,9135964,2,29963931,2,5,14,7,15,10,7,11,1,0,0,0
+GCA_002072405.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium coprophilum,Penicillium coprophilum IBT 31321,150,91,2122312,5,28353863,2,3,10,3,6,10,6,8,0,0,0,0
+GCA_028826855.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium coprophilum,Penicillium coprophilum IBT 35676,193,7,4172608,3,29014640,2,5,13,5,13,10,7,9,0,0,0,0
+GCA_028827165.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium cosmopolitanum,Penicillium cosmopolitanum IBT 29677,193,13,4365462,4,40034523,2,4,22,5,24,10,6,17,0,0,0,0
+GCA_028827405.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium crustosum,Penicillium crustosum IBT 35664,137,11,9362940,2,32953279,2,6,21,8,16,12,7,10,1,0,0,0
+GCA_043643955.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium crustosum,Penicillium crustosum PRB-2,129,143,2597329,4,31992366,2,6,22,8,16,12,7,11,1,0,0,0
+GCA_028827525.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium daleae,Penicillium daleae IBT 16125,44,10,4752356,3,39657045,4,3,21,10,35,13,6,14,0,0,0,0
+GCA_028827375.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium desertorum,Penicillium desertorum IBT 17660,147,14,5473808,3,33986870,5,6,13,7,12,13,6,15,0,0,0,0
+GCA_028827545.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium diatomitis,Penicillium diatomitis IBT 30728,94,19,3372961,5,33965862,2,2,9,4,14,12,5,8,0,0,0,0
+GCA_012295545.2,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium digitatum,Penicillium digitatum DSM 62840,125,31,6602426,2,26573240,1,3,11,5,6,4,5,6,0,0,0,0
+GCA_016767815.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium digitatum,Penicillium digitatum PdW03,584,6,4123518,3,26336737,1,3,11,5,6,5,5,6,0,0,0,0
+GCA_022829055.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium expansum,Penicillium expansum NA,100,154,980978,12,32511896,2,5,22,7,15,10,7,12,1,0,0,0
+GCA_028828255.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium fimorum,Penicillium fimorum IBT 29495,59,7,8023479,2,28556969,2,5,10,7,13,10,7,9,0,0,0,0
+GCA_028827385.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium freii,Penicillium freii IBT 34325,78,6,8219394,2,35356366,2,6,12,5,16,13,6,13,0,0,0,0
+GCA_028828275.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium frequentans,Penicillium frequentans IBT 35677,94,15,4680361,4,38045409,3,4,18,5,18,13,6,13,0,0,0,0
+GCA_028827865.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium frequentans,Penicillium frequentans IBT 35679,95,11,4560428,4,36177675,3,4,18,5,18,12,6,17,0,0,0,0
+GCA_001561935.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium griseofulvum,Penicillium griseofulvum PG3,270,92,2267136,4,29140916,2,5,11,3,16,13,7,12,0,0,0,0
+GCA_028828265.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium herquei,Penicillium herquei IBT 20771,88,21,2894492,5,33697684,2,2,16,4,19,11,5,19,0,0,0,0
+GCA_028828675.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium herquei,Penicillium herquei IBT 29812,100,11,5067678,3,37080134,4,4,24,4,21,10,5,25,0,0,0,0
+GCA_028827645.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium hetheringtonii,Penicillium hetheringtonii IBT 29057,106,10,4061132,4,31629319,2,4,18,3,19,10,5,16,0,0,0,0
+GCA_028827665.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium hispanicum,Penicillium hispanicum IBT 35686,132,9,3706033,4,27868179,1,4,8,2,10,7,4,6,0,0,0,0
+GCA_028827395.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium hordei,Penicillium hordei IBT 12815,79,6,5075260,3,33792161,2,6,13,6,13,13,6,13,0,0,0,0
+GCA_028827675.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium lagena,Penicillium lagena IBT 129212,56,9,3555488,3,27859125,4,1,21,7,41,9,8,5,0,0,0,0
+GCA_028828245.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium lividum,Penicillium lividum IBT 13676,129,11,5167816,3,34532832,3,5,21,5,20,9,6,18,0,0,0,0
+GCA_028827895.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium longicatenatum,Penicillium longicatenatum IBT 33135,72,7,4747519,3,32457776,4,5,22,7,21,12,6,17,0,0,0,0
+GCA_028827875.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium longicatenatum,Penicillium longicatenatum IBT 33191,118,9,4930178,3,32311308,4,4,21,8,21,12,6,19,0,0,0,0
+GCA_028827695.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium maclennaniae,Penicillium maclennaniae IBT 15551,40,8,3554904,3,27935234,2,4,9,3,13,11,5,5,0,0,0,0
+GCA_028827735.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium macrosclerotiorum,Penicillium macrosclerotiorum IBT 26536,52,12,3913342,4,33645934,2,5,23,6,15,7,7,11,0,0,0,0
+GCA_028828285.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium majusculum,Penicillium majusculum IBT 35410,70,6,9515948,2,33834515,2,6,19,7,12,13,7,16,1,0,0,0
+GCA_028827775.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium malachiteum,Penicillium malachiteum IBT 13176,93,8,6248290,3,34863708,4,5,18,7,22,12,6,16,0,0,0,0
+GCA_028827825.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium malachiteum,Penicillium malachiteum IBT 17515,90,6,8186553,3,35880773,4,5,17,6,21,12,6,17,0,0,0,0
+GCA_028828005.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium manginii,Penicillium manginii IBT 31320,129,14,4165902,4,38623079,2,6,20,6,26,12,6,15,0,0,0,0
+GCA_028829835.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium mononematosum,Penicillium mononematosum IBT 11891,42,4,8177327,2,30158902,3,5,14,6,16,14,7,9,0,0,0,0
+GCA_911456355.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium nalgiovense,Penicillium nalgiovense NA,52,41,3176469,4,34560068,2,5,11,5,13,14,5,11,0,0,0,0
+GCA_028828085.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium nucicola,Penicillium nucicola IBT 29836,136,17,4788641,3,31087567,1,4,22,9,15,11,7,14,1,0,0,0
+GCA_028828045.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium odoratum,Penicillium odoratum IBT 22623,108,7,4898923,3,32405987,3,5,20,6,15,10,5,13,0,0,0,0
+GCA_911150065.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium olsonii,Penicillium olsonii NA,31,100,584105,17,28772301,1,3,23,6,17,8,4,8,0,0,0,0
+GCA_001723175.3,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium oxalicum,Penicillium oxalicum HP7-1,327,18,4068681,4,30793372,2,2,9,5,14,11,5,15,0,0,0,0
+GCA_028828445.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium paradoxum,Penicillium paradoxum IBT 22861,72,6,5331884,3,28923777,0,5,9,5,9,6,7,8,0,0,0,0
+GCA_002072265.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium polonicum,Penicillium polonicum IBT 4502,137.5,74,1891852,6,32365395,2,5,13,7,15,13,6,11,0,0,0,0
+GCA_964197705.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium psychrofluorescens,Penicillium psychrofluorescens NA,59,8,4459645,3,26257727,4,0,14,5,27,9,8,5,0,0,0,0
+GCA_028828465.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium psychrosexuale,Penicillium psychrosexuale IBT 29551,168,8,7382026,2,27827857,2,3,9,2,7,6,6,12,0,0,0,0
+GCA_028828015.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium pulvis,Penicillium pulvis IBT 33274,70,8,4649848,3,32647626,3,3,20,5,16,12,6,9,0,0,0,0
+GCA_028828495.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium riverlandense,Penicillium riverlandense IBT 135883,139,8,3470598,3,27919989,4,3,20,6,35,11,8,5,0,0,0,0
+GCA_028829455.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium robsamsonii,Penicillium robsamsonii IBT 29466,144,12,7219582,2,29159420,2,4,11,3,12,11,7,8,0,0,0,0
+GCA_011392555.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium rolfsii,Penicillium rolfsii F1880,100,27,3147738,4,32167788,2,4,18,7,20,12,5,13,0,0,0,0
+GCA_023141315.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium roqueforti,Penicillium roqueforti CBS 147309,129,70,831264,9,27042016,1,3,8,3,7,6,6,13,0,0,0,0
+GCA_023141305.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium roqueforti,Penicillium roqueforti CBS 147310,124,91,889993,11,27254792,1,3,9,3,7,6,6,13,0,0,0,0
+GCA_023138675.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium roqueforti,Penicillium roqueforti CBS 147317,105,58,1225265,6,26719157,1,3,9,3,7,6,6,12,0,0,0,0
+GCA_023065495.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium roqueforti,Penicillium roqueforti CBS 147318,105,46,1526950,5,27208435,1,3,9,3,7,6,6,13,0,0,0,0
+GCA_023138645.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium roqueforti,Penicillium roqueforti CBS 147325,106,140,658569,13,28927521,1,3,8,3,7,6,6,19,0,0,0,0
+GCA_023138615.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium roqueforti,Penicillium roqueforti CBS 147326,101,178,678050,13,28488892,1,3,8,3,7,6,6,15,0,0,0,0
+GCA_023138445.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium roqueforti,Penicillium roqueforti CBS 147330,103,172,719157,11,28024187,1,3,9,3,7,6,6,16,0,0,0,0
+GCA_023138355.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium roqueforti,Penicillium roqueforti CBS 147331,128,56,1032236,9,26501700,1,3,8,3,7,6,6,9,0,0,0,0
+GCA_023065595.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium roqueforti,Penicillium roqueforti CBS 147332,109,53,1110228,8,26503271,1,3,8,3,7,6,6,9,0,0,0,0
+GCA_023137995.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium roqueforti,Penicillium roqueforti CBS 147339,129,103,630210,12,28417184,1,3,9,3,7,6,6,17,0,0,0,0
+GCA_023065465.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium roqueforti,Penicillium roqueforti CBS 147354,93,155,465303,17,28254581,1,3,8,3,7,6,6,18,0,0,0,0
+GCA_023065415.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium roqueforti,Penicillium roqueforti CBS 147355,109,61,1235589,8,27164722,1,3,9,3,7,6,6,13,0,0,0,0
+GCA_023091085.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium roqueforti,Penicillium roqueforti CBS 147372,103,65,1053536,7,26731792,1,3,9,3,7,6,6,12,0,0,0,0
+GCA_023141515.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium roqueforti,Penicillium roqueforti DTO 002-I6,101,129,629276,14,29448402,1,3,9,3,8,7,6,20,0,0,0,0
+GCA_023065655.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium roqueforti,Penicillium roqueforti DTO 006-G1,125,108,674982,14,27936011,1,3,9,3,7,6,6,14,0,0,0,0
+GCA_023141355.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium roqueforti,Penicillium roqueforti DTO 006-G7,123,99,612215,12,27938360,1,3,9,3,7,6,6,14,0,0,0,0
+GCA_023065685.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium roqueforti,Penicillium roqueforti DTO 012-A1,118,157,605270,15,29337942,1,3,9,3,7,6,6,19,0,0,0,0
+GCA_023141275.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium roqueforti,Penicillium roqueforti DTO 012-A7,126,61,939761,10,27298295,1,3,8,3,7,6,6,14,0,0,0,0
+GCA_023141195.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium roqueforti,Penicillium roqueforti DTO 013-E5,105,164,620266,15,29238913,1,3,9,3,7,6,6,19,0,0,0,0
+GCA_023141165.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium roqueforti,Penicillium roqueforti DTO 027-I6,125,176,761036,11,29270952,1,3,8,3,7,6,6,16,0,0,0,0
+GCA_023141115.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium roqueforti,Penicillium roqueforti DTO 032-C6,96,141,591365,13,28423543,1,3,9,3,7,6,6,18,0,0,0,0
+GCA_023141145.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium roqueforti,Penicillium roqueforti DTO 039-G3,105,43,1239413,7,27193696,1,3,9,3,7,6,6,12,0,0,0,0
+GCA_023141155.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium roqueforti,Penicillium roqueforti DTO 046-C5,91,143,916447,12,28771014,1,3,8,3,7,6,6,19,0,0,0,0
+GCA_000513255.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium roqueforti,Penicillium roqueforti FM164,90,48,7752559,2,28045214,1,3,9,3,7,6,6,19,0,0,0,0
+GCA_023065375.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium roqueforti,Penicillium roqueforti LCP 96.3914a,108,100,755013,10,28037113,1,3,9,3,8,6,6,14,0,0,0,0
+GCA_015533775.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium roqueforti,Penicillium roqueforti LCP96 04111,50,83,683325,11,26940775,1,3,8,3,7,6,6,12,0,0,0,0
+GCA_028828025.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium rubens,Penicillium rubens IBT 27055,182,4,9664872,2,30336503,2,5,14,6,12,14,6,9,0,0,0,0
+GCA_028828505.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium rubens,Penicillium rubens IBT 35670,126,8,6339711,3,33546860,2,5,14,6,12,13,6,9,0,0,0,0
+GCA_028751425.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium rubens,Penicillium rubens YAP1,192,46,4340287,3,34788349,2,5,14,5,12,14,6,15,0,0,0,0
+GCA_911197225.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium salamii,Penicillium salamii NA,31,164,652201,16,31293700,1,4,18,6,16,10,4,13,0,0,0,0
+GCA_028829775.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium samsonianum,Penicillium samsonianum IBT 33392,100,11,5129283,3,38201884,2,4,13,6,16,12,6,24,0,0,0,0
+GCA_028829755.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium solitum,Penicillium solitum IBT 25940,90,8,4764641,3,33256298,2,6,19,7,12,12,7,18,1,0,0,0
+GCA_028829465.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium soppii,Penicillium soppii IBT 18220,118,8,3962502,4,32085433,1,5,20,3,19,10,5,17,0,0,0,0
+GCA_013138035.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium sp.,Penicillium sp. #12,54,50,2900369,4,37990757,2,6,19,7,13,12,7,22,0,0,0,0
+GCA_028827225.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium sp.,Penicillium sp. IBT 12396,106,7,6566590,3,32244276,2,6,13,6,15,14,6,12,0,0,0,0
+GCA_028828865.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium sp.,Penicillium sp. IBT 16267x,119,12,5071699,3,33465021,3,4,17,4,17,9,6,15,0,0,0,0
+GCA_028828935.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium sp.,Penicillium sp. IBT 18751x,108,15,3327370,4,30736580,2,4,14,7,14,11,6,9,0,0,0,0
+GCA_028827535.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium sp.,Penicillium sp. IBT 19332,123,6,4658598,3,25359523,2,2,8,4,10,8,6,15,0,0,0,0
+GCA_028827885.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium sp.,Penicillium sp. IBT 31633x,68,9,4421608,3,30347723,1,4,14,4,9,10,6,12,0,0,0,0
+GCA_028828895.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium sp.,Penicillium sp. IBT 35674x,225,12,4253496,4,37375558,3,4,16,5,17,12,6,18,0,0,0,0
+GCA_028827425.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium sp.,Penicillium sp. IBT 6001,80,9,4619403,3,25327983,2,2,8,4,10,8,6,14,0,0,0,0
+GCA_002072375.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium steckii,Penicillium steckii IBT 24891,144,84,1379532,8,32096313,2,5,18,3,14,8,5,8,0,0,0,0
+GCA_028828155.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium subrubescens,Penicillium subrubescens IBT 31985,70,14,4156290,4,39968067,4,4,20,10,36,13,6,8,0,0,0,0
+GCA_028829675.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium tannophilum,Penicillium tannophilum IBT 21756,32,12,4205002,3,32107691,3,4,19,5,15,12,7,16,0,0,0,0
+GCA_028828555.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium taxi,Penicillium taxi IBT 34144,86,6,5061136,3,27925195,1,5,8,1,7,4,5,10,0,0,0,0
+GCA_028828195.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium verhagenii,Penicillium verhagenii IBT 33310,81,12,3526632,4,32288599,4,6,19,4,18,10,6,14,0,0,0,0
+GCA_028828655.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium verrucosum,Penicillium verrucosum IBT 35672,140,8,5850290,2,32831822,2,5,17,6,12,13,6,8,0,0,0,0
+GCA_028828185.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium viridicatum,Penicillium viridicatum IBT 34249,133,6,8985949,2,32834375,2,6,13,7,18,16,6,13,1,0,0,0
+GCA_028829585.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium vulpinum,Penicillium vulpinum IBT 29486,144,6,8559827,2,31511571,2,4,11,6,15,10,7,17,1,0,0,0
+GCA_028829765.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Aspergillaceae,Penicillium,Penicillium waksmanii,Penicillium waksmanii IBT 27052,122,10,4855768,4,37575496,2,4,20,5,28,10,6,7,0,0,0,0
+GCA_038381135.1,Fungi,Ascomycota,Dothideomycetes,Botryosphaeriales,Phyllostictaceae,Phyllosticta,Phyllosticta capitalensis,Phyllosticta capitalensis CBS 111638,386.51,17,2878420,5,32080394,2,2,13,1,7,5,4,3,2,0,0,0
+GCA_038381155.1,Fungi,Ascomycota,Dothideomycetes,Botryosphaeriales,Phyllostictaceae,Phyllosticta,Phyllosticta capitalensis,Phyllosticta capitalensis CBS 117118,314.45,24,2021735,6,33036347,2,2,13,1,7,5,4,3,2,0,0,0
+GCA_038381095.1,Fungi,Ascomycota,Dothideomycetes,Botryosphaeriales,Phyllostictaceae,Phyllosticta,Phyllosticta capitalensis,Phyllosticta capitalensis CBS 128856,249.25,14,2860346,5,32461131,2,2,13,1,7,5,4,3,2,0,0,0
+GCA_041146515.1,Fungi,Ascomycota,Dothideomycetes,Botryosphaeriales,Phyllostictaceae,Phyllosticta,Phyllosticta capitalensis,Phyllosticta capitalensis CBS 356.52,424.48,22,2000551,6,32767725,2,2,13,1,7,5,4,3,2,0,0,0
+GCA_038021145.1,Fungi,Ascomycota,Dothideomycetes,Botryosphaeriales,Phyllostictaceae,Phyllosticta,Phyllosticta citriasiana,Phyllosticta citriasiana CBS 120426,345.16,30,2145012,7,33767235,2,2,12,1,7,5,4,3,2,0,0,0
+GCA_038021125.1,Fungi,Ascomycota,Dothideomycetes,Botryosphaeriales,Phyllostictaceae,Phyllosticta,Phyllosticta citriasiana,Phyllosticta citriasiana CBS 123371,300.91,26,2007754,6,33270502,2,2,12,1,7,5,4,3,2,0,0,0
+GCA_038380855.1,Fungi,Ascomycota,Dothideomycetes,Botryosphaeriales,Phyllostictaceae,Phyllosticta,Phyllosticta citribraziliensis,Phyllosticta citribraziliensis CBS 100098,264.15,32,1720616,7,31670975,2,2,12,2,7,5,4,3,2,0,0,0
+GCA_038025025.1,Fungi,Ascomycota,Dothideomycetes,Botryosphaeriales,Phyllostictaceae,Phyllosticta,Phyllosticta citribraziliensis,Phyllosticta citribraziliensis CPC 17464,101.44,22,2458242,6,31354043,2,2,13,2,7,5,4,3,2,0,0,0
+GCA_038025125.1,Fungi,Ascomycota,Dothideomycetes,Botryosphaeriales,Phyllostictaceae,Phyllosticta,Phyllosticta citricarpa,Phyllosticta citricarpa CBS 102373,37.95,95,546328,20,30928160,2,2,11,1,7,5,4,3,2,0,0,0
+GCA_038025095.1,Fungi,Ascomycota,Dothideomycetes,Botryosphaeriales,Phyllostictaceae,Phyllosticta,Phyllosticta citricarpa,Phyllosticta citricarpa CBS 122482,65.3,107,664244,17,30007393,2,2,11,1,7,5,4,3,2,0,0,0
+GCA_038025055.1,Fungi,Ascomycota,Dothideomycetes,Botryosphaeriales,Phyllostictaceae,Phyllosticta,Phyllosticta citricarpa,Phyllosticta citricarpa CBS 122670,69.86,95,564024,18,30430812,2,2,11,1,7,5,4,3,2,0,0,0
+GCA_043640705.1,Fungi,Ascomycota,Dothideomycetes,Botryosphaeriales,Phyllostictaceae,Phyllosticta,Phyllosticta citricarpa,Phyllosticta citricarpa CBS 131864,65.48,92,562852,19,30494376,2,2,11,1,7,5,4,2,2,0,0,0
+GCA_038051255.1,Fungi,Ascomycota,Dothideomycetes,Botryosphaeriales,Phyllostictaceae,Phyllosticta,Phyllosticta citricarpa,Phyllosticta citricarpa CBS 141352,31.86,130,492992,22,30431666,2,2,11,1,7,4,4,3,2,0,0,0
+GCA_037962995.1,Fungi,Ascomycota,Dothideomycetes,Botryosphaeriales,Phyllostictaceae,Phyllosticta,Phyllosticta citricarpa,Phyllosticta citricarpa CPC 16586,65.07,96,611058,18,30754940,2,2,11,1,7,5,4,2,2,0,0,0
+GCA_038380885.1,Fungi,Ascomycota,Dothideomycetes,Botryosphaeriales,Phyllostictaceae,Phyllosticta,Phyllosticta citrichinensis,Phyllosticta citrichinensis CBS 129764,92.69,22,2827581,5,29528840,2,2,13,2,7,5,4,3,2,0,0,0
+GCA_038380875.1,Fungi,Ascomycota,Dothideomycetes,Botryosphaeriales,Phyllostictaceae,Phyllosticta,Phyllosticta citrichinensis,Phyllosticta citrichinensis CBS 130529,162.91,25,2710567,4,29162704,2,2,13,1,7,5,4,3,2,0,0,0
+GCA_038381115.1,Fungi,Ascomycota,Dothideomycetes,Botryosphaeriales,Phyllostictaceae,Phyllosticta,Phyllosticta paracitricarpa,Phyllosticta paracitricarpa CBS 141357,128.16,134,510184,23,29529839,2,2,11,1,7,5,4,3,2,0,0,0
+GCA_038051015.1,Fungi,Ascomycota,Dothideomycetes,Botryosphaeriales,Phyllostictaceae,Phyllosticta,Phyllosticta paracitricarpa,Phyllosticta paracitricarpa CBS 141358,38.45,90,646427,17,30827934,2,2,11,1,7,5,4,3,2,0,0,0
+GCA_001477545.1,Fungi,Ascomycota,Pneumocystomycetes,Pneumocystales,Pneumocystaceae,Pneumocystis,Pneumocystis carinii,Pneumocystis carinii B80,98,62,465149,7,7661456,0,0,0,1,0,0,0,0,0,0,0,0
+GCA_001477535.1,Fungi,Ascomycota,Pneumocystomycetes,Pneumocystales,Pneumocystaceae,Pneumocystis,Pneumocystis jirovecii,Pneumocystis jirovecii RU7,241.4,70,454558,8,8396240,0,0,0,1,0,0,0,0,0,0,0,0
+GCA_000349005.2,Fungi,Ascomycota,Pneumocystomycetes,Pneumocystales,Pneumocystaceae,Pneumocystis,Pneumocystis murina,Pneumocystis murina B123,214.9,20,492849,7,7501343,0,0,0,1,0,0,0,0,0,0,0,0
+GCA_018127085.1,Fungi,Ascomycota,Pneumocystomycetes,Pneumocystales,Pneumocystaceae,Pneumocystis,Pneumocystis sp.,Pneumocystis sp. NA,1395,19,505402,8,8274826,0,0,0,1,0,0,0,0,0,0,0,0
+GCA_017301755.1,Fungi,Ascomycota,Pneumocystomycetes,Pneumocystales,Pneumocystaceae,Pneumocystis,Pneumocystis wakefieldiae,Pneumocystis wakefieldiae NA,2663,17,480681,7,7303369,0,0,0,1,0,0,0,0,0,0,0,0
+GCA_033296975.1,Fungi,Ascomycota,Sordariomycetes,Sordariales,Podosporaceae,Podospora,Podospora aff.,Podospora aff. PSN243,144.62,170,548238,26,41927555,1,3,15,7,15,15,4,29,4,0,0,0
+GCA_033675105.1,Fungi,Ascomycota,Sordariomycetes,Sordariales,Podosporaceae,Podospora,Podospora appendiculata,Podospora appendiculata CBS 314.62,279.8,34,11237682,2,39954210,3,5,14,9,8,12,3,10,1,0,0,0
+GCA_035222275.1,Fungi,Ascomycota,Sordariomycetes,Sordariales,Podosporaceae,Podospora,Podospora bellae-mahoneyi,Podospora bellae-mahoneyi CBS 112042,56,9,4041613,4,34330348,2,4,13,6,9,12,3,12,1,0,0,0
+GCA_900290415.1,Fungi,Ascomycota,Sordariomycetes,Sordariales,Podosporaceae,Podospora,Podospora comata,Podospora comata T,100,7,4662433,3,34074706,2,4,13,7,9,13,3,14,1,0,0,0
+GCA_033439775.1,Fungi,Ascomycota,Sordariomycetes,Sordariales,Podosporaceae,Podospora,Podospora didyma,Podospora didyma CBS 232.78,95.64,31,4670901,4,48328886,2,4,13,12,15,15,3,13,1,0,0,0
+GCA_035222485.1,Fungi,Ascomycota,Sordariomycetes,Sordariales,Podosporaceae,Podospora,Podospora pseudoanserina,Podospora pseudoanserina CBS 124.78,64,9,4722338,3,34828952,2,4,13,6,10,12,3,14,1,0,0,0
+GCA_035222475.1,Fungi,Ascomycota,Sordariomycetes,Sordariales,Podosporaceae,Podospora,Podospora pseudopauciseta,Podospora pseudopauciseta CBS 411.78,38,10,4347980,3,36064112,2,4,13,7,10,13,3,13,1,0,0,0
+GCA_050403185.1,Fungi,Basidiomycota,Microbotryomycetes,Sporidiobolales,Sporidiobolaceae,Rhodotorula,Rhodotorula pacifica,Rhodotorula pacifica JCM10908,145,102,562053,13,20374152,1,1,4,0,1,4,2,4,0,0,0,0
+GCA_036244875.1,Fungi,Basidiomycota,Microbotryomycetes,Sporidiobolales,Sporidiobolaceae,Rhodotorula,Rhodotorula paludigena,Rhodotorula paludigena BS15,198,19,1354873,8,22499923,1,0,5,0,1,7,1,5,0,0,0,0
+GCA_050403205.1,Fungi,Basidiomycota,Microbotryomycetes,Sporidiobolales,Sporidiobolaceae,Rhodotorula,Rhodotorula paludigena,Rhodotorula paludigena JCM10292,165,177,293322,22,20813848,1,0,5,0,1,7,2,5,0,0,0,0
+GCA_005059875.1,Fungi,Basidiomycota,Microbotryomycetes,Sporidiobolales,Sporidiobolaceae,Rhodotorula,Rhodotorula sp.,Rhodotorula sp. CCFEE 5036,192,155,337802,19,19064607,1,1,4,0,1,4,0,4,0,0,0,0
+GCA_001541205.1,Fungi,Basidiomycota,Microbotryomycetes,Sporidiobolales,Sporidiobolaceae,Rhodotorula,Rhodotorula sp.,Rhodotorula sp. JG-1b,133.9,156,301937,18,19390543,1,1,3,0,1,4,2,4,0,0,0,0
+GCA_002922495.1,Fungi,Basidiomycota,Microbotryomycetes,Sporidiobolales,Sporidiobolaceae,Rhodotorula,Rhodotorula taiwanensis,Rhodotorula taiwanensis MD1149,229,180,388693,17,19539777,1,1,4,0,1,4,1,4,0,0,0,0
+GCA_000222205.2,Fungi,Basidiomycota,Microbotryomycetes,Sporidiobolales,Sporidiobolaceae,Rhodotorula,Rhodotorula toruloides,Rhodotorula toruloides ATCC 204091,40,29,1200628,7,20464902,0,0,2,0,0,0,0,2,0,0,0,0
+GCA_034509285.1,Fungi,Basidiomycota,Microbotryomycetes,Sporidiobolales,Sporidiobolaceae,Rhodotorula,Rhodotorula toruloides,Rhodotorula toruloides BOT-A2,120,20,1308578,7,20535011,1,1,4,0,1,6,2,7,0,0,0,0
+GCA_029694785.1,Fungi,Basidiomycota,Microbotryomycetes,Sporidiobolales,Sporidiobolaceae,Rhodotorula,Rhodotorula toruloides,Rhodotorula toruloides LAB-07,45.8,27,1302361,7,20784202,1,2,3,0,2,8,2,7,0,0,0,0
+GCA_000988875.2,Fungi,Basidiomycota,Microbotryomycetes,Sporidiobolales,Sporidiobolaceae,Rhodotorula,Rhodotorula toruloides,Rhodotorula toruloides NBRC 0880,131,30,1390799,6,20683845,1,1,5,0,1,6,2,6,0,0,0,0
+GCA_007990605.1,Fungi,Basidiomycota,Microbotryomycetes,Sporidiobolales,Sporidiobolaceae,Rhodotorula,Rhodotorula toruloides,Rhodotorula toruloides NBRC10032,82,38,955100,8,19703563,1,1,2,0,1,6,1,6,0,0,0,0
+GCA_050403265.1,Fungi,Basidiomycota,Microbotryomycetes,Sporidiobolales,Sporidiobolaceae,Rhodotorula,Rhodotorula toruloides,Rhodotorula toruloides NBRC10513,171,155,475791,14,20583880,1,1,5,0,1,6,2,7,0,0,0,0
+GCA_000320785.2,Fungi,Basidiomycota,Microbotryomycetes,Sporidiobolales,Sporidiobolaceae,Rhodotorula,Rhodotorula toruloides,Rhodotorula toruloides NP11,200,94,574942,11,20180280,1,1,4,0,1,6,1,6,0,0,0,0
+GCA_000292725.1,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces arboricola,Saccharomyces arboricola H-6,50,34,879294,6,11324100,0,0,0,2,0,0,0,0,0,0,0,0
+GCA_001298375.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces boulardii,Saccharomyces boulardii biocodex,100,28,891313,6,11999562,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_001413975.1,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces boulardii,Saccharomyces boulardii unique28,100,27,909172,6,12001065,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_903819145.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae BJ4,166,16,918555,6,11888108,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_016858175.1,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae CEN.PK,50,35,915357,6,12417671,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_002571405.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae CEN.PK113-7D; CBS 8340,49,17,912802,6,11991267,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_903819205.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae EM14S01-3B,77,16,897577,6,11803938,0,0,0,2,0,0,0,1,0,0,0,0
+GCA_903819155.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae HLJ1,45,16,895159,6,11702338,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_903819125.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae HN1,66,16,913524,6,11820137,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_003046695.1,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae I-30,323,156,470360,10,11590129,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_003046745.1,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae I-329,294,69,511336,8,11594180,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_030292175.1,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae IMX2600,724,17,914509,6,12174138,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_010356925.1,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae INSC1005,392,17,929143,6,12269335,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_010356935.1,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae INSC1006,191,17,912391,6,12210406,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_002335645.1,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae Kagoshima no. 2,324,32,822716,6,12238629,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_947370325.1,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae NA,132,16,958573,6,12073726,1,0,0,3,1,0,0,1,0,0,0,0
+GCA_014132375.1,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae NYR20,208.3,17,892137,6,11498443,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_014132395.1,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae P-684,207.7,17,883925,6,11407681,0,0,0,2,0,0,0,1,0,0,0,0
+GCA_016858165.1,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae S288C,50,52,929257,6,12757141,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_903819175.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae SX2,174,16,928563,6,11918758,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_903819195.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae XXYS1.4,76,16,894632,6,11654158,0,0,0,2,0,0,0,1,0,0,0,0
+GCA_903819135.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae Y55,100,16,916013,6,11791742,1,0,0,2,2,0,0,1,0,0,0,0
+GCA_000975645.3,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1078,75,17,907409,6,11767180,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000975675.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1083,500,17,923843,5,12371127,1,0,0,2,0,0,0,0,0,0,0,0
+GCA_000975705.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1129,180,17,903327,5,12996632,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000976695.3,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1133,60,17,901770,6,12026127,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000976725.3,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1190,30,17,902060,5,12811525,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000976755.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1199,60,17,900262,6,12203640,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000976785.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1202,650,17,912629,5,12413098,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000976815.3,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1208,220,17,903091,5,12969004,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000976875.3,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1244,50,17,911385,5,12579478,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000976905.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1248,100,16,924574,5,12432911,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000976935.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1250,75,17,1026598,5,12390617,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000976965.3,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1252,500,16,929116,5,12479472,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000976995.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1273,400,16,910208,5,12458687,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000977025.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1304,750,17,913052,5,12278758,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000977085.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1311,400,17,903706,5,12456997,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000977115.3,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1326,800,17,913940,5,12312011,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000977145.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1332,400,17,923089,5,12181640,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000977175.3,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1336,700,17,901186,5,12841487,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000977205.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1338,350,17,895119,6,12132484,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000977235.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1341,110,17,912304,5,12436177,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000977265.3,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1342,500,16,912252,5,12530871,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000977295.3,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1355,550,17,912538,5,12856669,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000977325.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1356,400,17,910189,5,12482980,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000977385.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1383,650,17,931094,5,12491797,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000977415.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1385,350,16,903329,5,12820825,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000977445.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1386,120,17,902760,5,12521562,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000977475.3,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1387,200,16,904346,5,12734565,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000977505.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1388,500,16,906116,5,12437993,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000977535.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1389,50,16,897207,5,12165534,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000977565.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1399,110,16,903451,5,12428217,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000977595.3,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1400,700,17,898273,6,12262079,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000977625.3,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1401,500,17,889931,6,12078914,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000977655.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1402,200,16,902709,5,12479845,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000977685.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1415,600,17,900580,5,12846152,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000977715.4,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1417,600,17,895759,5,12617503,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000977745.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1418,600,16,907734,5,12364539,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000977805.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1433,75,17,910803,5,12436455,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000977835.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1434,40,16,912768,5,12464717,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000977865.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1439,50,16,922967,5,12837935,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000977895.3,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1443,50,16,892329,6,11958500,1,0,0,1,0,0,0,1,0,0,0,0
+GCA_000977925.3,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1444,50,16,897256,6,12172583,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000977955.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1447,80,16,909714,5,12132316,0,0,0,2,0,0,0,1,0,0,0,0
+GCA_000977985.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1450,120,17,908914,5,12761867,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000978015.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1460,400,16,897146,5,12568682,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000978075.3,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1477,500,17,896592,5,12102610,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000978105.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1478,400,17,914917,5,12616200,0,0,0,2,0,0,0,1,0,0,0,0
+GCA_000978135.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1479,200,17,909920,5,12330795,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000978165.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1526,400,17,911172,5,12439833,0,0,0,2,0,0,0,1,0,0,0,0
+GCA_000978195.3,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1527,100,17,915190,5,12629619,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000978225.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1549,300,16,896171,5,13133404,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000978255.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1573,180,16,905398,6,12157216,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000978285.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1574,400,17,899661,5,12201931,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000978315.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1592,50,16,900534,5,12235881,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000978345.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM1615,150,17,901735,5,12614330,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000975735.4,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM189,400,17,896353,5,12176377,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000975765.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM193,60,17,934902,5,12915580,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000975585.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM195,100,16,916102,5,12663184,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000975615.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM244,120,17,906535,5,12773141,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000975795.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM248,90,17,907630,6,12021795,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000975825.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM270,110,16,913025,5,12278174,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000975915.3,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM326,400,17,907133,5,12252561,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000975945.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM428,90,17,910751,5,12177913,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000975975.3,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM450,200,17,914011,5,12295459,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000976005.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM451,75,17,895934,5,12061125,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000976035.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM453,110,17,911881,5,12623587,1,0,0,2,0,0,0,0,0,0,0,0
+GCA_000976065.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM456,190,17,897427,6,12186942,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000976095.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM470,180,16,902232,5,12466950,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000976125.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM541,100,17,909353,5,12867583,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000976215.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM627,40,17,905901,5,12494385,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000976245.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM681,40,17,906981,5,12253336,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000976275.4,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM682,100,17,896702,6,12181614,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000976305.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM683,130,16,900521,5,12331954,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000976335.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM689,40,16,895385,5,12095863,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000976365.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM693,80,16,907430,5,13024758,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000976425.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM972,100,17,902781,5,12878163,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000976455.3,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM975,30,17,904046,5,12138942,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000976485.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM978,90,17,902126,5,12407694,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000976515.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM981,40,17,916198,5,12816154,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000976545.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM984,30,17,910820,5,12978882,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000976575.4,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM987,150,17,912332,5,12891216,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000662435.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM993,180,17,913508,5,12416555,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_000976665.2,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces cerevisiae,Saccharomyces cerevisiae YJM996,180,17,898411,5,12614618,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_001298625.1,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces eubayanus,Saccharomyces eubayanus FM1318,681.6,23,896107,6,11548202,1,0,0,2,1,0,0,1,0,0,0,0
+GCA_946408725.1,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces eubayanus,Saccharomyces eubayanus UCD646,100,16,914339,6,11980926,1,0,0,3,1,0,0,1,0,0,0,0
+GCA_946405395.1,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces eubayanus,Saccharomyces eubayanus UCD650,100,16,916217,6,11937401,1,0,0,3,1,0,0,1,0,0,0,0
+GCA_947243775.1,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces kudriavzevii,Saccharomyces kudriavzevii IFO1802,100,16,901691,6,11913776,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_947243785.1,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces kudriavzevii,Saccharomyces kudriavzevii ZP591,100,16,908134,6,11759424,1,0,0,2,1,0,0,1,0,0,0,0
+GCA_947241705.1,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces mikatae,Saccharomyces mikatae IFO1815,100,16,811203,6,12104871,1,0,1,2,1,0,0,1,0,0,0,0
+GCA_002079055.1,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces paradoxus,Saccharomyces paradoxus CBS432,112,16,903028,6,12003971,1,0,0,2,0,0,0,1,0,0,0,0
+GCA_011022315.1,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces pastorianus,Saccharomyces pastorianus CBS 1483,72,31,862309,11,22963002,2,0,0,4,1,0,0,2,0,0,0,0
+GCA_027557585.1,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces uvarum,Saccharomyces uvarum CBS7001,50,16,917875,6,12016916,1,0,0,2,1,0,0,1,0,0,0,0
+GCA_947243795.1,Fungi,Ascomycota,Saccharomycetes,Saccharomycetales,Saccharomycetaceae,Saccharomyces,Saccharomyces uvarum,Saccharomyces uvarum ZP964,100,16,920918,6,11715280,1,0,0,2,1,0,0,1,0,0,0,0
+GCA_001907595.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Trichocomaceae,Talaromyces,Talaromyces atroroseus,Talaromyces atroroseus IBT 11181,193,48,1577698,7,30834766,2,4,13,3,12,3,7,15,0,0,0,0
+GCA_000985935.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Trichocomaceae,Talaromyces,Talaromyces islandicus,Talaromyces islandicus NA,100,116,2353708,4,33239765,3,5,17,4,24,10,8,13,0,0,0,0
+GCA_009650675.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Trichocomaceae,Talaromyces,Talaromyces marneffei,Talaromyces marneffei 11CN-03-130,175,9,3743714,3,28216733,2,4,11,3,11,4,6,15,0,0,0,0
+GCA_046127475.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Trichocomaceae,Talaromyces,Talaromyces marneffei,Talaromyces marneffei ATCC 18224,408,11,4186281,3,28872128,2,4,11,3,12,4,6,15,0,0,0,0
+GCA_009556855.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Trichocomaceae,Talaromyces,Talaromyces marneffei,Talaromyces marneffei NA,152,8,3704010,3,28198338,2,4,10,3,12,4,6,15,0,0,0,0
+GCA_011392495.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Trichocomaceae,Talaromyces,Talaromyces pinophilus,Talaromyces pinophilus AR155,100,18,3337104,5,36260717,3,4,24,5,33,9,7,10,0,0,0,0
+GCA_021365285.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Trichocomaceae,Talaromyces,Talaromyces proteolyticus,Talaromyces proteolyticus PMI_201,234.87,30,2609059,6,37611490,4,4,12,5,27,7,9,19,0,0,0,0
+GCA_013368755.1,Fungi,Ascomycota,Eurotiomycetes,Eurotiales,Trichocomaceae,Talaromyces,Talaromyces rugulosus,Talaromyces rugulosus W13939,526,6,5896210,3,35758560,3,5,13,4,24,10,9,10,0,0,0,0
+GCA_022606155.1,Fungi,Basidiomycota,Agaricomycetes,Polyporales,Polyporaceae,Trametes,Trametes elegans,Trametes elegans CIRM-BRFM 1122,97,94,721796,13,33812861,1,4,10,5,9,11,5,7,9,0,0,0
+GCA_022606055.1,Fungi,Basidiomycota,Agaricomycetes,Polyporales,Polyporaceae,Trametes,Trametes gibbosa,Trametes gibbosa CIRM-BRFM 1770,76.67,103,576393,18,33109328,1,4,9,6,7,10,6,7,8,0,0,0
+GCA_022606215.1,Fungi,Basidiomycota,Agaricomycetes,Polyporales,Polyporaceae,Trametes,Trametes maxima,Trametes maxima CIRM-BRFM 1813,137.24,53,1843168,8,36566397,2,5,8,6,10,12,6,7,7,0,0,0
+GCA_022606255.1,Fungi,Basidiomycota,Agaricomycetes,Polyporales,Polyporaceae,Trametes,Trametes meyenii,Trametes meyenii CIRM-BRFM 1810,159.21,24,1958456,6,35370798,2,5,9,6,10,13,6,7,9,0,0,0
+GCA_022606195.1,Fungi,Basidiomycota,Agaricomycetes,Polyporales,Polyporaceae,Trametes,Trametes polyzona,Trametes polyzona CIRM-BRFM 1798,155.07,33,2286399,6,34431392,1,4,9,6,10,12,6,7,6,0,0,0
+GCA_025528855.1,Fungi,Basidiomycota,Agaricomycetes,Polyporales,Polyporaceae,Trametes,Trametes punicea,Trametes punicea CIRM-BRFM 1868,97,105,792098,12,30261980,1,4,9,6,8,9,6,7,8,0,0,0
+GCA_020647865.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Hypocreaceae,Trichoderma,Trichoderma asperellum,Trichoderma asperellum FT101,59.1,7,5512738,3,37545380,2,3,16,7,24,5,6,18,0,0,0,0
+GCA_013423425.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Hypocreaceae,Trichoderma,Trichoderma asperellum,Trichoderma asperellum IC-1,163.8,72,2555590,6,36058895,2,1,15,6,22,3,6,16,0,0,0,0
+GCA_020647795.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Hypocreaceae,Trichoderma,Trichoderma atroviride,Trichoderma atroviride P1,153,7,5658044,3,37300646,2,2,13,7,23,4,6,21,0,0,0,0
+GCA_028502605.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Hypocreaceae,Trichoderma,Trichoderma breve,Trichoderma breve T069,83,9,6210652,3,38609973,1,1,13,7,26,4,6,18,0,0,0,0
+GCA_020631695.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Hypocreaceae,Trichoderma,Trichoderma cornu-damae,Trichoderma cornu-damae KA19-0412C,98.23,59,6501942,3,38595405,1,1,8,4,5,1,4,10,0,0,0,0
+GCA_001481775.2,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Hypocreaceae,Trichoderma,Trichoderma gamsii,Trichoderma gamsii T6085,50,172,697391,18,37907810,2,2,14,6,24,5,6,18,0,0,0,0
+GCA_004382785.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Hypocreaceae,Trichoderma,Trichoderma ghanense,Trichoderma ghanense CCMA-1212,125,50,1865108,6,31627153,1,1,10,6,19,3,6,10,0,0,0,0
+GCA_020002365.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Hypocreaceae,Trichoderma,Trichoderma gracile,Trichoderma gracile HK011-1,80,10,4108754,4,34062918,1,1,12,6,20,3,6,16,0,0,0,0
+GCA_033847385.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Hypocreaceae,Trichoderma,Trichoderma harzianum,Trichoderma harzianum CBS 354.33,122,124,2296050,6,38389086,1,1,14,7,25,4,7,19,0,0,0,0
+GCA_025502635.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Hypocreaceae,Trichoderma,Trichoderma harzianum,Trichoderma harzianum PAR3,350,112,1757915,8,40741375,1,1,14,7,24,4,6,22,0,0,0,0
+GCA_011066345.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Hypocreaceae,Trichoderma,Trichoderma lentiforme,Trichoderma lentiforme CFAM-422,120,47,1332095,11,38284471,1,1,14,7,25,4,6,18,0,0,0,0
+GCA_003025155.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Hypocreaceae,Trichoderma,Trichoderma longibrachiatum,Trichoderma longibrachiatum ATCC 18648,104.2,130,1606350,7,31192646,1,1,11,4,17,3,6,12,0,0,0,0
+GCA_050703535.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Hypocreaceae,Trichoderma,Trichoderma pleuroticola,Trichoderma pleuroticola CBS 121217,117.452,78,1905640,8,40716729,1,1,14,7,24,4,6,20,0,0,0,0
+GCA_000513815.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Hypocreaceae,Trichoderma,Trichoderma reesei,Trichoderma reesei RUT C-30,47.6,177,1023047,10,32500589,1,1,11,6,19,3,6,13,0,0,0,0
+GCA_020045945.2,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Hypocreaceae,Trichoderma,Trichoderma semiorbis,Trichoderma semiorbis FJ059,105,7,6906462,3,42023549,1,1,15,8,20,3,10,15,0,0,0,0
+GCA_019565615.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Hypocreaceae,Trichoderma,Trichoderma simmonsii,Trichoderma simmonsii GH-Sj1,374,7,6451197,3,40078385,1,1,14,9,25,4,8,16,0,0,0,0
+GCA_030708095.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Hypocreaceae,Trichoderma,Trichoderma sp.,Trichoderma sp. CBMAI-0020,229,14,3146023,5,36411897,2,2,13,6,23,3,6,18,0,0,0,0
+GCA_030708105.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Hypocreaceae,Trichoderma,Trichoderma sp.,Trichoderma sp. CBMAI-0711,143,26,1694659,7,32448670,1,1,11,6,18,3,6,13,0,0,0,0
+GCA_020647705.1,Fungi,Ascomycota,Sordariomycetes,Hypocreales,Hypocreaceae,Trichoderma,Trichoderma virens,Trichoderma virens FT-333,83.7,7,6644895,3,41418917,1,1,13,8,23,4,5,21,0,0,0,0
+GCA_900080155.1,Fungi,Basidiomycota,Ustilaginomycetes,Ustilaginales,Ustilaginaceae,Ustilago,Ustilago bromivora,Ustilago bromivora UB2112,154,23,877262,7,20447485,1,0,3,1,7,2,1,1,0,0,0,0
+GCA_023748735.1,Fungi,Basidiomycota,Ustilaginomycetes,Ustilaginales,Ustilaginaceae,Ustilago,Ustilago hordei,Ustilago hordei Uh1273,204,38,1049373,9,27249071,1,1,4,1,9,3,2,3,0,0,0,0
+GCA_023748715.1,Fungi,Basidiomycota,Ustilaginomycetes,Ustilaginales,Ustilaginaceae,Ustilago,Ustilago hordei,Ustilago hordei Uh1278,315,27,1022888,7,26574770,1,1,4,1,9,3,1,3,0,0,0,0
+GCA_023748825.1,Fungi,Basidiomycota,Ustilaginomycetes,Ustilaginales,Ustilaginaceae,Ustilago,Ustilago hordei,Ustilago hordei Uh359,195,46,830097,11,26999323,1,1,3,1,9,3,2,3,0,0,0,0
+GCA_022749175.1,Fungi,Basidiomycota,Ustilaginomycetes,Ustilaginales,Ustilaginaceae,Ustilago,Ustilago hordei,Ustilago hordei Uh805,381,23,1133141,7,25779436,1,1,4,1,11,3,1,3,0,0,0,0
+GCA_023748725.1,Fungi,Basidiomycota,Ustilaginomycetes,Ustilaginales,Ustilaginaceae,Ustilago,Ustilago hordei,Ustilago hordei Uh811,260,26,1133249,7,26215472,1,1,4,1,9,3,2,3,0,0,0,0
+GCA_023748765.1,Fungi,Basidiomycota,Ustilaginomycetes,Ustilaginales,Ustilaginaceae,Ustilago,Ustilago hordei,Ustilago hordei Uh818,278,25,1133168,7,26240268,1,1,4,1,9,3,2,3,0,0,0,0
+GCA_900519145.1,Fungi,Basidiomycota,Ustilaginomycetes,Ustilaginales,Ustilaginaceae,Ustilago,Ustilago hordei,Ustilago hordei Uho2,65,45,1146471,7,26637005,1,1,3,1,5,2,1,2,0,0,0,0
+GCA_022963135.1,Fungi,Basidiomycota,Ustilaginomycetes,Ustilaginales,Ustilaginaceae,Ustilago,Ustilago loliicola,Ustilago loliicola Us_530,303,41,830901,8,20766546,1,2,4,0,7,3,1,2,0,0,0,0
+GCA_022963125.1,Fungi,Basidiomycota,Ustilaginomycetes,Ustilaginales,Ustilaginaceae,Ustilago,Ustilago nuda,Ustilago nuda DE_29490,453,31,846041,8,21384534,1,1,3,1,6,2,1,3,0,0,0,0
+GCA_900242705.1,Fungi,Basidiomycota,Ustilaginomycetes,Ustilaginales,Ustilaginaceae,Ustilago,Ustilago sp.,Ustilago sp. Udi2,60,141,701871,14,28938793,1,0,2,0,8,2,1,2,0,0,0,0
+GCA_900242695.1,Fungi,Basidiomycota,Ustilaginomycetes,Ustilaginales,Ustilaginaceae,Ustilago,Ustilago sp.,Ustilago sp. Uhc1,70,45,989037,7,21904892,1,0,3,0,5,2,1,2,0,0,0,0
+GCA_900323505.1,Fungi,Basidiomycota,Ustilaginomycetes,Ustilaginales,Ustilaginaceae,Ustilago,Ustilago trichophora,Ustilago trichophora NBRC100155,155,50,933033,12,39002873,2,4,3,2,8,4,2,4,0,0,0,0
+GCA_022963115.1,Fungi,Basidiomycota,Ustilaginomycetes,Ustilaginales,Ustilaginaceae,Ustilago,Ustilago tritici,Ustilago tritici Ut_3,411,32,930982,7,20444915,1,1,4,1,8,2,1,2,0,0,0,0
+GCA_022385695.1,Fungi,Ascomycota,Sordariomycetes,Xylariales,Xylariaceae,Xylaria,Xylaria arbuscula,Xylaria arbuscula CBS 124340,86.193,89,1113176,18,51160614,2,2,13,8,16,8,6,10,2,0,0,0
+GCA_022539335.1,Fungi,Ascomycota,Sordariomycetes,Xylariales,Xylariaceae,Xylaria,Xylaria cf.,Xylaria cf. FL0509,129.42,72,1535144,11,44915837,2,2,15,9,15,9,6,12,2,0,0,0
+GCA_007182795.1,Fungi,Ascomycota,Sordariomycetes,Xylariales,Xylariaceae,Xylaria,Xylaria flabelliformis,Xylaria flabelliformis G536,150,155,488275,28,41150133,2,2,13,10,14,10,5,7,1,0,0,0
+GCA_022453505.1,Fungi,Ascomycota,Sordariomycetes,Xylariales,Xylariaceae,Xylaria,Xylaria flabelliformis,Xylaria flabelliformis NC1011,243.01,198,457913,27,41613484,2,2,14,10,16,10,6,11,2,0,0,0
+GCA_022984845.1,Fungi,Ascomycota,Sordariomycetes,Xylariales,Xylariaceae,Xylaria,Xylaria nigripes,Xylaria nigripes YMJ 653,895.41,64,1097719,12,34599847,1,1,13,3,7,5,5,8,1,0,0,0
+GCA_022593225.1,Fungi,Ascomycota,Sordariomycetes,Xylariales,Xylariaceae,Xylaria,Xylaria sp.,Xylaria sp. FL0064,473.4,79,1096396,13,42828802,2,2,14,10,19,9,6,13,2,0,0,0
