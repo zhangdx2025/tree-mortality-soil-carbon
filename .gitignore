@@ -1,0 +1,15 @@
+# R-related
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+
+# macOS / Windows system files
+.DS_Store
+Thumbs.db
+
+# Optional: folders of large intermediate outputs (if you有)
+output/
+tmp/
+cache/
