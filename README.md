@@ -9,7 +9,7 @@ After downloading those files, place them in the Data/microbiome_profiles direct
 
 - `Code/` – R scripts implementing all data processing, statistical analyses and figure generation described in the manuscript.  
 - `Data/` – input data tables required by the R scripts (soil properties and microbial summary data).  
-  The full metagenomic gene count matrices and gene annotation catalogues are archived in [DATA REPOSITORY NAME] (DOI: 10.xxxx/xxxxx) and are not stored in this repository; after download, they should be placed in `Data/microbiome_profiles`.  
+  The full metagenomic gene count matrices and gene annotation catalogues are archived in Zenodo (https://doi.org/10.5281/zenodo.17606854) and are not stored in this repository; after download, they should be placed in `Data/microbiome_profiles`.  
 - `LICENSE` – license terms governing reuse of the code.  
 - `.gitignore` – patterns specifying files and folders that are not tracked by Git.  
 - `README.md` – project overview and instructions for reproducing the results.
