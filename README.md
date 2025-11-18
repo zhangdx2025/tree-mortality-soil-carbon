@@ -2,7 +2,7 @@
 
 This code repository is intended solely to reproduce the analyses and figures reported in the accompanying manuscript. 
 Because of repository size limits, only a subset of the input data is stored here; 
-The full metagenomic gene count matrices and functional annotation tables are archived in [DATA REPOSITORY NAME] (DOI: 10.xxxx/xxxxx). 
+The full metagenomic gene count matrices and functional annotation tables are archived in Zenodo (https://doi.org/10.5281/zenodo.17606854). 
 After downloading those files, place them in the Data/microbiome_profiles directory before running the scripts.
 
 ## Contents
