@@ -379,7 +379,7 @@ plot.fungi.data  <- rbind(fungi.Phylum.table,
 
 ### 2.2.4 Stacked bar chart----
 plot.fungi.data  %>%
-  ggplot(aes(x = Level, y = Abundance, fill = Taxa)) +  # 填色按 Phylum 分类
+  ggplot(aes(x = Level, y = Abundance, fill = Taxa)) +
   geom_bar(stat = "identity", position = "fill", show.legend = F,
            color = "grey70", width = 0.7) +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1),
@@ -567,7 +567,7 @@ fungi.wilcox.results <- apply(fungi.table, 1, function(row) {
   
   
   log2FC.ridge <- log2((mean(ridge.dead) + eps_r) / (mean(ridge.alive) + eps_r))
-  log2FC.valley <- log2((mean(valley.dead) + eps_r) / (mean(valley.alive) + eps_r))
+  log2FC.valley <- log2((mean(valley.dead) + eps_v) / (mean(valley.alive) + eps_v))
   
   data.frame(
     statistic.ridge = test.ridge$statistic,
@@ -627,3 +627,4 @@ save(Relative.abu.Bac, Relative.abu.Fungi,
      bacteria.wilcox.result_df, fungi.wilcox.result_df,
      file = file.path(path_output,
                       "microbial_composition_results.Rdata"))
+
