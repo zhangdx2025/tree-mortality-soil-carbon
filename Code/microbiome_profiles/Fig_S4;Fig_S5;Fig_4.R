@@ -749,7 +749,7 @@ fungi.ridge_Feature_Importance_Plot <- fungi.ridge_importance %>%
   theme(axis.text.y = element_blank(),
         panel.grid = element_blank(),
         axis.line.x = element_line(),
-        axis.ticks.x = element_line(),   # x 方向刻度线
+        axis.ticks.x = element_line(), 
         plot.margin = margin(10, 10, 5, 0),
         axis.title.x.top = element_text(vjust = 2))
 
@@ -957,7 +957,7 @@ fungi.valley_Feature_Importance_Plot <- fungi.valley_importance %>%
   theme(axis.text.y = element_blank(),
         panel.grid = element_blank(),
         axis.line.x = element_line(),
-        axis.ticks.x = element_line(),   # x 方向刻度线
+        axis.ticks.x = element_line(), 
         plot.margin = margin(10, 10, 5, 0),
         axis.title.x.top = element_text(vjust = 2))
 
@@ -1125,7 +1125,7 @@ plot.signif <- data.frame(Ridge = genes.count.diff.ridge$FDR,
 
 pheatmap(t(plot.data), 
          display_numbers = t(plot.signif),  
-         color = colorRampPalette(rev(brewer.pal(11, "PiYG")[-c(4, 5, 7, 8)]))(99),  # 自定义颜色
+         color = colorRampPalette(rev(brewer.pal(11, "PiYG")[-c(4, 5, 7, 8)]))(99),
          fontsize_number = 30,
          border_color = "#606060",
          cluster_rows = F, cluster_cols = F,
@@ -1134,8 +1134,8 @@ pheatmap(t(plot.data),
 
 
 pheatmap(t(plot.data), 
-         display_numbers = t(plot.data),  # 在每个格子中显示显著性标记
-         color = colorRampPalette(rev(brewer.pal(11, "PiYG")[-c(4, 5, 7, 8)]))(99),  # 自定义颜色
+         display_numbers = t(plot.data), 
+         color = colorRampPalette(rev(brewer.pal(11, "PiYG")[-c(4, 5, 7, 8)]))(99),
          fontsize_number = 16,
          border_color = "#606060",
          cluster_rows = F, cluster_cols = F,
@@ -1149,5 +1149,6 @@ pheatmap(t(plot.data),
 save(carbon.degrading.gene.count,
      genes.count.diff.ridge, genes.count.diff.valley,
      file = file.path(path_output, "carbon.degrading.gene.count.Rdata"))
+
 
 
