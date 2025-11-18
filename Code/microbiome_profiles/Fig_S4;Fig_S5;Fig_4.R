@@ -296,7 +296,7 @@ bacteria.ridge_Feature_Importance_Plot <- bacteria.ridge_importance %>%
   theme(axis.text.y = element_blank(),
         panel.grid = element_blank(),
         axis.line.x = element_line(),
-        axis.ticks.x = element_line(),   # x 方向刻度线
+        axis.ticks.x = element_line(),
         plot.margin = margin(10, 10, 5, 0),
         axis.title.x.top = element_text(vjust = 2))
 
@@ -521,7 +521,7 @@ bacteria.valley_Feature_Importance_Plot <- bacteria.valley_importance %>%
   theme(axis.text.y = element_blank(),
         panel.grid = element_blank(),
         axis.line.x = element_line(),
-        axis.ticks.x = element_line(),   # x 方向刻度线
+        axis.ticks.x = element_line(),
         plot.margin = margin(10, 10, 5, 0),
         axis.title.x.top = element_text(vjust = 2))
 
@@ -1149,6 +1149,7 @@ pheatmap(t(plot.data),
 save(carbon.degrading.gene.count,
      genes.count.diff.ridge, genes.count.diff.valley,
      file = file.path(path_output, "carbon.degrading.gene.count.Rdata"))
+
 
 
 
