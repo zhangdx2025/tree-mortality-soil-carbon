@@ -1,0 +1,663 @@
+
+# Set the working directory
+# setwd()
+
+path_soil_properties <- file.path(getwd(), "Data", "Soil_properties")
+
+# Loading package
+library(readxl)
+library(tidyverse)
+library(lme4)
+library(performance)
+library(clubSandwich)
+library(emmeans)
+library(car)
+library(lmerTest)
+library(ggforce)
+library(ggpubr)
+library(ggh4x)
+library(ggnewscale)
+
+# 1 Loading data----
+data.carbon.fraction <- read_excel(file.path(path_soil_properties,
+                                             "soil.properties.xlsx"),
+                                   sheet = "Data") %>%
+  select(Sample.ID, Pairs, Species, Status, Topography,
+         SOC, LFOC, HFOC, Moisture) %>%
+  arrange(Topography, Species, Pairs, Status) %>%
+  mutate(Pairs = factor(Pairs)) %>%
+  data.frame()
+
+colnames(data.carbon.fraction)
+
+variable.name <- c("SOC", "LFOC", "HFOC", "Moisture")
+
+
+# 2 Paired comparison----
+
+## 2.1) Normality and Heteroscedasticity test----
+
+for (i in seq_along(variable.name)) {
+  
+  df <- data.carbon.fraction %>%
+    select(all_of(c("Sample.ID", "Pairs", "Status",
+                    "Topography", variable.name[i]))) %>%
+    rename("Variable" = variable.name[i])
+  
+  
+  model <- lmer(Variable ~ Status * Topography + (1 | Pairs),
+                data = df)
+  
+  cat("Normality test: Variable =", variable.name[i], "\n")
+  
+  # Normality test
+  check_normality(model) %>% print()
+  
+  cat("Heteroscedasticity test: Variable =", variable.name[i], "\n")
+  
+  # Heteroscedasticity test
+  check_heteroscedasticity(model) %>% print()
+  
+}
+
+
+## 2.2) ANOVA for Main Effects----
+
+Anova.result <- list()
+Comparison.result <- list()
+
+for (i in seq_along(variable.name)) {
+  
+  df <- data.carbon.fraction %>%
+    select(all_of(c("Sample.ID", "Pairs", "Status",
+                    "Topography", variable.name[i]))) %>%
+    rename("Variable" = variable.name[i])
+  
+  
+  model <- lmer(Variable ~ Status * Topography + (1 | Pairs),
+                data = df)
+  
+  if(variable.name[i] %in% c("SOC", "HFOC", "Moisture"))
+  {Anova.result[[i]] <- Anova(model) %>%
+    data.frame() %>%
+    mutate(Term = row.names(.),
+           Chisq = round(Chisq, 4)) %>%
+    rename("P_value" = "Pr..Chisq.") %>%
+    mutate(P_value = ifelse(P_value < 0.001, "P < 0.001",
+                            round(P_value, 3)),
+           P_value = as.character(P_value)) %>%
+    {row.names(.) <- NULL;.} %>%
+    select(Term, Chisq, Df, P_value)
+  
+  Comparison.result[[i]] <- model %>%
+    emmeans(~ Status | Topography) %>%
+    pairs(adjust = "tukey") %>%
+    data.frame() %>%
+    mutate(symbel = ifelse(p.value < 0.001, "<", "="),
+           p.value1 = ifelse(p.value < 0.001, 0.001, p.value),
+           label = paste("P", symbel, round(p.value1, 3))) %>%
+    add_column(y.position = c(max(df$Variable[df$Topography == "Ridge"]),
+                              max(df$Variable[df$Topography == "Valley"])))
+  } else {
+    
+    vcovCR2 <- vcovCR(model, type = "CR2", cluster = df$Pairs)
+    
+    Anova.result[[i]] <- Anova(model, vcov. = vcovCR2) %>%
+      data.frame() %>%
+      mutate(Term = row.names(.),
+             Chisq = round(Chisq, 4)) %>%
+      rename("P_value" = "Pr..Chisq.") %>%
+      mutate(P_value = ifelse(P_value < 0.001, "P < 0.001",
+                              round(P_value, 3)),
+             P_value = as.character(P_value)) %>%
+      {row.names(.) <- NULL;.} %>%
+      select(Term, Chisq, Df, P_value)
+    
+    Comparison.result[[i]] <- model %>%
+      emmeans(~ Status | Topography, vcov. = vcovCR2) %>%
+      pairs(adjust = "tukey") %>%
+      data.frame() %>%
+      mutate(symbel = ifelse(p.value < 0.001, "<", "="),
+             p.value1 = ifelse(p.value < 0.001, 0.001, p.value),
+             label = paste("P", symbel, round(p.value1, 3))) %>%
+      add_column(y.position = c(max(df$Variable[df$Topography == "Ridge"]),
+                                max(df$Variable[df$Topography == "Valley"])))
+    
+  }
+  
+  names(Anova.result)[i] <- variable.name[i]
+  names(Comparison.result)[i] <- variable.name[i]
+  
+}
+
+
+### 2.2.1 Table. S1----
+Anova.result.table <- Anova.result %>%
+  bind_rows(.id = "Variable") %>%
+  mutate(Variable = factor(Variable, levels = c("SOC", "LFOC", "HFOC", "Moisture")))
+
+Anova.result.table
+
+
+## 2.3) Pairwise comparisons visualization----
+Comparison.result.table <- Comparison.result %>%
+  bind_rows(.id = "Variable") %>%
+  mutate(Variable = factor(Variable, levels = c("SOC", "LFOC", "HFOC", "Moisture")),
+         y.position = y.position * 1.3 + c(1, 0, 2, 0, 0, 0, 1, 0))
+
+Comparison.result.table
+
+
+### 2.3.1 Mapping color----
+mapping.fill <- c("Ridge_Alive" = "#FFE7D6", "Ridge_Dead" = "#FFA059",
+                  "Valley_Alive" = "#C1E9FF", "Valley_Dead" = "#63C9FF")
+
+mapping.color <- c("Ridge_Alive" = "#FFE7D6", "Ridge_Dead" = "#FFA059",
+                   "Valley_Alive" = "#C1E9FF", "Valley_Dead" = "#63C9FF")
+
+errorbar.color <- c("Ridge_Alive"  = "#E60012", 
+                    "Ridge_Dead"   = "#E60012", 
+                    "Valley_Alive" = "#0000FC",
+                    "Valley_Dead"  = "#0000FC")
+
+bw_map <- c(SOC = 3, LFOC = 1.3,
+            HFOC = 2, Moisture = 2)
+
+make_violin <- function(var, bw_value) {
+  force(var)
+  force(bw_value)
+  
+  geom_violin(
+    data = function(x) dplyr::filter(x, Variable == var),
+    adjust = 1.5, bw = bw_value,
+    alpha = 1, linewidth = 0.5,
+    show.legend = FALSE,
+    trim = FALSE, width = 0.6,
+    scale = "width" )
+}
+
+violin_layers <- Map(make_violin, names(bw_map), bw_map)
+
+
+### 2.3.2 Fig.1a-b and Fig. S1a-c----
+p1 <- data.carbon.fraction %>%
+  select(Topography, Status, Pairs, SOC, LFOC, HFOC, Moisture) %>%
+  pivot_longer(cols = c(SOC, LFOC, HFOC, Moisture),
+               names_to = "Variable",
+               values_to = "Value") %>%
+  mutate(Group = paste(Topography, Status, sep = "_"),
+         Variable = factor(Variable, levels = c("SOC", "LFOC", "HFOC", "Moisture"))) %>%
+  ggplot(aes(x = Status, y = Value, fill = Group), color = "#B2B2B2") +
+  violin_layers +
+  geom_point(aes(group = Status, Pairs = Pairs),
+             shape = 21, size = 6, alpha = 1,
+             position = position_jitterdodge(jitter.width = 0.4,
+                                             seed = 20260509),
+             show.legend = F) +
+  geom_bracket(xmin = 1, xmax = 2, 
+               aes(group = Topography,
+                   y.position = y.position,
+                   label = label),
+               data = Comparison.result.table, inherit.aes = F,
+               color = "black", label.size = 6,
+               size = 0.5, vjust = -0.2,
+               tip.length = 0.06) +
+  facet_grid2(rows = vars(Topography), cols = vars(Variable),
+              switch = "y", scales = "free_y", axes = "all",
+              independent = "y") +
+  facetted_pos_scales(y = list(
+    Variable == "SOC" & Topography == "Ridge" ~ scale_y_continuous(
+      limits = c(0, 60), breaks = seq(0, 60, 10)),
+    Variable == "SOC" & Topography == "Valley" ~ scale_y_continuous(
+      limits = c(0, 70), breaks = seq(0, 70, 10)),
+    Variable == "LFOC" & Topography == "Ridge" ~ scale_y_continuous(
+      limits = c(0, 18), breaks = seq(0, 18, 3)),
+    Variable == "LFOC" & Topography == "Valley" ~ scale_y_continuous(
+      limits = c(0, 30), breaks = seq(0, 30, 6)),
+    Variable == "HFOC" ~ scale_y_continuous(
+      limits = c(0, 50), breaks = seq(0, 50, 10)),
+    Variable == "Moisture" & Topography == "Ridge" ~ scale_y_continuous(
+      limits = c(5, 30), breaks = seq(5, 30, 5)),
+    Variable == "Moisture" & Topography == "Valley" ~ scale_y_continuous(
+      limits = c(5, 40), breaks = seq(5, 40, 7)))) +
+  labs(x = "Tree status", y = NULL) +
+  scale_color_manual(values = mapping.color) +
+  scale_fill_manual(values = mapping.fill) +
+  theme_bw(base_size = 16) +
+  theme(panel.grid = element_blank(),
+        strip.placement = "outside",
+        strip.background = element_blank(),
+        strip.text.x.top = element_text(size = 14, vjust = -1),
+        panel.border = element_rect(colour = "black",
+                                    linewidth = 1,
+                                    fill = NA),
+        axis.ticks.length.x = unit(-0.15, "cm"),
+        axis.ticks.length.y = unit(-0.15, "cm"),
+        plot.title = element_text(hjust = 0.5))
+
+p.line.data <- ggplot_build(p1)$data[[5]] %>%
+  select(x, y, PANEL, group, Pairs) %>%
+  group_by(PANEL, Pairs) %>%
+  group_modify(function (data, group) {
+    data.frame(
+      x = c(data$x[1], data$x[1] + 0.3, data$x[2] - 0.3, data$x[2]),
+      y = c(data$y[1], data$y[1], data$y[2], data$y[2])
+    ) 
+  }) %>%
+  ungroup() %>%
+  mutate(curve_id = interaction(PANEL, Pairs, drop = TRUE)) %>%
+  left_join(ggplot_build(p1)$layout$layout, by = "PANEL")
+
+p1 + geom_bezier0(aes(x, y, group = curve_id),
+                  data = p.line.data, colour = "grey70",
+                  linewidth = 0.3,
+                  inherit.aes = FALSE) +
+  new_scale_color() +
+  stat_summary(aes(color = Group),
+               geom = "errorbar", fun.data = mean_sd,
+               linewidth = 1,
+               width = 0.1, show.legend = F) +
+  stat_summary(aes(color = Group),
+               geom = "point", fun = mean,
+               size = 2,
+               show.legend = F) +
+  scale_color_manual(values = errorbar.color)
+
+
+# 3. Relationship of ΔSOC vs Δaggregate----
+
+carbon.fraction.change <- data.carbon.fraction %>%
+  mutate(Status = factor(Status, levels = c("Before", "After"))) %>%
+  group_by(Species, Topography, Pairs) %>%
+  arrange(Status, .by_group = TRUE) %>%
+  summarise(dSOC  = SOC[2]  - SOC[1],
+            dLFOC = LFOC[2] - LFOC[1],
+            dHFOC = HFOC[2] - HFOC[1],
+            .groups = "drop")
+
+
+## 3.1)  Ridge----
+carbon.fraction.change.ridge <- carbon.fraction.change %>%
+  subset(Topography == "Ridge")
+
+
+### 3.1.1 Construct model----
+modle.ridge <- lm(dSOC ~ dLFOC * dHFOC,
+                  data = carbon.fraction.change.ridge)
+
+
+### 3.1.2 Normality and Heteroscedasticity test----
+check_normality(modle.ridge)
+check_heteroscedasticity(modle.ridge)
+
+
+### 3.1.3 Calculate slope and P-value----
+
+# LFOC
+emtrends(modle.ridge, var = "dLFOC", infer = c(TRUE, TRUE)) %>%
+  summary()
+
+
+# HFOC
+emtrends(modle.ridge, var = "dHFOC", infer = c(TRUE, TRUE)) %>%
+  summary()
+
+
+### 3.1.4 Marginal dependence----
+newdata.carbon.fraction.change.ridge <- data.frame(
+  Fraction = factor(rep(c("dLFOC", "dHFOC"), each = 100),
+                    levels = c("dLFOC", "dHFOC")),
+  Carbon.content = c(seq(min(carbon.fraction.change.ridge$dLFOC),
+                         max(carbon.fraction.change.ridge$dLFOC),
+                         length.out = 100),
+                     seq(min(carbon.fraction.change.ridge$dHFOC),
+                         max(carbon.fraction.change.ridge$dHFOC),
+                         length.out = 100))) %>%
+  mutate(pred = case_when(
+    Fraction == "dLFOC" ~ predict(
+      modle.ridge,
+      newdata = data.frame(dLFOC = Carbon.content,
+                           dHFOC = mean(carbon.fraction.change.ridge$dHFOC))),
+    Fraction == "dHFOC" ~ predict(
+      modle.ridge,
+      newdata = data.frame(dLFOC = mean(carbon.fraction.change.ridge$dLFOC),
+                           dHFOC = Carbon.content))),
+    se = case_when(
+      Fraction == "dLFOC" ~ predict(
+        modle.ridge,
+        newdata = data.frame(dLFOC = Carbon.content,
+                             dHFOC = mean(carbon.fraction.change.ridge$dHFOC)),
+        se.fit = T)$se.fit,
+      Fraction == "dHFOC" ~ predict(
+        modle.ridge,
+        newdata = data.frame(dLFOC = mean(carbon.fraction.change.ridge$dLFOC),
+                             dHFOC = Carbon.content),
+        se.fit = T)$se.fit),
+    lower.fit = pred - 1.96 * se,
+    upper.fit = pred + 1.96 * se) %>%
+  select(Fraction, Carbon.content, pred, lower.fit, upper.fit)
+
+
+### 3.1.5 Fig.1c----
+carbon.fraction.change.ridge %>%
+  pivot_longer(cols = c("dLFOC", "dHFOC"),
+               names_to = "Fraction",
+               values_to = "Carbon.content") %>%
+  mutate(Fraction = factor(Fraction,
+                           levels = c("dLFOC", "dHFOC"))) %>%
+  ggplot(aes(x = Carbon.content, y = dSOC)) +
+  geom_ribbon(data = newdata.carbon.fraction.change.ridge,
+              aes(x = Carbon.content, y = pred,
+                  ymin = lower.fit, ymax = upper.fit),
+              fill = "#BF7843", inherit.aes = F,
+              alpha = 0.5) +
+  geom_point(size = 5, fill = "#FFC69B", shape = 21, color = "black") + 
+  geom_line(data = newdata.carbon.fraction.change.ridge,
+            aes(x = Carbon.content, y = pred, linetype = Fraction),
+            colour = "#E60012", inherit.aes = F, linewidth = 1,
+            show.legend = F) +
+  facet_wrap(~Fraction, nrow = 1, scale = "free") +
+  labs(x = "Change in density-fraction organic carbon",
+       y = expression(Delta~"SOC on ridges")) +
+  facetted_pos_scales(
+    y = list(
+      Fraction %in% c("dLFOC", "dHFOC") ~ scale_y_continuous(
+        limits = c(-12, 8), breaks = seq(-12, 8, 4))),
+    x = list(
+      Fraction == "dLFOC" ~ scale_x_continuous(
+        limits = c(-2, 2), breaks = seq(-2, 2, 1)),
+      Fraction == "dHFOC" ~ scale_x_continuous(
+        limits = c(-8, 8), breaks = seq(-8, 8, 4)))) +
+  scale_linetype_manual(values = c(2, 1)) +
+  theme_bw(base_size = 16) +
+  theme(panel.grid = element_blank(),
+        axis.ticks.length.x = unit(-0.15, "cm"),
+        axis.ticks.length.y = unit(-0.15, "cm"))
+
+
+## 3.2)  Valley----
+carbon.fraction.change.valley <- carbon.fraction.change %>%
+  subset(Topography == "Valley")
+
+
+### 3.2.1 Construct model----
+modle.valley <- lm(dSOC ~ dLFOC * dHFOC,
+                   data = carbon.fraction.change.valley)
+
+
+### 3.2.2 Normality and Heteroscedasticity test----
+check_normality(modle.valley)
+check_heteroscedasticity(modle.valley)
+
+
+### 3.2.3 Calculate slope and P-value----
+
+# LFOC
+emtrends(modle.valley, var = "dLFOC", infer = c(TRUE, TRUE)) %>%
+  summary()
+
+
+# HFOC
+emtrends(modle.valley, var = "dHFOC", infer = c(TRUE, TRUE)) %>%
+  summary()
+
+
+### 3.2.4 Marginal dependence----
+newdata.carbon.fraction.change.valley <- data.frame(
+  Fraction = factor(rep(c("dLFOC", "dHFOC"), each = 100),
+                    levels = c("dLFOC", "dHFOC")),
+  Carbon.content = c(seq(min(carbon.fraction.change.valley$dLFOC),
+                         max(carbon.fraction.change.valley$dLFOC),
+                         length.out = 100),
+                     seq(min(carbon.fraction.change.valley$dHFOC),
+                         max(carbon.fraction.change.valley$dHFOC),
+                         length.out = 100))) %>%
+  mutate(pred = case_when(
+    Fraction == "dLFOC" ~ predict(
+      modle.valley,
+      newdata = data.frame(dLFOC = Carbon.content,
+                           dHFOC = mean(carbon.fraction.change.valley$dHFOC))),
+    Fraction == "dHFOC" ~ predict(
+      modle.valley,
+      newdata = data.frame(dLFOC = mean(carbon.fraction.change.valley$dLFOC),
+                           dHFOC = Carbon.content))),
+    se = case_when(
+      Fraction == "dLFOC" ~ predict(
+        modle.valley,
+        newdata = data.frame(dLFOC = Carbon.content,
+                             dHFOC = mean(carbon.fraction.change.valley$dHFOC)),
+        se.fit = T)$se.fit,
+      Fraction == "dHFOC" ~ predict(
+        modle.valley,
+        newdata = data.frame(dLFOC = mean(carbon.fraction.change.valley$dLFOC),
+                             dHFOC = Carbon.content),
+        se.fit = T)$se.fit),
+    lower.fit = pred - 1.96 * se,
+    upper.fit = pred + 1.96 * se) %>%
+  select(Fraction, Carbon.content, pred, lower.fit, upper.fit)
+
+
+### 3.2.5 Fig.1d----
+carbon.fraction.change.valley %>%
+  pivot_longer(cols = c("dLFOC", "dHFOC"),
+               names_to = "Fraction",
+               values_to = "Carbon.content") %>%
+  mutate(Fraction = factor(Fraction,
+                           levels = c("dLFOC", "dHFOC"))) %>%
+  ggplot(aes(x = Carbon.content, y = dSOC)) +
+  geom_ribbon(data = newdata.carbon.fraction.change.valley,
+              aes(x = Carbon.content, y = pred,
+                  ymin = lower.fit, ymax = upper.fit),
+              fill = "#4A97BF", inherit.aes = F,
+              alpha = 0.5) +
+  geom_point(size = 5, fill = "#A1DFFF", shape = 21, color = "black") + 
+  geom_line(data = newdata.carbon.fraction.change.valley,
+            aes(x = Carbon.content, y = pred, linetype = Fraction),
+            colour = "#0000FC", inherit.aes = F, linewidth = 1,
+            show.legend = F) +
+  facet_wrap(~Fraction, nrow = 1, scale = "free") +
+  labs(x = "Change in density-fraction organic carbon",
+       y = expression(Delta~"SOC in valleys")) +
+  facetted_pos_scales(
+    y = list(
+      Fraction %in% c("dLFOC", "dHFOC") ~ scale_y_continuous(
+        limits = c(-6, 12), breaks = seq(-6, 12, 3))),
+    x = list(
+      Fraction == "dLFOC" ~ scale_x_continuous(
+        limits = c(-6, 9), breaks = seq(-6, 9, 3)),
+      Fraction == "dHFOC" ~ scale_x_continuous(
+        limits = c(-8, 6), breaks = seq(-8, 6, 2)))) +
+  scale_linetype_manual(values = c(1, 2)) +
+  theme_bw(base_size = 16) +
+  theme(panel.grid = element_blank(),
+        axis.ticks.length.x = unit(-0.15, "cm"),
+        axis.ticks.length.y = unit(-0.15, "cm"))
+
+
+# 4 Contribution of Δaggregate to ΔSOC in Ridge----
+
+## 4.1) ΔSOC - (ΔLFOC + ΔHFOC)----
+residual.ridge <- data.frame(
+  residual = carbon.fraction.change.ridge$dSOC - 
+    (carbon.fraction.change.ridge$dLFOC + carbon.fraction.change.ridge$dHFOC)
+)
+
+
+### 4.1.1 Histogram----
+ggplot(residual.ridge, aes(x = residual)) +
+  geom_histogram(
+    bins = 8,
+    fill = "#FFC69B",
+    color = "black",
+    linewidth = 0.4
+  ) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.8, color = "red") +
+  geom_vline(xintercept = mean(residual.ridge$residual),
+             linewidth = 0.8, color = "blue") +
+  scale_x_continuous(limits = c(-12, 12), breaks = seq(-12, 12, 6)) +
+  scale_y_continuous(limits = c(0, 10), breaks = seq(0, 10, 2)) +
+  labs(
+    x = expression(Delta*SOC - (Delta*LFOC + Delta*HFOC)),
+    y = "Frequency"
+  ) +
+  theme_bw(base_size = 18) +
+  theme(panel.grid = element_blank())
+
+
+## 4.2) Proportion of Δaggregate relative to ΔSOC----
+
+### 4.2.1 Calculate the confidence interval----
+
+set.seed(20260607)
+
+boot.ridge <- data.frame(
+  mean_dSOC = rep(NA_real_, 1000),
+  mean_dLFOC = rep(NA_real_, 1000),
+  mean_dHFOC = rep(NA_real_, 1000),
+  Pro_dLFOC = rep(NA_real_, 1000),
+  Pro_dHFOC = rep(NA_real_, 1000)
+)
+
+for(i in 1:1000) {
+  boot.dat <- carbon.fraction.change.ridge %>%
+    slice_sample(n = 18, replace = T)
+  
+  boot.ridge$mean_dSOC[i] <- mean(boot.dat$dSOC)
+  boot.ridge$mean_dLFOC[i] <- mean(boot.dat$dLFOC)
+  boot.ridge$mean_dHFOC[i] <- mean(boot.dat$dHFOC)
+  boot.ridge$Pro_dLFOC[i] <- (mean(boot.dat$dLFOC) / mean(boot.dat$dSOC))
+  boot.ridge$Pro_dHFOC[i] <- (mean(boot.dat$dHFOC) / mean(boot.dat$dSOC))
+  }
+
+### 4.2.2 ΔSOC----
+mean(carbon.fraction.change.ridge$dSOC) %>% round(2)
+
+c(round(quantile(boot.ridge$mean_dSOC, 0.025), 2),
+  round(quantile(boot.ridge$mean_dSOC, 0.975), 2))
+
+
+### 4.2.3 ΔLFOC----
+mean(carbon.fraction.change.ridge$dLFOC) %>% round(2)
+
+c(round(quantile(boot.ridge$mean_dLFOC, 0.025), 2),
+  round(quantile(boot.ridge$mean_dLFOC, 0.975), 2))
+
+
+### 4.2.4 ΔHFOC----
+mean(carbon.fraction.change.ridge$dHFOC) %>% round(2)
+
+c(round(quantile(boot.ridge$mean_dHFOC, 0.025), 2),
+  round(quantile(boot.ridge$mean_dHFOC, 0.975), 2))
+
+
+### 4.2.5 Proportion of ΔLFOC relative to ΔSOC----
+((mean(carbon.fraction.change.ridge$dLFOC) / 
+   mean(carbon.fraction.change.ridge$dSOC)) * 100) %>% 
+  round(2)
+
+c(round(quantile(boot.ridge$Pro_dLFOC, 0.025) * 100, 2),
+  round(quantile(boot.ridge$Pro_dLFOC, 0.975) * 100, 2))
+
+
+### 4.2.6 Proportion of ΔLFOC relative to ΔSOC----
+((mean(carbon.fraction.change.ridge$dHFOC) / 
+   mean(carbon.fraction.change.ridge$dSOC)) * 100) %>% 
+  round(2)
+
+c(round(quantile(boot.ridge$Pro_dHFOC, 0.025) * 100, 2),
+  round(quantile(boot.ridge$Pro_dHFOC, 0.975) * 100, 2))
+
+
+# 5 Contribution of Δaggregate to ΔSOC in Valley----
+
+## 5.1) ΔSOC - (ΔLFOC + ΔHFOC)----
+residual.valley <- data.frame(
+  residual = carbon.fraction.change.valley$dSOC - 
+    (carbon.fraction.change.valley$dLFOC + carbon.fraction.change.valley$dHFOC)
+)
+
+
+### 5.1.1 Histogram----
+ggplot(residual.valley, aes(x = residual)) +
+  geom_histogram(
+    bins = 8,
+    fill = "#A1DFFF",
+    color = "black",
+    linewidth = 0.4
+  ) +
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = 0.8, color = "red") +
+  geom_vline(xintercept = mean(residual.valley$residual),
+             linewidth = 0.8, color = "blue") +
+  scale_x_continuous(limits = c(-18, 18), breaks = seq(-18, 18, 10)) +
+  scale_y_continuous(limits = c(0, 10), breaks = seq(0, 10, 2)) +
+  labs(
+    x = expression(Delta*SOC - (Delta*LFOC + Delta*HFOC)),
+    y = "Frequency"
+  ) +
+  theme_bw(base_size = 18) +
+  theme(panel.grid = element_blank())
+
+
+## 5.2) Proportion of Δaggregate relative to ΔSOC----
+
+### 5.2.1 Calculate the confidence interval----
+set.seed(20260607)
+
+boot.valley <- data.frame(
+  mean_dSOC = rep(NA_real_, 1000),
+  mean_dLFOC = rep(NA_real_, 1000),
+  mean_dHFOC = rep(NA_real_, 1000),
+  Pro_dLFOC = rep(NA_real_, 1000),
+  Pro_dHFOC = rep(NA_real_, 1000)
+)
+
+for(i in 1:1000) {
+  boot.dat <- carbon.fraction.change.valley %>%
+    slice_sample(n = 18, replace = T)
+  
+  boot.valley$mean_dSOC[i] <- mean(boot.dat$dSOC)
+  boot.valley$mean_dLFOC[i] <- mean(boot.dat$dLFOC)
+  boot.valley$mean_dHFOC[i] <- mean(boot.dat$dHFOC)
+  boot.valley$Pro_dLFOC[i] <- (mean(boot.dat$dLFOC) / mean(boot.dat$dSOC))
+  boot.valley$Pro_dHFOC[i] <- (mean(boot.dat$dHFOC) / mean(boot.dat$dSOC))
+  
+}
+
+
+### 5.2.2 ΔSOC----
+mean(carbon.fraction.change.valley$dSOC) %>% round(2)
+
+c(round(quantile(boot.valley$mean_dSOC, 0.025), 2),
+  round(quantile(boot.valley$mean_dSOC, 0.975), 2))
+
+
+### 5.2.3 ΔLFOC----
+mean(carbon.fraction.change.valley$dLFOC) %>% round(2)
+
+c(round(quantile(boot.valley$mean_dLFOC, 0.025), 2),
+  round(quantile(boot.valley$mean_dLFOC, 0.975), 2))
+
+
+### 5.2.4 ΔHFOC----
+mean(carbon.fraction.change.valley$dHFOC) %>% round(2)
+
+c(round(quantile(boot.valley$mean_dHFOC, 0.025), 2),
+  round(quantile(boot.valley$mean_dHFOC, 0.975), 2))
+
+
+### 5.2.5 Proportion of ΔLFOC relative to ΔSOC----
+((mean(carbon.fraction.change.valley$dLFOC) / 
+    mean(carbon.fraction.change.valley$dSOC)) * 100) %>% 
+  round(2)
+
+c(round(quantile(boot.valley$Pro_dLFOC, 0.025) * 100, 2),
+  round(quantile(boot.valley$Pro_dLFOC, 0.975) * 100, 2))
+
+
+### 5.2.6 Proportion of ΔLFOC relative to ΔSOC----
+((mean(carbon.fraction.change.valley$dHFOC) / 
+    mean(carbon.fraction.change.valley$dSOC)) * 100) %>% 
+  round(2)
+
+c(round(quantile(boot.valley$Pro_dHFOC, 0.025) * 100, 2),
+  round(quantile(boot.valley$Pro_dHFOC, 0.975) * 100, 2))
