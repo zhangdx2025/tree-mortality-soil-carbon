@@ -1,0 +1,435 @@
+# Set the working directory
+setwd("~R_script")
+
+path_microbial.trait <- file.path(getwd(), "Data", "Microbial_trait")
+path_microbial.composition <- file.path(getwd(), "Data", "Microbial_composition")
+path_result.output <- file.path(getwd(), "Result_output")
+
+
+# Load required packages----
+library(tidyverse)
+library(readxl)
+library(httr)
+library(jsonlite)
+library(readr)
+
+
+# 1. Load genomes----
+
+## 1.1) Bacterial genomes----
+
+# Data source:
+# https://data.gtdb.ecogenomic.org/releases/release226
+
+
+# Select high-quality bacterial genomes
+bacteria.metadata <- read_tsv(file.path(path_microbial.trait,
+                                        "bac120_metadata_r226.tsv.gz"),
+                              show_col_types = FALSE) %>%
+  mutate(species_with_prefix = str_extract(gtdb_taxonomy, "s__[^;]+"),
+         species_raw = str_remove(species_with_prefix, "^s__"),
+         species_clean1 = str_replace(species_raw, "^([A-Za-z]+)_\\w+\\s", "\\1 "),
+         Species = str_replace(species_clean1, " ([a-z]+)_\\w+$", " \\1")) %>%
+  filter(checkm_completeness >= 90,
+         checkm_contamination <= 5) %>%
+  arrange(desc(checkm_completeness), checkm_contamination) %>%
+  distinct(Species, ncbi_strain_identifiers, .keep_all = TRUE) %>%
+  separate(col = gtdb_taxonomy,
+           into = c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus",
+                    "species_with_prefix"),
+           sep = ";",
+           fill = "right",
+           remove = TRUE) %>%
+  mutate(species_raw = sub("s__", "", species_with_prefix),
+         species_clean1 = sub("^([A-Za-z]+)_\\w+\\s", "\\1 ", species_raw),
+         Species = sub(" ([a-z]+)_\\w+$", " \\1", species_clean1)) %>%
+  mutate(across(Kingdom:Species, ~ sub("^[a-z]__*", "", .)),
+         Strain = paste(Species, ncbi_strain_identifiers)) %>%
+  transmute(ncbi_genbank_assembly_accession,
+            Kingdom, Phylum, Class, Order, Family, Genus,
+            Species, Strain,
+            Checkm_completeness = checkm_completeness,
+            Checkm_contamination = checkm_contamination,
+            Genome_size = genome_size)
+
+nrow(bacteria.metadata)
+colnames(bacteria.metadata)
+
+
+## 1.2) Load taxa Silva and Ncbi database names----
+Bacterial.species_taxonomic.name <- read_excel(file.path(path_microbial.trait,
+                                                         "Bacterial.species_taxonomic.name.xlsx")) %>%
+  data.frame() %>%
+  na.omit()
+
+Fungal.genus_taxonomic.name <- read_excel(file.path(path_microbial.trait,
+                                                    "Fungal.genus_taxonomic.name.xlsx")) %>%
+  data.frame() %>%
+  na.omit()
+
+
+## 1.3) Matched bacterial amplified taxa to genomes----
+bacterial.genome.mapped.amplified.taxa <- bacteria.metadata %>%
+  subset(Species %in% Bacterial.species_taxonomic.name$GTDB.name)
+
+nrow(bacterial.genome.mapped.amplified.taxa)
+
+
+# Based on the ncbi_genbank_assembly_accession of each genome, 
+# the corresponding protein sequences were extracted from the NCBI GenBank database.
+# After uniform annotation of protein sequences,
+# the results were stored in "all_genome_ko_list.RData"
+
+
+# 2 Screen bacterial genomes for functional gene copy number variation analysis----
+
+# Select bacterial species with more than 100 sequenced strains
+bacteria.species.list <- bacteria.metadata %>%
+  count(Species, name = "Freq", sort = TRUE) %>%
+  filter(Freq > 100)
+
+nrow(bacteria.species.list)
+
+
+# Randomly select 50 genomes from each bacterial species with more than 100 sequenced strains
+set.seed(20250508)
+
+bacteria.genome <- bacteria.metadata %>%
+  filter(Species %in% unique(bacteria.species.list$Species)) %>%
+  group_by(Species) %>%
+  slice_sample(n = 50) %>%
+  ungroup()
+
+nrow(bacteria.genome)
+
+
+# 3 Download fungal genome information from NCBI Datasets----
+
+# Date: 2026.04.29
+
+## 3.1) Set the NCBI API endpoint and request headers----
+
+base_url <- "https://api.ncbi.nlm.nih.gov/datasets/v2/genome/taxon/4751/dataset_report"
+
+# Taxonomy endpoint
+taxonomy_base_url <- "https://api.ncbi.nlm.nih.gov/datasets/v2/taxonomy/taxon"
+
+
+# Read the NCBI API key from the system environment variable
+# The script can run without an API key, but access may be rate-limited
+
+ncbi_api_key <- Sys.getenv("NCBI_API_KEY")
+
+# Set request headers
+headers <- if (nzchar(ncbi_api_key)) {
+  add_headers(
+    "accept" = "application/json",
+    "api-key" = ncbi_api_key
+  )
+} else {
+  add_headers(
+    "accept" = "application/json"
+  )
+}
+
+
+## 3.2) Download fungal genome reports by page----
+
+# Store genome reports from each page
+Fungi_all_reports <- list()
+
+# Initialize pagination
+page_token <- NULL
+page <- 1
+
+repeat {
+  
+  # Set query parameters
+  query_params <- list(
+    "filters.reference_only" = "false",
+    "filters.assembly_source" = "all", 
+    "filters.has_annotation" = "true",
+    "filters.exclude_paired_reports" = "false",
+    "filters.exclude_atypical" = "true",
+    "filters.assembly_version" = "current",
+    "returned_content" = "COMPLETE",
+    "page_size" = 1000
+  )
+  
+  # Continue with the next page if a page token is available
+  if (!is.null(page_token)) {
+    query_params$page_token <- page_token
+  }
+  
+  cat("Downloading genome report page", page, "...\n")
+  
+  # Use RETRY to handle transient network failures
+  res <- RETRY(
+    verb = "GET",
+    url = base_url,
+    headers,
+    query = query_params,
+    times = 5,
+    pause_min = 1,
+    pause_cap = 20
+  )
+  
+  if (status_code(res) != 200) {
+    stop("Request failed with status code: ", status_code(res))
+  }
+  
+  # Parse the returned JSON data
+  json_data <- fromJSON(
+    content(res, "text", encoding = "UTF-8"),
+    flatten = TRUE
+  )
+  
+  # Save records from the current page
+  if (!is.null(json_data$reports) && nrow(json_data$reports) > 0) {
+    Fungi_all_reports[[page]] <- json_data$reports
+    
+    cat(
+      "Page", page, "was successfully read with",
+      nrow(json_data$reports), "records.\n"
+    )
+  } else {
+    cat("Page", page, "has no records and was skipped.\n")
+  }
+  
+  # Update the next page token
+  page_token <- json_data$next_page_token
+  
+  cat(
+    "Current page token:",
+    ifelse(is.null(page_token), "none", page_token),
+    "\n\n"
+  )
+  
+  # Stop when no further pages are available
+  if (is.null(page_token)) {
+    cat("All genome data were successfully downloaded.\n")
+    break
+  }
+  
+  page <- page + 1
+  
+  # Avoid overly frequent requests
+  Sys.sleep(1)
+}
+
+
+## 3.3) Merge paginated genome reports----
+
+# Remove empty results
+Fungi_all_reports <- Filter(Negate(is.null), Fungi_all_reports)
+
+# Merge all paginated records
+fungal.genome.reports <- bind_rows(Fungi_all_reports)
+
+cat("Total genome records:", nrow(fungal.genome.reports), "\n")
+cat("Total columns:", ncol(fungal.genome.reports), "\n")
+
+
+## 3.4) Extract taxonomy IDs for fungal genomes----
+
+# Extract taxonomy IDs from genome reports
+fungal.tax_ids <- fungal.genome.reports %>%
+  distinct(`organism.tax_id`) %>%
+  filter(!is.na(`organism.tax_id`)) %>%
+  pull(`organism.tax_id`) %>%
+  as.character()
+
+cat("Total unique taxonomy IDs:", length(fungal.tax_ids), "\n")
+
+head(fungal.tax_ids)
+
+
+## 3.5) Download taxonomy reports in batches----
+
+# Download 100 taxonomy IDs per batch
+# Increase to 200 or 500 if the network connection is stable
+batch_size <- 100
+
+# Split taxonomy IDs into batches
+tax_id_batches <- split(
+  fungal.tax_ids,
+  ceiling(seq_along(fungal.tax_ids) / batch_size)
+)
+
+# Store taxonomy reports from each batch
+fungal.taxonomy_reports_list <- list()
+
+for (i in seq_along(tax_id_batches)) {
+  
+  cat("Downloading taxonomy batch", i, "of", length(tax_id_batches), "...\n")
+  
+  # Combine taxonomy IDs in the current batch
+  current_fungal.tax_ids <- paste(tax_id_batches[[i]], collapse = ",")
+  
+  # Construct the taxonomy report endpoint
+  taxonomy_url <- paste0(
+    taxonomy_base_url,
+    "/",
+    current_fungal.tax_ids,
+    "/dataset_report"
+  )
+  
+  # Request taxonomy reports
+  res_taxonomy <- RETRY(
+    verb = "GET",
+    url = taxonomy_url,
+    headers,
+    query = list(
+      "returned_content" = "COMPLETE",
+      "page_size" = 1000
+    ),
+    times = 5,
+    pause_min = 1,
+    pause_cap = 20
+  )
+  
+  if (status_code(res_taxonomy) != 200) {
+    stop("Taxonomy request failed with status code: ", status_code(res_taxonomy))
+  }
+  
+  # Parse the returned JSON data
+  taxonomy_json <- fromJSON(
+    content(res_taxonomy, "text", encoding = "UTF-8"),
+    flatten = TRUE
+  )
+  
+  # Save taxonomy records from the current batch
+  if (!is.null(taxonomy_json$reports) && nrow(taxonomy_json$reports) > 0) {
+    fungal.taxonomy_reports_list[[i]] <- taxonomy_json$reports
+    
+    cat(
+      "Batch", i, "was successfully read with",
+      nrow(taxonomy_json$reports), "records.\n\n"
+    )
+  } else {
+    cat("Batch", i, "has no taxonomy records.\n\n")
+  }
+  
+  # Avoid overly frequent requests
+  Sys.sleep(1)
+}
+
+
+## 3.6) Merge taxonomy reports----
+
+# Remove empty results
+fungal.taxonomy_reports_list <- Filter(Negate(is.null), fungal.taxonomy_reports_list)
+
+# Merge all taxonomy records
+taxonomy_reports <- bind_rows(fungal.taxonomy_reports_list)
+
+cat("Total taxonomy records:", nrow(taxonomy_reports), "\n")
+cat("Total columns:", ncol(taxonomy_reports), "\n")
+
+# Save raw taxonomy reports
+# write_excel_csv(taxonomy_reports, "fungal_taxonomy_reports_raw.csv")
+
+
+## 3.7) Extract major taxonomic ranks----
+
+# Extract commonly used taxonomic ranks
+taxonomy_selected <- taxonomy_reports %>%
+  transmute(
+    tax_id = as.integer(`taxonomy.tax_id`),
+    
+    scientific_name = `taxonomy.current_scientific_name.name`,
+    taxonomic_rank = `taxonomy.rank`,
+    
+    domain = `taxonomy.classification.domain.name`,
+    kingdom = `taxonomy.classification.kingdom.name`,
+    phylum = `taxonomy.classification.phylum.name`,
+    class = `taxonomy.classification.class.name`,
+    order = `taxonomy.classification.order.name`,
+    family = `taxonomy.classification.family.name`,
+    genus = `taxonomy.classification.genus.name`,
+    species = `taxonomy.classification.species.name`
+  ) %>%
+  distinct(tax_id, .keep_all = TRUE)
+
+head(taxonomy_selected)
+
+colnames(fungal.genome.reports)
+
+## 3.8) Merge taxonomy information with genome reports----
+# Create a unified tax_id column for genome reports
+
+genome_selected <- fungal.genome.reports %>%
+  transmute(
+    Accession = accession,
+    Organism_name = organism.organism_name,
+    Strain = organism.infraspecific_names.strain,
+    tax_id = as.integer(`organism.tax_id`),
+    Assembly_level = assembly_info.assembly_level,
+    Genome_size = assembly_stats.total_ungapped_length,
+    Genome_coverage = assembly_stats.genome_coverage,
+    Scaffolds_number = assembly_stats.number_of_scaffolds,
+    Scaffold_N50 = assembly_stats.scaffold_n50,
+    Scaffold_L50 = assembly_stats.scaffold_l50,
+    Contigs_number = assembly_stats.number_of_contigs,
+    Contigs_N50 = assembly_stats.contig_n50,
+    Contigs_L50 = assembly_stats.contig_l50,
+    Number_of_organelles = assembly_stats.number_of_organelles,
+    BUSCO_complete = annotation_info.busco.complete,
+    BUSCO_duplicated = annotation_info.busco.duplicated
+  )
+
+head(genome_selected)
+
+# Merge genome and taxonomy information by tax_id
+fungi.genome.info.ncbi <- genome_selected %>%
+  left_join(taxonomy_selected, by = "tax_id") %>%
+  transmute(Accession, Kingdom = kingdom,
+            Phylum = phylum, Class = class,
+            Order = order, Family = family,
+            Genus = genus, Species = species,
+            Strain = Strain, Tax_id = tax_id,
+            Assembly_level,  Genome_size,  Genome_coverage,
+            Scaffolds_number, Scaffold_N50, Scaffold_L50,
+            Contigs_number, Contigs_N50, Contigs_L50,
+            Number_of_organelles)
+
+nrow(fungi.genome.info.ncbi)
+
+fungi.genome <- fungi.genome.info.ncbi %>%
+  filter(Scaffold_N50 > 100000,
+         Scaffolds_number < 200,
+         Genome_coverage >= 30) %>%
+  arrange(desc(Scaffold_N50), desc(Genome_coverage), desc(Scaffolds_number)) %>%
+  distinct(Species, Strain, .keep_all = T)
+
+nrow(fungi.genome)
+
+
+## 3.9) Matched fungal amplified taxa to genomes----
+
+# Species
+fungal.genome.mapped.amplified.species.taxa <- fungi.genome %>%
+  subset(Species %in% Bacterial.species_taxonomic.name$GTDB.name)
+
+nrow(fungal.genome.mapped.amplified.species.taxa)
+
+# Genus
+fungal.genome.mapped.amplified.genus.taxa <- fungi.genome %>%
+  subset(Genus %in% genus.taxonomy.info$Ncbi.name)
+
+nrow(fungal.genome.mapped.amplified.genus.taxa)
+
+
+# Based on the ncbi_genbank_assembly_accession of each genome, 
+# the corresponding protein sequences were extracted from the NCBI GenBank database.
+# After uniform annotation of protein sequences,
+# the results were stored in "all_genome_ko_list.RData"
+
+
+# 4 Save data----
+save(bacterial.genome.mapped.amplified.taxa,
+     fungal.genome.mapped.amplified.species.taxa,
+     fungal.genome.mapped.amplified.genus.taxa,
+     bacteria.genome, fungi.genome,
+     file = file.path(path_result.output,
+                      "Genomic_taxonomy_info.Rdata"))
