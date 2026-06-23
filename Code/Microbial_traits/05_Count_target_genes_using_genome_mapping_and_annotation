@@ -1,0 +1,341 @@
+# Set the working directory
+setwd("R_script")
+
+
+path_microbial.trait <- file.path(getwd(), "Data", "Microbial_trait")
+path_result.output <- file.path(getwd(), "Result_output")
+
+
+# load packages
+library(tidyverse)
+library(readxl)
+
+
+# 1 Load data----
+
+## 1.1) Loading all genome annotations----
+load(file.path(path_microbial.trait, "all_genome_ko_list.RData"))
+load(file.path(path_result.output, "Genomic_taxonomy_info.Rdata"))
+load(file.path(path_result.output, "microbial_composition_results.Rdata"))
+
+
+## 1.2) Load taxa Silva and Ncbi database names----
+Bacterial.species_taxonomic.name <- read_excel(file.path(path_microbial.trait,
+                                                         "Bacterial.species_taxonomic.name.xlsx")) %>%
+  data.frame() %>%
+  na.omit()
+
+Fungal.genus_taxonomic.name <- read_excel(file.path(path_microbial.trait,
+                                                    "Fungal.genus_taxonomic.name.xlsx")) %>%
+  data.frame() %>%
+  na.omit()
+
+bacterial_taxonomic_rank_mapping <- bacteria.table %>%
+  select(Kingdom:Species)
+
+fungal_taxonomic_rank_mapping <- fungi.table %>%
+  select(Kingdom:Genus) %>%
+  distinct()
+
+
+## 1.3) Load target gene catalog----
+target.gene.table <- read_xlsx(file.path(path_microbial.trait,
+                                         "carbon_acquisition_TEA_utilization_gene_catalog.xlsx"))
+
+target.all.KO <- c(target.gene.table$KO)
+duplicated(target.all.KO) %>% which()
+
+
+### 1.3.1 KO classification----
+Exo_amylase.KO <- target.gene.table %>%
+  subset(Type == "Exo_amylase") %>%
+  pull(KO)
+
+Endo_amylase.KO <- target.gene.table %>%
+  subset(Type == "Endo_amylase") %>%
+  pull(KO)
+
+Exo_cellulase.KO <- target.gene.table %>%
+  subset(Type == "Exo_cellulase") %>%
+  pull(KO)
+
+Endo_cellulase.KO <- target.gene.table %>%
+  subset(Type == "Endo_cellulase") %>%
+  pull(KO)
+
+Exo_hemicellulose.KO <- target.gene.table %>%
+  subset(Type == "Exo_hemicellulose") %>%
+  pull(KO)
+
+Endo_hemicellulose.KO <- target.gene.table %>%
+  subset(Type == "Endo_hemicellulose") %>%
+  pull(KO)
+
+Exo_chitosanase.KO <- target.gene.table %>%
+  subset(Type == "Exo_chitosanase") %>%
+  pull(KO)
+
+Endo_chitosanase.KO <- target.gene.table %>%
+  subset(Type == "Endo_chitosanase") %>%
+  pull(KO)
+
+Ligninase.KO <- target.gene.table %>%
+  subset(Type == "Ligninase") %>%
+  pull(KO)
+
+TEA_Oxygen.KO <- target.gene.table %>%
+  subset(Type == "TEA_Oxygen") %>%
+  pull(KO)
+
+TEA_Nitrate.KO <- target.gene.table %>%
+  subset(Type == "TEA_Nitrate") %>%
+  pull(KO)
+
+TEA_Sulfite.KO <- target.gene.table %>%
+  subset(Type == "TEA_Sulfite") %>%
+  pull(KO)
+
+
+# 2 Calculate target KO counts----
+
+## 2.1) bacterial_genome_for_gene_copy_variation_analysis----
+
+# Number of genomes
+N1 <- length(bacterial_genome_ko_list_for_target_gene_counts_variation_analysis)
+
+
+# Calculate target gene copy numbers for each genome
+bacterial.traits.variation_KO.number <- list()
+
+for (i in 1:N1) {
+  tempt.name <- names(bacterial_genome_ko_list_for_target_gene_counts_variation_analysis)[i]
+  
+  KO.list.tempt <- bacterial_genome_ko_list_for_target_gene_counts_variation_analysis[[i]] %>%
+    table() %>% data.frame() %>%
+    setNames(c("KO", "Freq")) %>%
+    subset(KO %in% target.all.KO)
+  
+  bacterial.traits.variation_KO.number[[i]] <- sapply(target.all.KO, function(x){
+    ifelse(x %in% KO.list.tempt$KO, 
+           KO.list.tempt %>% dplyr::slice(match(x, .$KO)) %>% pull(Freq),
+           0)
+  })
+  
+  names(bacterial.traits.variation_KO.number)[i] <- tempt.name
+  cat("Processing genome ", i, "/", N1, ":",
+      " [", tempt.name, "]\n", sep = "")
+}
+
+head(bacterial.traits.variation_KO.number)
+
+
+### 2.1.1 Merge results----
+bacterial.traits.variation_target.gene.number <- do.call(rbind, bacterial.traits.variation_KO.number) %>%
+  data.frame() %>%
+  mutate(Accession = row.names(.),
+         Exo_amylase = rowSums(across(any_of(Exo_amylase.KO))),
+         Endo_amylase = rowSums(across(any_of(Endo_amylase.KO))),
+         Exo_cellulase = rowSums(across(any_of(Exo_cellulase.KO))),
+         Endo_cellulase = rowSums(across(any_of(Endo_cellulase.KO))),
+         Exo_hemicellulose = rowSums(across(any_of(Exo_hemicellulose.KO))),
+         Endo_hemicellulose = rowSums(across(any_of(Endo_hemicellulose.KO))),
+         Exo_chitosanase = rowSums(across(any_of(Exo_chitosanase.KO))),
+         Endo_chitosanase = rowSums(across(any_of(Endo_chitosanase.KO))),
+         Ligninase = rowSums(across(any_of(Ligninase.KO))),
+         TEA_Oxygen = rowSums(across(any_of(TEA_Oxygen.KO))),
+         TEA_Nitrate = rowSums(across(any_of(TEA_Nitrate.KO))),
+         TEA_Sulfite = rowSums(across(any_of(TEA_Sulfite.KO)))) %>%
+  select(Accession, Exo_amylase, Endo_amylase, Exo_cellulase, Endo_cellulase,
+         Exo_hemicellulose, Endo_hemicellulose, Exo_chitosanase, Endo_chitosanase,
+         Ligninase, TEA_Oxygen, TEA_Nitrate, TEA_Sulfite) %>%
+  {row.names(.) = NULL; .} %>%
+  left_join(bacteria.genome, join_by(Accession == ncbi_genbank_assembly_accession)) %>%
+  mutate(Species = paste(Genus, sub("^\\S+\\s+", "", Species))) %>%
+  relocate(Kingdom:Genome_size, .after = "Accession")
+
+
+## 2.2)  Genome-mapped bacterial amplicon taxa----
+
+# Number of Genome
+N2 <- length(ko_list_for_genome_mapped_bacterial_amplicon_taxa)
+
+
+# Calculate the target gene count for each genome.
+bacterial.amplicon.traits_KO.number <- list()
+for (i in 1:N2) {
+  tempt.name <- names(ko_list_for_genome_mapped_bacterial_amplicon_taxa)[i]
+  
+  KO.list.tempt <- ko_list_for_genome_mapped_bacterial_amplicon_taxa[[i]] %>%
+    table() %>% data.frame() %>%
+    setNames(c("KO", "Freq")) %>%
+    subset(KO %in% target.all.KO)
+  
+  bacterial.amplicon.traits_KO.number[[i]] <- sapply(target.all.KO, function(x){
+    ifelse(x %in% KO.list.tempt$KO, 
+           KO.list.tempt %>% dplyr::slice(match(x, .$KO)) %>% pull(Freq),
+           0)
+  })
+  
+  names(bacterial.amplicon.traits_KO.number)[i] <- tempt.name
+  cat("Processing genome ", i, "/", N2, ":",
+      " [", tempt.name, "]\n", sep = "")
+}
+
+head(bacterial.amplicon.traits_KO.number)
+
+
+### 2.2.1 Merge results----
+bacterial.amplicon.traits_target.gene.number <- do.call(rbind, bacterial.amplicon.traits_KO.number) %>%
+  data.frame() %>%
+  mutate(Accession = row.names(.),
+         Exo_amylase = rowSums(across(any_of(Exo_amylase.KO))),
+         Endo_amylase = rowSums(across(any_of(Endo_amylase.KO))),
+         Exo_cellulase = rowSums(across(any_of(Exo_cellulase.KO))),
+         Endo_cellulase = rowSums(across(any_of(Endo_cellulase.KO))),
+         Exo_hemicellulose = rowSums(across(any_of(Exo_hemicellulose.KO))),
+         Endo_hemicellulose = rowSums(across(any_of(Endo_hemicellulose.KO))),
+         Exo_chitosanase = rowSums(across(any_of(Exo_chitosanase.KO))),
+         Endo_chitosanase = rowSums(across(any_of(Endo_chitosanase.KO))),
+         Ligninase = rowSums(across(any_of(Ligninase.KO))),
+         TEA_Oxygen = rowSums(across(any_of(TEA_Oxygen.KO))),
+         TEA_Nitrate = rowSums(across(any_of(TEA_Nitrate.KO))),
+         TEA_Sulfite = rowSums(across(any_of(TEA_Sulfite.KO)))) %>%
+  select(Accession, Exo_amylase, Endo_amylase, Exo_cellulase, Endo_cellulase,
+         Exo_hemicellulose, Endo_hemicellulose, Exo_chitosanase, Endo_chitosanase,
+         Ligninase, TEA_Oxygen, TEA_Nitrate, TEA_Sulfite) %>%
+  {row.names(.) = NULL; .} %>%
+  left_join(bacterial.genome.mapped.amplified.taxa, join_by(Accession == ncbi_genbank_assembly_accession)) %>%
+  select(-(Kingdom:Genus)) %>%
+  left_join(Bacterial.species_taxonomic.name, join_by(Species == GTDB.name)) %>%
+  select(-Species) %>%
+  left_join(bacterial_taxonomic_rank_mapping, join_by(Amplicon.name == Species)) %>%
+  dplyr::rename("Species" = "Amplicon.name") %>%
+  relocate(all_of(c("Kingdom", "Phylum", "Class", "Order", "Family",
+                    "Genus", "Species", "Strain", "Checkm_completeness",
+                    "Checkm_contamination", "Genome_size")), .after = "Accession")
+
+
+## 2.3) Fungal genomes for gene copy variation analysis----
+
+# Number of genomes
+N3 <- length(fungal_genome_ko_list_for_target_gene_counts_variation_analysis)
+
+
+# Calculate target gene copy numbers for each genome
+fungal.traits.variation_KO.number <- list()
+for (i in 1:N3) {
+  tempt.name <- names(fungal_genome_ko_list_for_target_gene_counts_variation_analysis)[i]
+  
+  KO.list.tempt <- fungal_genome_ko_list_for_target_gene_counts_variation_analysis[[i]] %>%
+    table() %>% data.frame() %>%
+    setNames(c("KO", "Freq")) %>%
+    subset(KO %in% target.all.KO)
+  
+  fungal.traits.variation_KO.number[[i]] <- sapply(target.all.KO, function(x){
+    ifelse(x %in% KO.list.tempt$KO, 
+           KO.list.tempt %>% dplyr::slice(match(x, .$KO)) %>% pull(Freq),
+           0)
+  })
+  
+  names(fungal.traits.variation_KO.number)[i] <- tempt.name
+  cat("Processing genome ", i, "/", N3, ":",
+      " [", tempt.name, "]\n", sep = "")
+}
+
+
+### 2.3.1 Merge results----
+fungal.traits.variation_target.gene.number <- do.call(rbind, fungal.traits.variation_KO.number) %>%
+  data.frame() %>%
+  mutate(Accession = row.names(.),
+         Exo_amylase = rowSums(across(any_of(Exo_amylase.KO))),
+         Endo_amylase = rowSums(across(any_of(Endo_amylase.KO))),
+         Exo_cellulase = rowSums(across(any_of(Exo_cellulase.KO))),
+         Endo_cellulase = rowSums(across(any_of(Endo_cellulase.KO))),
+         Exo_hemicellulose = rowSums(across(any_of(Exo_hemicellulose.KO))),
+         Endo_hemicellulose = rowSums(across(any_of(Endo_hemicellulose.KO))),
+         Exo_chitosanase = rowSums(across(any_of(Exo_chitosanase.KO))),
+         Endo_chitosanase = rowSums(across(any_of(Endo_chitosanase.KO))),
+         Ligninase = rowSums(across(any_of(Ligninase.KO))),
+         TEA_Oxygen = rowSums(across(any_of(TEA_Oxygen.KO))),
+         TEA_Nitrate = rowSums(across(any_of(TEA_Nitrate.KO))),
+         TEA_Sulfite = rowSums(across(any_of(TEA_Sulfite.KO)))) %>%
+  select(Accession, Exo_amylase, Endo_amylase, Exo_cellulase, Endo_cellulase,
+         Exo_hemicellulose, Endo_hemicellulose, Exo_chitosanase, Endo_chitosanase,
+         Ligninase, TEA_Oxygen, TEA_Nitrate, TEA_Sulfite) %>%
+  {row.names(.) = NULL; .} %>%
+  left_join(fungi.genome, by = "Accession") %>%
+  relocate(Kingdom:Number_of_organelles, .after = "Accession")
+
+
+## 2.4) Genome-mapped fungal amplicon taxa----
+
+# Number of Genome
+N4 <- length(ko_list_for_genome_mapped_fungal_amplicon_taxa)
+
+
+# Number of genomes
+fungal.amplicon.traits_KO.number <- list()
+for (i in 1:N4) {
+  tempt.name <- names(ko_list_for_genome_mapped_fungal_amplicon_taxa)[i]
+  
+  KO.list.tempt <- ko_list_for_genome_mapped_fungal_amplicon_taxa[[i]] %>%
+    table() %>% data.frame() %>%
+    setNames(c("KO", "Freq")) %>%
+    subset(KO %in% target.all.KO)
+  
+  fungal.amplicon.traits_KO.number[[i]] <- sapply(target.all.KO, function(x){
+    ifelse(x %in% KO.list.tempt$KO, 
+           KO.list.tempt %>% dplyr::slice(match(x, .$KO)) %>% pull(Freq),
+           0)
+  })
+  
+  names(fungal.amplicon.traits_KO.number)[i] <- tempt.name
+  cat("Processing genome ", i, "/", N4, ":",
+      " [", tempt.name, "]\n", sep = "")
+}
+
+
+### 2.4.1 Merge results----
+fungal.amplicon.traits_target.gene.number <- do.call(rbind, fungal.amplicon.traits_KO.number) %>%
+  data.frame() %>%
+  mutate(Accession = row.names(.),
+         Exo_amylase = rowSums(across(any_of(Exo_amylase.KO))),
+         Endo_amylase = rowSums(across(any_of(Endo_amylase.KO))),
+         Exo_cellulase = rowSums(across(any_of(Exo_cellulase.KO))),
+         Endo_cellulase = rowSums(across(any_of(Endo_cellulase.KO))),
+         Exo_hemicellulose = rowSums(across(any_of(Exo_hemicellulose.KO))),
+         Endo_hemicellulose = rowSums(across(any_of(Endo_hemicellulose.KO))),
+         Exo_chitosanase = rowSums(across(any_of(Exo_chitosanase.KO))),
+         Endo_chitosanase = rowSums(across(any_of(Endo_chitosanase.KO))),
+         Ligninase = rowSums(across(any_of(Ligninase.KO))),
+         TEA_Oxygen = rowSums(across(any_of(TEA_Oxygen.KO))),
+         TEA_Nitrate = rowSums(across(any_of(TEA_Nitrate.KO))),
+         TEA_Sulfite = rowSums(across(any_of(TEA_Sulfite.KO)))) %>%
+  select(Accession, Exo_amylase, Endo_amylase, Exo_cellulase, Endo_cellulase,
+         Exo_hemicellulose, Endo_hemicellulose, Exo_chitosanase, Endo_chitosanase,
+         Ligninase, TEA_Oxygen, TEA_Nitrate, TEA_Sulfite) %>%
+  {row.names(.) = NULL; .} %>%
+  left_join(fungal.genome.mapped.amplified.genus.taxa, by = "Accession") %>% 
+  select(-(Kingdom:Family)) %>%
+  left_join(genus.taxonomy.info, join_by(Genus == Ncbi.name)) %>%
+  select(-Genus) %>%
+  left_join(fungal_taxonomic_rank_mapping, join_by(Amplicon.name == Genus)) %>%
+  rename(Genus = Amplicon.name) %>%
+  relocate(all_of(c("Kingdom", "Phylum", "Class", "Order", "Family",
+                    "Genus", "Species", "Strain", "Tax_id", "Assembly_level",
+                    "Genome_size", "Genome_coverage", "Scaffolds_number",
+                    "Scaffold_N50", "Scaffold_L50", "Contigs_number",
+                    "Contigs_N50", "Contigs_L50", "Number_of_organelles")), .after = "Accession")
+
+
+## 2.5) Save data----
+save(bacterial.traits.variation_KO.number,
+     bacterial.amplicon.traits_KO.number,
+     fungal.traits.variation_KO.number,
+     fungal.amplicon.traits_KO.number,
+     bacterial.traits.variation_target.gene.number,
+     bacterial.amplicon.traits_target.gene.number,
+     fungal.traits.variation_target.gene.number,
+     fungal.amplicon.traits_target.gene.number,
+     file = file.path(path_result.output,
+                      "all_genome_target.gene.number.Rdata"))
