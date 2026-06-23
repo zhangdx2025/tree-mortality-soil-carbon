@@ -394,7 +394,6 @@ SOC.enzyme.line.data <- ggplot_build(p.SOC.enzyme)$data[[2]] %>%
   mutate(curve_id = interaction(PANEL, Pairs, drop = TRUE)) %>%
   left_join(ggplot_build(p.SOC.enzyme)$layout$layout, by = "PANEL")
 
-
 p.SOC.enzyme + geom_bezier0(aes(x, y, group = curve_id),
                             data = SOC.enzyme.line.data, colour = "grey70",
                             linewidth = 0.15,
