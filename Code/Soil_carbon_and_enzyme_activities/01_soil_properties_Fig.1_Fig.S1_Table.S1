@@ -62,7 +62,6 @@ for (i in seq_along(variable.name)) {
 
 
 ## 2.2) ANOVA for Main Effects----
-
 Anova.result <- list()
 Comparison.result <- list()
 
