@@ -20,7 +20,7 @@ load(file.path(path_result.output, "microbial_composition_results.Rdata"))
 
 
 ## 1.2) Load taxa Silva and Ncbi database names----
-Bacterial.species_taxonomic.name <- read_excel(file.path(path_microbial.trait,
+Bacterial.species_taxonomic.name <- read_excel(file.path(path_result.output,
                                                          "Bacterial.species_taxonomic.name.xlsx")) %>%
   data.frame() %>%
   na.omit()
