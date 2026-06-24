@@ -481,5 +481,5 @@ fungi.WVP.observed %>%
 # 4. Save data----
 save(bacterial.traits.variance, bacterial.total.WVP.result,
      fungal.traits.variance, fungal.total.WVP.result,
-     file = file.path(path_result.output, "Microbal_traits_variation_results"))
+     file = file.path(path_result.output, "Microbal_traits_variation_results.Rdata"))
 
