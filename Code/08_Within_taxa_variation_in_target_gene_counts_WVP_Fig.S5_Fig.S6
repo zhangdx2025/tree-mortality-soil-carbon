@@ -203,14 +203,14 @@ for (i in 1:n_boot) {
     mutate(bootstrap.id = i)
 }
 
+
+## 2.3) Fig.S5----
 bacterial.total.WVP.result <- bind_rows(bacterial.traits.variance) %>%
   {row.names(.) <- NULL;.} %>%
   relocate("bootstrap.id", .before = 1)
 
 head(bacterial.total.WVP.result)
 
-
-## 2.3) Fig.S5----
 bacteria.WVP.observed <- bacterial.total.WVP.result %>%
   subset(type == "observed") %>%
   group_by(Gene) %>%
@@ -410,14 +410,14 @@ for (i in 1:n_boot) {
     mutate(bootstrap.id = i)
 }
 
+
+## 3.3) Fig.S6----
 fungal.total.WVP.result <- bind_rows(fungal.traits.variance) %>%
   {row.names(.) <- NULL;.} %>%
   relocate("bootstrap.id", .before = 1)
 
 head(fungal.total.WVP.result)
 
-
-## 3.3) Fig.S6----
 fungi.WVP.observed <- fungal.total.WVP.result %>%
   subset(type == "observed") %>%
   group_by(Gene) %>%
@@ -482,4 +482,3 @@ fungi.WVP.observed %>%
 save(bacterial.traits.variance, bacterial.total.WVP.result,
      fungal.traits.variance, fungal.total.WVP.result,
      file = file.path(path_result.output, "Microbal_traits_variation_results.Rdata"))
-
