@@ -130,7 +130,7 @@ head(bacterial.traits.variation_KO.number)
 
 
 ### 2.1.1 Merge results----
-bacterial.traits.variation_target.gene.number <- do.call(rbind, bacterial.traits.variation_KO.number) %>%
+bacterial.traits.variation_target.gene.counts <- do.call(rbind, bacterial.traits.variation_KO.number) %>%
   data.frame() %>%
   mutate(Accession = row.names(.),
          Exo_amylase = rowSums(across(any_of(Exo_amylase.KO))),
@@ -185,7 +185,7 @@ head(bacterial.amplicon.traits_KO.number)
 
 
 ### 2.2.1 Merge results----
-bacterial.amplicon.traits_target.gene.number <- do.call(rbind, bacterial.amplicon.traits_KO.number) %>%
+bacterial.amplicon.traits_target.gene.counts <- do.call(rbind, bacterial.amplicon.traits_KO.number) %>%
   data.frame() %>%
   mutate(Accession = row.names(.),
          Exo_amylase = rowSums(across(any_of(Exo_amylase.KO))),
@@ -244,7 +244,7 @@ for (i in 1:N3) {
 
 
 ### 2.3.1 Merge results----
-fungal.traits.variation_target.gene.number <- do.call(rbind, fungal.traits.variation_KO.number) %>%
+fungal.traits.variation_target.gene.counts <- do.call(rbind, fungal.traits.variation_KO.number) %>%
   data.frame() %>%
   mutate(Accession = row.names(.),
          Exo_amylase = rowSums(across(any_of(Exo_amylase.KO))),
@@ -296,7 +296,7 @@ for (i in 1:N4) {
 
 
 ### 2.4.1 Merge results----
-fungal.amplicon.traits_target.gene.number <- do.call(rbind, fungal.amplicon.traits_KO.number) %>%
+fungal.amplicon.traits_target.gene.counts <- do.call(rbind, fungal.amplicon.traits_KO.number) %>%
   data.frame() %>%
   mutate(Accession = row.names(.),
          Exo_amylase = rowSums(across(any_of(Exo_amylase.KO))),
@@ -317,7 +317,7 @@ fungal.amplicon.traits_target.gene.number <- do.call(rbind, fungal.amplicon.trai
   {row.names(.) = NULL; .} %>%
   left_join(fungal.genome.mapped.amplified.genus.taxa, by = "Accession") %>% 
   select(-(Kingdom:Family)) %>%
-  left_join(genus.taxonomy.info, join_by(Genus == Ncbi.name)) %>%
+  left_join(Fungal.genus_taxonomic.name, join_by(Genus == Ncbi.name)) %>%
   select(-Genus) %>%
   left_join(fungal_taxonomic_rank_mapping, join_by(Amplicon.name == Genus)) %>%
   rename(Genus = Amplicon.name) %>%
@@ -333,9 +333,9 @@ save(bacterial.traits.variation_KO.number,
      bacterial.amplicon.traits_KO.number,
      fungal.traits.variation_KO.number,
      fungal.amplicon.traits_KO.number,
-     bacterial.traits.variation_target.gene.number,
-     bacterial.amplicon.traits_target.gene.number,
-     fungal.traits.variation_target.gene.number,
-     fungal.amplicon.traits_target.gene.number,
+     bacterial.traits.variation_target.gene.counts,
+     bacterial.amplicon.traits_target.gene.counts,
+     fungal.traits.variation_target.gene.counts,
+     fungal.amplicon.traits_target.gene.counts,
      file = file.path(path_result.output,
-                      "all_genome_target.gene.number.Rdata"))
+                      "all_genome_target.gene.counts.Rdata"))
