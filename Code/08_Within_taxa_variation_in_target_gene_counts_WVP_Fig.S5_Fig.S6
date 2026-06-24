@@ -1,0 +1,485 @@
+# Set the working directory
+setwd("~R_script")
+
+
+path_microbial.trait <- file.path(getwd(), "Data", "Microbial_trait")
+path_microbial.composition <- file.path(getwd(), "Data", "Microbial_composition")
+path_result.output <- file.path(getwd(), "Result_output")
+
+
+# load library
+library(tidyverse)
+library(ape)
+library(lme4)
+
+
+# 1. Load data----
+bacteria.target.gene <- c("Exo_amylase", "Endo_amylase", "Exo_cellulase", "Endo_cellulase",
+                          "Exo_hemicellulose", "Endo_hemicellulose", "Exo_chitosanase", "Endo_chitosanase",
+                          "TEA_Oxygen", "TEA_Nitrate", "TEA_Sulfite")
+
+fungi.target.gene <- c("Exo_amylase", "Endo_amylase", "Exo_cellulase", "Endo_cellulase",
+                       "Exo_hemicellulose", "Endo_hemicellulose", "Exo_chitosanase", "Endo_chitosanase",
+                       "Ligninase")
+
+
+## 1.1) Phylogenetic tree----
+Phylogenetic.tree <- read.tree(file.path(path_microbial.trait,
+                                         "bac120_exact_dedup.rooted.tree"))
+is.rooted(Phylogenetic.tree)
+
+bacteria.tips <- Phylogenetic.tree$tip.label
+length(bacteria.tips)
+
+
+## 1.2) target gene copy number matrix----
+load(file.path(path_result.output, "all_genome_target.gene.counts.Rdata"))
+
+Species.list <- bacterial.traits.variation_target.gene.counts %>%
+  subset(Accession %in% bacteria.tips) %>%
+  group_by(Phylum, Class, Order, Family, Genus, Species) %>%
+  summarise(N = n(), .groups = "drop") %>%
+  subset(N >= 20) %>%
+  pull(Species)
+
+length(Species.list)
+
+
+## 1.4) Gene.presence absence.matrix----
+Bacteria.number.matrix <- bacterial.traits.variation_target.gene.counts %>%
+  subset(Accession %in% bacteria.tips &
+           Species %in% Species.list)
+
+nrow(Bacteria.number.matrix)
+
+Fungi.number.matrix <- fungal.traits.variation_target.gene.counts %>%
+  arrange(Scaffolds_number, desc(Scaffold_N50), desc(Genome_coverage)) %>%
+  group_by(Phylum, Class, Order, Family, Genus, Species) %>%
+  summarise(across(all_of(fungi.target.gene), ~mean(.x)), .groups = "drop") %>%
+  add_count(Genus, name = "genus_n") %>%
+  subset(genus_n >= 5) %>%
+  select(-genus_n) %>%
+  data.frame()
+
+Fungi.number.matrix$Genus %>%
+  table()
+
+
+# 2 Bacterial conserved taxonomic-level analysis-----
+
+## 2.1) Set parameters----
+n_boot <- 1000
+bacteria.n_perm <- 10
+
+bacteria.formula.list <- c("Target.gene ~ 1 + (1 | Phylum/Class/Order/Family/Genus/Species)",
+                           "Target.gene ~ 1 + (1 | Class/Order/Family/Genus/Species)",
+                           "Target.gene ~ 1 + (1 | Order/Family/Genus/Species)",
+                           "Target.gene ~ 1 + (1 | Family/Genus/Species)",
+                           "Target.gene ~ 1 + (1 | Genus/Species)",
+                           "Target.gene ~ 1 + (1 | Species)")
+
+
+## 2.2) Calculate WVP----
+bacterial.traits.variance <- list()
+
+set.seed(20260510)
+
+for (i in 1:n_boot) {
+  
+  WVP <- list()
+  idx <- 1
+  
+  df <- Bacteria.number.matrix %>%
+    group_by(Phylum, Class, Order, Family, Genus, Species) %>%
+    slice_sample(n = 10, replace = FALSE) %>%
+    ungroup()
+  
+  for (j in seq_along(bacteria.target.gene)) {
+    
+    df2 <- df %>%
+      mutate(Target.gene = .data[[bacteria.target.gene[j]]])
+    
+    for (k in 0:bacteria.n_perm) {
+      
+      if (k == 0) {
+        type.name <- "observed"
+        df3 <- df2
+      } else {
+        type.name <- "null"
+        df3 <- df2 %>%
+          mutate(Target.gene = sample(Target.gene))
+      }
+      
+      cat(sprintf("[Bootstrap %d/%d | Gene %s | Permutation %d/%d | %s]\n",
+                  i, n_boot, bacteria.target.gene[j], k, bacteria.n_perm, type.name))
+      
+      flush.console()
+      
+      zero_result <- data.frame(Gene = bacteria.target.gene[j],
+                                type = type.name,
+                                perm.id = k,
+                                Phylum = 0,
+                                Class = 0,
+                                Order = 0,
+                                Family = 0,
+                                Genus = 0,
+                                Species = 0)
+      
+      model <- NULL
+      
+      if (length(unique(df3$Target.gene)) > 1) {
+        for (fm in bacteria.formula.list) {
+          model <- tryCatch(
+            suppressMessages(suppressWarnings(lmer(as.formula(fm), data = df3))),
+            error = function(e) NULL
+          )
+          if (!is.null(model)) break
+        }
+      }
+      
+      if (is.null(model)) {
+        
+        WVP[[idx]] <- zero_result
+        
+      } else {
+        
+        variance_table <- as.data.frame(VarCorr(model)) %>%
+          mutate(level = case_when(
+            grp == "Phylum" ~ "Phylum",
+            grp == "Class:Phylum" ~ "Class",
+            grp == "Order:Class:Phylum" ~ "Order",
+            grp == "Family:Order:Class:Phylum" ~ "Family",
+            grp == "Genus:Family:Order:Class:Phylum" ~ "Genus",
+            grp == "Species:Genus:Family:Order:Class:Phylum" ~ "Species",
+            
+            grp == "Class" ~ "Class",
+            grp == "Order:Class" ~ "Order",
+            grp == "Family:Order:Class" ~ "Family",
+            grp == "Genus:Family:Order:Class" ~ "Genus",
+            grp == "Species:Genus:Family:Order:Class" ~ "Species",
+            
+            grp == "Order" ~ "Order",
+            grp == "Family:Order" ~ "Family",
+            grp == "Genus:Family:Order" ~ "Genus",
+            grp == "Species:Genus:Family:Order" ~ "Species",
+            
+            grp == "Family" ~ "Family",
+            grp == "Genus:Family" ~ "Genus",
+            grp == "Species:Genus:Family" ~ "Species",
+            
+            grp == "Genus" ~ "Genus",
+            grp == "Species:Genus" ~ "Species",
+            
+            grp == "Species" ~ "Species",
+            grp == "Residual" ~ "Residual",
+            TRUE ~ grp
+          )) %>%
+          select(level, variance = vcov)
+        
+        v <- c(Phylum = 0, Class = 0, Order = 0, Family = 0,
+               Genus = 0, Species = 0, Residual = 0)
+        v[variance_table$level] <- variance_table$variance
+        
+        total_var <- sum(v)
+        
+        WVP[[idx]] <- data.frame(
+          Gene = bacteria.target.gene[j],
+          type = type.name,
+          perm.id = k,
+          Phylum = (v["Class"] + v["Order"] + v["Family"] + v["Genus"] + v["Species"] + v["Residual"]) / total_var,
+          Class  = (v["Order"] + v["Family"] + v["Genus"] + v["Species"] + v["Residual"]) / total_var,
+          Order  = (v["Family"] + v["Genus"] + v["Species"] + v["Residual"]) / total_var,
+          Family = (v["Genus"] + v["Species"] + v["Residual"]) / total_var,
+          Genus  = (v["Species"] + v["Residual"]) / total_var,
+          Species = v["Residual"] / total_var
+        )
+      }
+      
+      idx <- idx + 1
+    }
+  }
+  
+  bacterial.traits.variance[[i]] <- bind_rows(WVP) %>%
+    mutate(bootstrap.id = i)
+}
+
+bacterial.total.WVP.result <- bind_rows(bacterial.traits.variance) %>%
+  {row.names(.) <- NULL;.} %>%
+  relocate("bootstrap.id", .before = 1)
+
+head(bacterial.total.WVP.result)
+
+
+## 2.3) Fig.S5----
+bacteria.WVP.observed <- bacterial.total.WVP.result %>%
+  subset(type == "observed") %>%
+  group_by(Gene) %>%
+  summarise(across(Phylum:Species,
+                   list(q025 = ~ quantile(.x, 0.025, na.rm = TRUE),
+                        q500 = ~ quantile(.x, 0.500, na.rm = TRUE),
+                        q975 = ~ quantile(.x, 0.975, na.rm = TRUE)))) %>%
+  distinct() %>% 
+  pivot_longer(cols = Phylum_q025:Species_q975,
+               names_to = c("Level", ".value"),
+               names_sep = "_") %>%
+  data.frame()
+
+head(bacteria.WVP.observed)
+
+bacteria.WVP.observed %>%
+  subset(Level == "Species") %>%
+  pull(q500) %>%
+  round(4) %>%
+  range()
+
+bacteria.WVP.null <- bacterial.total.WVP.result %>%
+  subset(type == "null") %>%
+  group_by(Gene) %>%
+  summarise(across(Phylum:Species,
+                   list(q025 = ~ quantile(.x, 0.025, na.rm = TRUE),
+                        q500 = ~ quantile(.x, 0.500, na.rm = TRUE),
+                        q975 = ~ quantile(.x, 0.975, na.rm = TRUE)))) %>%
+  distinct() %>% 
+  pivot_longer(cols = Phylum_q025:Species_q975,
+               names_to = c("Level", ".value"),
+               names_sep = "_") %>%
+  mutate(Level = factor(Level, levels = unique(bacteria.WVP.observed$Level)),
+         x = as.numeric(Level)) %>%
+  data.frame()
+
+head(bacteria.WVP.null)
+
+bacteria.WVP.observed %>%
+  mutate(Level = factor(Level, levels = unique(bacteria.WVP.observed$Level)),
+         Gene = factor(Gene, levels = bacteria.target.gene),
+         x = as.numeric(Level)) %>%
+  ggplot(aes(x = x, y = q500)) +
+  geom_ribbon(aes(x = x, y = q500, ymin = q025, ymax = q975),
+              data = bacteria.WVP.null, inherit.aes = F, fill = "grey70") +
+  geom_errorbar(aes(ymin = q025, ymax = q975),
+                linewidth = 1, width = 0.2) +
+  geom_hline(yintercept = 0, linetype = 2, linewidth = 0.5) +
+  scale_x_continuous(breaks = seq_along(unique(bacteria.WVP.observed$Level)),
+                     labels = unique(bacteria.WVP.observed$Level)) +
+  scale_y_continuous(limits = c(-0.1, 1.1), breaks = seq(0, 1 , 0.2)) +
+  labs(x = NULL, y = "WVP") +
+  facet_wrap(~ Gene, ncol = 4, axes = "all", axis.labels = "all_x") +
+  theme_bw(base_size = 12) +
+  theme(panel.grid = element_blank(),
+        axis.ticks.length.x = unit(-0.15, "cm"),
+        axis.ticks.length.y = unit(-0.15, "cm"))
+
+
+# 3 Fungal conserved taxonomic-level analysis-----
+
+## 3.1) Set parameters----
+n_boot <- 1000
+fungi.n_perm <- 5
+
+fungi.formula.list <- c("Target.gene ~ 1 + (1 | Phylum/Class/Order/Family/Genus)",
+                        "Target.gene ~ 1 + (1 | Class/Order/Family/Genus)",
+                        "Target.gene ~ 1 + (1 | Order/Family/Genus)",
+                        "Target.gene ~ 1 + (1 | Family/Genus)",
+                        "Target.gene ~ 1 + (1 | Genus")
+
+
+## 3.2) Calculate WVP----
+fungal.traits.variance <- list()
+
+set.seed(20260510)
+
+for (i in 1:n_boot) {
+  
+  WVP <- list()
+  idx <- 1
+  
+  df <- Fungi.number.matrix %>%
+    group_by(Genus) %>%
+    slice_sample(n = 3, replace = FALSE) %>%
+    ungroup()
+  
+  for (j in seq_along(fungi.target.gene)) {
+    
+    df2 <- df %>%
+      mutate(Target.gene = .data[[fungi.target.gene[j]]])
+    
+    for (k in 0:fungi.n_perm) {
+      
+      if (k == 0) {
+        type.name <- "observed"
+        df3 <- df2
+      } else {
+        type.name <- "null"
+        df3 <- df2 %>%
+          mutate(Target.gene = sample(Target.gene))
+      }
+      
+      cat(sprintf("[Bootstrap %d/%d | Gene %s | Permutation %d/%d | %s]\n",
+                  i, n_boot, fungi.target.gene[j], k, fungi.n_perm, type.name))
+      
+      flush.console()
+      
+      zero_result <- data.frame(Gene = fungi.target.gene[j],
+                                type = type.name,
+                                perm.id = k,
+                                Phylum = 0,
+                                Class = 0,
+                                Order = 0,
+                                Family = 0,
+                                Genus = 0)
+      
+      model <- NULL
+      fit_error <- NULL
+      
+      if (length(unique(df3$Target.gene)) > 1) {
+        for (fm in fungi.formula.list) {
+          tmp <- tryCatch(
+            suppressMessages(
+              suppressWarnings(
+                lmer(as.formula(fm), data = df3)
+              )
+            ),
+            error = function(e) e
+          )
+          
+          if (!inherits(tmp, "error")) {
+            model <- tmp
+            break
+          } else {
+            fit_error <- conditionMessage(tmp)
+          }
+        }
+      }
+      
+      if (is.null(model)) {
+        cat("Model fitting failed: ", fit_error, "\n")
+        
+        WVP[[idx]] <- zero_result
+      } else {
+        
+        variance_table <- as.data.frame(VarCorr(model)) %>%
+          mutate(level = case_when(
+            grp == "Phylum" ~ "Phylum",
+            grp == "Class:Phylum" ~ "Class",
+            grp == "Order:Class:Phylum" ~ "Order",
+            grp == "Family:Order:Class:Phylum" ~ "Family",
+            grp == "Genus:Family:Order:Class:Phylum" ~ "Genus",
+            
+            grp == "Class" ~ "Class",
+            grp == "Order:Class" ~ "Order",
+            grp == "Family:Order:Class" ~ "Family",
+            grp == "Genus:Family:Order:Class" ~ "Genus",
+            
+            grp == "Order" ~ "Order",
+            grp == "Family:Order" ~ "Family",
+            grp == "Genus:Family:Order" ~ "Genus",
+            
+            grp == "Family" ~ "Family",
+            grp == "Genus:Family" ~ "Genus",
+            
+            grp == "Genus" ~ "Genus",
+            
+            grp == "Residual" ~ "Residual",
+            TRUE ~ grp
+          )) %>%
+          select(level, variance = vcov)
+        
+        v <- c(Phylum = 0, Class = 0, Order = 0, Family = 0,
+               Genus = 0, Species = 0, Residual = 0)
+        v[variance_table$level] <- variance_table$variance
+        
+        total_var <- sum(v)
+        
+        WVP[[idx]] <- data.frame(
+          Gene = fungi.target.gene[j],
+          type = type.name,
+          perm.id = k,
+          Phylum = (v["Class"] + v["Order"] + v["Family"] + v["Genus"] + v["Residual"]) / total_var,
+          Class  = (v["Order"] + v["Family"] + v["Genus"] + v["Residual"]) / total_var,
+          Order  = (v["Family"] + v["Genus"] + v["Residual"]) / total_var,
+          Family = (v["Genus"] + v["Residual"]) / total_var,
+          Genus  = (v["Residual"]) / total_var
+        )
+      }
+      
+      idx <- idx + 1
+    }
+  }
+  
+  fungal.traits.variance[[i]] <- bind_rows(WVP) %>%
+    mutate(bootstrap.id = i)
+}
+
+fungal.total.WVP.result <- bind_rows(fungal.traits.variance) %>%
+  {row.names(.) <- NULL;.} %>%
+  relocate("bootstrap.id", .before = 1)
+
+head(fungal.total.WVP.result)
+
+
+## 3.3) Fig.S6----
+fungi.WVP.observed <- fungal.total.WVP.result %>%
+  subset(type == "observed") %>%
+  group_by(Gene) %>%
+  summarise(across(Phylum:Genus,
+                   list(q025 = ~ quantile(.x, 0.025, na.rm = TRUE),
+                        q500 = ~ quantile(.x, 0.500, na.rm = TRUE),
+                        q975 = ~ quantile(.x, 0.975, na.rm = TRUE)))) %>%
+  distinct() %>% 
+  pivot_longer(cols = Phylum_q025:Genus_q975,
+               names_to = c("Level", ".value"),
+               names_sep = "_") %>%
+  data.frame()
+
+head(fungi.WVP.observed)
+
+fungi.WVP.observed %>%
+  subset(Level == "Genus") %>%
+  pull(q500) %>%
+  round(4) %>%
+  range()
+
+fungi.WVP.null <- fungal.total.WVP.result %>%
+  subset(type == "null") %>%
+  group_by(Gene) %>%
+  summarise(across(Phylum:Genus,
+                   list(q025 = ~ quantile(.x, 0.025, na.rm = TRUE),
+                        q500 = ~ quantile(.x, 0.500, na.rm = TRUE),
+                        q975 = ~ quantile(.x, 0.975, na.rm = TRUE)))) %>%
+  distinct() %>% 
+  pivot_longer(cols = Phylum_q025:Genus_q975,
+               names_to = c("Level", ".value"),
+               names_sep = "_") %>%
+  mutate(Level = factor(Level, levels = unique(fungi.WVP.observed$Level)),
+         Gene = factor(Gene, levels = fungi.target.gene),
+         x = as.numeric(Level)) %>%
+  data.frame()
+
+head(fungi.WVP.null)
+
+fungi.WVP.observed %>%
+  mutate(Level = factor(Level, levels = unique(fungi.WVP.observed$Level)),
+         Gene = factor(Gene, levels = fungi.target.gene),
+         x = as.numeric(Level)) %>%
+  ggplot(aes(x = x, y = q500)) +
+  geom_ribbon(aes(x = x, y = q500, ymin = q025, ymax = q975),
+              data = fungi.WVP.null, inherit.aes = F, fill = "grey70") +
+  geom_errorbar(aes(ymin = q025, ymax = q975),
+                linewidth = 1, width = 0.2) +
+  geom_hline(yintercept = 0, linetype = 2, linewidth = 0.5) +
+  scale_x_continuous(breaks = seq_along(unique(fungi.WVP.observed$Level)),
+                     labels = unique(fungi.WVP.observed$Level)) +
+  scale_y_continuous(limits = c(-0.1, 1.1), breaks = seq(0, 1 , 0.2)) +
+  labs(x = NULL, y = "WVP") +
+  facet_wrap(~ Gene, ncol = 3, axes = "all", axis.labels = "all_x") +
+  theme_bw(base_size = 12) +
+  theme(panel.grid = element_blank(),
+        axis.ticks.length.x = unit(-0.15, "cm"),
+        axis.ticks.length.y = unit(-0.15, "cm"))
+
+
+# 4. Save data----
+save(bacterial.traits.variance, bacterial.total.WVP.result,
+     fungal.traits.variance, fungal.total.WVP.result,
+     file = file.path(path_result.output, "Microbal_traits_variation_results"))
+
