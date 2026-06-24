@@ -1,0 +1,414 @@
+# Set the working directory
+setwd("~R_script")
+
+
+path_microbial.trait <- file.path(getwd(), "Data", "Microbial_trait")
+path_microbial.composition <- file.path(getwd(), "Data", "Microbial_composition")
+path_soil_properties <- file.path(getwd(), "Data", "Soil_properties")
+path_result.output <- file.path(getwd(), "Result_output")
+
+
+# load packages
+library(tidyverse)
+library(caret)
+library(xgboost)
+library(SHAPforxgboost)
+library(ggpubr)
+library(patchwork)
+
+
+# 1. Loading data----
+
+## 1.1) microbial_composition----
+load(file.path(path_result.output, "microbial_composition_results.Rdata"))
+
+
+## 1.2) Target gene----
+bacteria.target.gene <- c("Exo_amylase", "Endo_amylase", "Exo_cellulase",
+                          "Endo_cellulase", "Exo_hemicellulose",
+                          "Endo_hemicellulose", "Exo_chitosanase", "Endo_chitosanase",
+                          "TEA_Oxygen", "TEA_Nitrate")
+
+fungi.target.gene <- c("Exo_amylase", "Endo_amylase", "Exo_cellulase",
+                       "Endo_cellulase", "Exo_hemicellulose", "Endo_hemicellulose",
+                       "Exo_chitosanase", "Endo_chitosanase", "Ligninase")
+
+
+## 1.3) Gene copy number matrix----
+load(file.path(path_result.output, "all_genome_target.gene.counts.Rdata"))
+
+
+### 1.3.1 Bacteria----
+bacteria.data <- bacterial.amplicon.traits_target.gene.counts %>%
+  group_by(Species) %>%
+  summarise(across(all_of(bacteria.target.gene), ~mean(.x)), .groups = "drop") %>%
+  left_join(bacteria.wilcox.result_df[, c("taxa", "log2FC.ridge", "log2FC.valley")],
+            join_by("Species" == "taxa")) %>%
+  column_to_rownames("Species") %>%
+  select(all_of(c("log2FC.ridge", "log2FC.valley", bacteria.target.gene)))
+
+
+### 1.3.2 Fungi----
+fungi.data <- fungal.amplicon.traits_target.gene.counts %>%
+  group_by(Genus) %>%
+  summarise(across(all_of(fungi.target.gene), ~mean(.x)), .groups = "drop") %>%
+  left_join(fungi.wilcox.result_df[, c("Genus", "Species", "log2FC.ridge", "log2FC.valley")],
+            join_by("Genus" == "Genus")) %>%
+  select(all_of(c("Species", "Genus", "log2FC.ridge", "log2FC.valley", fungi.target.gene))) %>%
+  column_to_rownames("Species")
+
+
+## 1.4) Hyperparameter Matrix----
+param_grid <- expand.grid(
+  eta = c(0.04, 0.06, 0.08),
+  max_depth = c(2, 3, 4),
+  min_child_weight = c(3, 6, 9),
+  gamma = c(0.6, 0.8, 1),
+  subsample = c(0.6, 0.8),
+  colsample_bytree = c(0.6, 0.8),
+  lambda = c(1, 2, 3),
+  alpha  = c(0.5, 1, 2)
+)
+
+nrow(param_grid)
+
+# Train the XGBoost model----
+
+# 2. Bacteria.ridge----
+
+# Data preparation
+bacteria.ridge.total.data <- bacteria.data %>%
+  select(all_of(c("log2FC.ridge", bacteria.target.gene))) %>% 
+  rename(Abundance_shift = log2FC.ridge)
+
+
+## 2.1) Training set and testing set----
+set.seed(20260430)
+bacteria.ridge.train_idx <- createDataPartition(bacteria.ridge.total.data$Abundance_shift,
+                                                p = 0.8, list = FALSE)
+
+# Training set
+bacteria.ridge.train_data <- bacteria.ridge.total.data[bacteria.ridge.train_idx, ]
+
+# Testing set
+bacteria.ridge.test_data <- bacteria.ridge.total.data[-bacteria.ridge.train_idx, ]
+
+
+## 2.2) Convert to DMatrix----
+bacteria.ridge.dtrain <- xgb.DMatrix(
+  data = as.matrix(bacteria.ridge.train_data[, bacteria.target.gene]),
+  label = bacteria.ridge.train_data$Abundance_shift
+)
+
+
+## 2.3) Fixed cross-validation folds----
+set.seed(20260430)
+
+bacteria.ridge.cv_folds <- createFolds(
+  bacteria.ridge.train_data$Abundance_shift,
+  k = 10,
+  returnTrain = FALSE
+)
+
+
+## 2.4) Hyperparameter tuning----
+bacteria.ridge.cv_results <- param_grid %>%
+  mutate(rmse_min = NA_real_,
+         rmse_at_best_nrounds = NA_real_,
+         best_nrounds = NA_integer_)
+
+set.seed(20260430)
+
+for (i in 1:nrow(param_grid)) {
+  
+  cat("Cross-validation [bacteria in ridge]: processing parameter combination",
+      i, "of", nrow(param_grid), "\n")
+  
+  params <- list(
+    booster = "gbtree",
+    objective = "reg:squarederror",
+    eval_metric = "rmse",
+    eta = param_grid$eta[i],
+    max_depth = param_grid$max_depth[i],
+    min_child_weight = param_grid$min_child_weight[i],
+    gamma = param_grid$gamma[i],
+    subsample = param_grid$subsample[i],
+    colsample_bytree = param_grid$colsample_bytree[i],
+    lambda = param_grid$lambda[i],
+    alpha = param_grid$alpha[i],
+    nthread = 1
+  )
+  
+  cv <- xgb.cv(
+    params = params,
+    data = bacteria.ridge.dtrain,
+    nrounds = 500,
+    folds = bacteria.ridge.cv_folds,
+    early_stopping_rounds = 50,
+    verbose = 0
+  )
+  
+  eval_log <- cv$evaluation_log$test_rmse_mean
+  
+  bacteria.ridge.cv_results$rmse_min[i] <- min(eval_log)
+  bacteria.ridge.cv_results$rmse_at_best_nrounds[i] <- eval_log[cv$best_iteration]
+  bacteria.ridge.cv_results$best_nrounds[i] <- cv$best_iteration
+}
+
+
+# 3. Bacteria.valley----
+
+# Data preparation
+bacteria.valley.total.data <- bacteria.data %>%
+  select(all_of(c("log2FC.valley", bacteria.target.gene))) %>% 
+  rename(Abundance_shift = log2FC.valley)
+
+
+## 3.1) Training set and testing set----
+set.seed(20260430)
+bacteria.valley.train_idx <- createDataPartition(bacteria.valley.total.data$Abundance_shift,
+                                                 p = 0.8, list = FALSE)
+
+# Training set
+bacteria.valley.train_data <- bacteria.valley.total.data[bacteria.valley.train_idx, ]
+
+# Testing set
+bacteria.valley.test_data <- bacteria.valley.total.data[-bacteria.valley.train_idx, ]
+
+
+## 3.2) Convert to DMatrix----
+bacteria.valley.dtrain <- xgb.DMatrix(
+  data = as.matrix(bacteria.valley.train_data[, bacteria.target.gene]),
+  label = bacteria.valley.train_data$Abundance_shift
+)
+
+
+## 3.3) Fixed cross-validation folds----
+set.seed(20260430)
+
+bacteria.valley.cv_folds <- createFolds(
+  bacteria.valley.train_data$Abundance_shift,
+  k = 10,
+  returnTrain = FALSE
+)
+
+
+## 3.4) Hyperparameter tuning----
+bacteria.valley.cv_results <- param_grid %>%
+  mutate(rmse_min = NA_real_,
+         rmse_at_best_nrounds = NA_real_,
+         best_nrounds = NA_integer_)
+
+set.seed(20260430)
+
+for (i in 1:nrow(param_grid)) {
+  
+  cat("Cross-validation [bacteria in valley]: processing parameter combination",
+      i, "of", nrow(param_grid), "\n")
+  
+  params <- list(
+    booster = "gbtree",
+    objective = "reg:squarederror",
+    eval_metric = "rmse",
+    eta = param_grid$eta[i],
+    max_depth = param_grid$max_depth[i],
+    min_child_weight = param_grid$min_child_weight[i],
+    gamma = param_grid$gamma[i],
+    subsample = param_grid$subsample[i],
+    colsample_bytree = param_grid$colsample_bytree[i],
+    lambda = param_grid$lambda[i],
+    alpha = param_grid$alpha[i],
+    nthread = 1
+  )
+  
+  cv <- xgb.cv(
+    params = params,
+    data = bacteria.valley.dtrain,
+    nrounds = 500,
+    folds = bacteria.valley.cv_folds,
+    early_stopping_rounds = 50,
+    verbose = 0
+  )
+  
+  eval_log <- cv$evaluation_log$test_rmse_mean
+  
+  bacteria.valley.cv_results$rmse_min[i] <- min(eval_log)
+  bacteria.valley.cv_results$rmse_at_best_nrounds[i] <- eval_log[cv$best_iteration]
+  bacteria.valley.cv_results$best_nrounds[i] <- cv$best_iteration
+}
+
+
+# 4. Fungi.ridge----
+
+# Data preparation
+fungi.ridge.total.data <- fungi.data %>%
+  select(all_of(c("log2FC.ridge", fungi.target.gene))) %>% 
+  rename(Abundance_shift = log2FC.ridge)
+
+
+## 4.1) Training set and testing set----
+set.seed(20260430)
+fungi.ridge.train_idx <- createDataPartition(fungi.ridge.total.data$Abundance_shift,
+                                             p = 0.8, list = FALSE)
+
+# Training set
+fungi.ridge.train_data <- fungi.ridge.total.data[fungi.ridge.train_idx, ]
+
+# testing set
+fungi.ridge.test_data <- fungi.ridge.total.data[-fungi.ridge.train_idx, ]
+
+
+## 4.2) Convert to DMatrix----
+fungi.ridge.dtrain <- xgb.DMatrix(
+  data = as.matrix(fungi.ridge.train_data[, fungi.target.gene]),
+  label = fungi.ridge.train_data$Abundance_shift
+)
+
+
+## 4.3) Fixed 10-fold cross-validation----
+set.seed(20260430)
+
+fungi.ridge.cv_folds <- createFolds(
+  fungi.ridge.train_data$Abundance_shift,
+  k = 10,
+  returnTrain = FALSE
+)
+
+
+## 4.4) Hyperparameter tuning----
+fungi.ridge.cv_results <- param_grid %>%
+  mutate(rmse_min = NA_real_,
+         rmse_at_best_nrounds = NA_real_,
+         best_nrounds = NA_integer_)
+
+
+set.seed(20260430)
+for (i in 1:nrow(param_grid)) {
+  
+  cat("Cross-validation [fungi in ridge]: processing parameter combination",
+      i, "of", nrow(param_grid), "\n")
+  
+  params <- list(
+    booster = "gbtree",
+    objective = "reg:squarederror",
+    eval_metric = "rmse",
+    eta = param_grid$eta[i],
+    max_depth = param_grid$max_depth[i],
+    min_child_weight = param_grid$min_child_weight[i],
+    gamma = param_grid$gamma[i],
+    subsample = param_grid$subsample[i],
+    colsample_bytree = param_grid$colsample_bytree[i],
+    lambda = param_grid$lambda[i],
+    alpha = param_grid$alpha[i],
+    nthread = 1
+  )
+  
+  cv <- xgb.cv(
+    params = params,
+    data = fungi.ridge.dtrain,
+    nrounds = 500,
+    folds = fungi.ridge.cv_folds,
+    early_stopping_rounds = 50,
+    verbose = 0
+  )
+  
+  eval_log <- cv$evaluation_log$test_rmse_mean
+  
+  fungi.ridge.cv_results$rmse_min[i] <- min(eval_log)
+  fungi.ridge.cv_results$rmse_at_best_nrounds[i] <- eval_log[cv$best_iteration]
+  fungi.ridge.cv_results$best_nrounds[i] <- cv$best_iteration
+}
+
+
+# 5. Fungi.valley----
+
+# Data preparation
+fungi.valley.total.data <- fungi.data %>%
+  select(all_of(c("log2FC.valley", fungi.target.gene))) %>% 
+  rename(Abundance_shift = log2FC.valley)
+
+
+## 5.1) Training set and testing set----
+set.seed(20260430)
+fungi.valley.train_idx <- createDataPartition(fungi.valley.total.data$Abundance_shift,
+                                              p = 0.8, list = FALSE)
+
+# Training set
+fungi.valley.train_data <- fungi.valley.total.data[fungi.valley.train_idx, ]
+
+
+# testing set
+fungi.valley.test_data <- fungi.valley.total.data[-fungi.valley.train_idx, ]
+
+
+## 5.2) Convert to DMatrix----
+fungi.valley.dtrain <- xgb.DMatrix(
+  data = as.matrix(fungi.valley.train_data[, fungi.target.gene]),
+  label = fungi.valley.train_data$Abundance_shift
+)
+
+
+## 5.3) Fixed 10-fold cross-validation----
+set.seed(20260430)
+
+fungi.valley.cv_folds <- createFolds(
+  fungi.valley.train_data$Abundance_shift,
+  k = 10,
+  returnTrain = FALSE
+)
+
+
+## 5.4) Hyperparameter tuning----
+fungi.valley.cv_results <- param_grid %>%
+  mutate(rmse_min = NA_real_,
+         rmse_at_best_nrounds = NA_real_,
+         best_nrounds = NA_integer_)
+
+
+set.seed(20260430)
+for (i in 1:nrow(param_grid)) {
+  
+  cat("Cross-validation [fungi in valley]: processing parameter combination",
+      i, "of", nrow(param_grid), "\n")
+  
+  params <- list(
+    booster = "gbtree",
+    objective = "reg:squarederror",
+    eval_metric = "rmse",
+    eta = param_grid$eta[i],
+    max_depth = param_grid$max_depth[i],
+    min_child_weight = param_grid$min_child_weight[i],
+    gamma = param_grid$gamma[i],
+    subsample = param_grid$subsample[i],
+    colsample_bytree = param_grid$colsample_bytree[i],
+    lambda = param_grid$lambda[i],
+    alpha = param_grid$alpha[i],
+    nthread = 1
+  )
+  
+  cv <- xgb.cv(
+    params = params,
+    data = fungi.valley.dtrain,
+    nrounds = 500,
+    folds = fungi.valley.cv_folds,
+    early_stopping_rounds = 50,
+    verbose = 0
+  )
+  
+  eval_log <- cv$evaluation_log$test_rmse_mean
+  
+  fungi.valley.cv_results$rmse_min[i] <- min(eval_log)
+  fungi.valley.cv_results$rmse_at_best_nrounds[i] <- eval_log[cv$best_iteration]
+  fungi.valley.cv_results$best_nrounds[i] <- cv$best_iteration
+}
+
+
+# 6 Save cross-validation results----
+save(bacteria.data,
+     fungi.data,
+     bacteria.ridge.cv_results,
+     bacteria.valley.cv_results,
+     fungi.ridge.cv_results,
+     fungi.valley.cv_results,
+     file = file.path(path_result.output,
+                      "xgboost_major_machine_learning_results.Rdata"))
