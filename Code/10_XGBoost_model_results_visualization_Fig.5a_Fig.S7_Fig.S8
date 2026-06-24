@@ -1,0 +1,933 @@
+# Set the working directory
+setwd("~R_script")
+
+
+path_microbial.trait <- file.path(getwd(), "Data", "Microbial_trait")
+path_microbial.composition <- file.path(getwd(), "Data", "Microbial_composition")
+path_soil_properties <- file.path(getwd(), "Data", "Soil_properties")
+path_result.output <- file.path(getwd(), "Result_output")
+
+
+# load packages
+library(tidyverse)
+library(caret)
+library(xgboost)
+library(SHAPforxgboost)
+library(ggpubr)
+library(patchwork)
+library(ggh4x)
+
+
+# 1. Loading data----
+
+## 1.1) microbial_composition----
+load(file.path(path_result.output, "microbial_composition_results.Rdata"))
+
+
+## 1.2) Target gene----
+bacteria.target.gene <- c("Exo_amylase", "Endo_amylase", "Exo_cellulase",
+                          "Endo_cellulase", "Exo_hemicellulose",
+                          "Endo_hemicellulose", "Exo_chitosanase", "Endo_chitosanase",
+                          "TEA_Oxygen", "TEA_Nitrate")
+
+fungi.target.gene <- c("Exo_amylase", "Endo_amylase", "Exo_cellulase",
+                       "Endo_cellulase", "Exo_hemicellulose", "Endo_hemicellulose",
+                       "Exo_chitosanase", "Endo_chitosanase", "Ligninase")
+
+
+## 1.3) Gene copy number matrix----
+load(file.path(path_result.output, "all_genome_target.gene.counts.Rdata"))
+
+
+### 1.3.1 Bacteria----
+bacteria.data <- bacterial.amplicon.traits_target.gene.counts %>%
+  group_by(Species) %>%
+  summarise(across(all_of(bacteria.target.gene), ~mean(.x)), .groups = "drop") %>%
+  left_join(bacteria.wilcox.result_df[, c("taxa", "log2FC.ridge", "log2FC.valley")],
+            join_by("Species" == "taxa")) %>%
+  column_to_rownames("Species") %>%
+  select(all_of(c("log2FC.ridge", "log2FC.valley", bacteria.target.gene)))
+
+
+### 1.3.2 Fungi----
+fungi.data <- fungal.amplicon.traits_target.gene.counts %>%
+  group_by(Genus) %>%
+  summarise(across(all_of(fungi.target.gene), ~mean(.x)), .groups = "drop") %>%
+  left_join(fungi.wilcox.result_df[, c("Genus", "Species", "log2FC.ridge", "log2FC.valley")],
+            join_by("Genus" == "Genus")) %>%
+  select(all_of(c("Species", "Genus", "log2FC.ridge", "log2FC.valley", fungi.target.gene))) %>%
+  column_to_rownames("Species")
+
+
+## 1.4) Hyperparameter Matrix----
+param_grid <- expand.grid(
+  eta = c(0.04, 0.06, 0.08),
+  max_depth = c(2, 3, 4),
+  min_child_weight = c(3, 6, 9),
+  gamma = c(0.6, 0.8, 1),
+  subsample = c(0.6, 0.8),
+  colsample_bytree = c(0.6, 0.8),
+  lambda = c(1, 2, 3),
+  alpha  = c(0.5, 1, 2)
+)
+
+nrow(param_grid)
+
+
+## 1.5) Bacteria.ridge----
+
+# Data preparation
+bacteria.ridge.total.data <- bacteria.data %>%
+  select(all_of(c("log2FC.ridge", bacteria.target.gene))) %>% 
+  rename(Abundance_shift = log2FC.ridge)
+
+
+### 1.5.1 Training set and testing set----
+set.seed(20260430)
+bacteria.ridge.train_idx <- createDataPartition(bacteria.ridge.total.data$Abundance_shift,
+                                                p = 0.8, list = FALSE)
+
+
+# Training set
+bacteria.ridge.train_data <- bacteria.ridge.total.data[bacteria.ridge.train_idx, ]
+
+# Testing set
+bacteria.ridge.test_data <- bacteria.ridge.total.data[-bacteria.ridge.train_idx, ]
+
+
+### 1.5.2 Convert to DMatrix----
+bacteria.ridge.dtrain <- xgb.DMatrix(
+  data = as.matrix(bacteria.ridge.train_data[, bacteria.target.gene]),
+  label = bacteria.ridge.train_data$Abundance_shift
+)
+
+
+## 1.6) Bacteria.valley----
+
+# Data preparation
+bacteria.valley.total.data <- bacteria.data %>%
+  select(all_of(c("log2FC.valley", bacteria.target.gene))) %>% 
+  rename(Abundance_shift = log2FC.valley)
+
+
+### 1.6.1 Training set and testing set----
+set.seed(20260430)
+bacteria.valley.train_idx <- createDataPartition(bacteria.valley.total.data$Abundance_shift,
+                                                 p = 0.8, list = FALSE)
+
+
+# Training set
+bacteria.valley.train_data <- bacteria.valley.total.data[bacteria.valley.train_idx, ]
+
+# Testing set
+bacteria.valley.test_data <- bacteria.valley.total.data[-bacteria.valley.train_idx, ]
+
+
+### 1.6.2 Convert to DMatrix----
+bacteria.valley.dtrain <- xgb.DMatrix(
+  data = as.matrix(bacteria.valley.train_data[, bacteria.target.gene]),
+  label = bacteria.valley.train_data$Abundance_shift
+)
+
+
+## 1.7) Fungi.ridge----
+
+# Data preparation
+fungi.ridge.total.data <- fungi.data %>%
+  select(all_of(c("log2FC.ridge", fungi.target.gene))) %>% 
+  rename(Abundance_shift = log2FC.ridge)
+
+
+### 1.7.1 Training set and testing set----
+set.seed(20260430)
+fungi.ridge.train_idx <- createDataPartition(fungi.ridge.total.data$Abundance_shift,
+                                             p = 0.8, list = FALSE)
+
+
+# Training set
+fungi.ridge.train_data <- fungi.ridge.total.data[fungi.ridge.train_idx, ]
+
+# testing set
+fungi.ridge.test_data <- fungi.ridge.total.data[-fungi.ridge.train_idx, ]
+
+
+### 1.7.2 Convert to DMatrix----
+fungi.ridge.dtrain <- xgb.DMatrix(
+  data = as.matrix(fungi.ridge.train_data[, fungi.target.gene]),
+  label = fungi.ridge.train_data$Abundance_shift
+)
+
+
+## 1.8) Fungi.valley----
+
+# Data preparation
+fungi.valley.total.data <- fungi.data %>%
+  select(all_of(c("log2FC.valley", fungi.target.gene))) %>% 
+  rename(Abundance_shift = log2FC.valley)
+
+
+### 1.8.1 Training set and testing set----
+set.seed(20260430)
+fungi.valley.train_idx <- createDataPartition(fungi.valley.total.data$Abundance_shift,
+                                              p = 0.8, list = FALSE)
+
+
+# Training set
+fungi.valley.train_data <- fungi.valley.total.data[fungi.valley.train_idx, ]
+
+# testing set
+fungi.valley.test_data <- fungi.valley.total.data[-fungi.valley.train_idx, ]
+
+
+### 1.8.2 Convert to DMatrix----
+fungi.valley.dtrain <- xgb.DMatrix(
+  data = as.matrix(fungi.valley.train_data[, fungi.target.gene]),
+  label = fungi.valley.train_data$Abundance_shift
+)
+
+
+## 1.9) Load XGBoost model----
+load(file.path(path_result.output, "xgboost_major_machine_learning_results.Rdata"))
+
+
+# 2 Visualization----
+
+## 2.1) Bacteria ridge----
+
+### 2.1.1  Extract the optimal parameter----
+bacteria.ridge.best_idx <- which.min(bacteria.ridge.cv_results$rmse_at_best_nrounds)
+bacteria.ridge.best_params <- param_grid[bacteria.ridge.best_idx, ]
+bacteria.ridge.best_nrounds <- bacteria.ridge.cv_results$best_nrounds[bacteria.ridge.best_idx]
+
+
+### 2.1.2 Train the optimal model----
+set.seed(20260430)
+
+bacteria.ridge.final_model <- xgb.train(
+  params = list(
+    booster = "gbtree",
+    objective = "reg:squarederror",
+    eval_metric = "rmse",
+    eta = bacteria.ridge.best_params$eta,
+    max_depth = bacteria.ridge.best_params$max_depth,
+    min_child_weight = bacteria.ridge.best_params$min_child_weight,
+    gamma = bacteria.ridge.best_params$gamma,
+    subsample = bacteria.ridge.best_params$subsample,
+    colsample_bytree = bacteria.ridge.best_params$colsample_bytree,
+    lambda = bacteria.ridge.best_params$lambda,
+    alpha = bacteria.ridge.best_params$alpha,
+    nthread = 1
+  ),
+  data = bacteria.ridge.dtrain,
+  nrounds = bacteria.ridge.best_nrounds,
+  verbose = 1
+)
+
+
+### 2.1.3 Testing model performance----
+bacteria.ridge.pred_test <- predict(bacteria.ridge.final_model,
+                                    as.matrix(bacteria.ridge.test_data[, bacteria.target.gene]))
+
+bacteria.ridge.test.result <- data.frame(pred = bacteria.ridge.pred_test,
+                                         obs = bacteria.ridge.test_data$Abundance_shift)
+
+postResample(pred = bacteria.ridge.test.result$pred, obs = bacteria.ridge.test.result$obs)
+
+
+### Fig.S7_bacteria.ridge----
+bacteria.ridge.test.result %>%
+  ggplot(aes(x = obs, y = pred)) +
+  geom_point(size = 6, shape = 21, fill = "#FB467A") +
+  stat_cor(size = 10) +
+  stat_smooth(geom = "smooth", formula = "y ~ x", alpha = 1,
+              se = T, method = "lm", fill = "#DC999E",
+              colour = "#F30013", linewidth = 1.5) +
+  labs(x = "Observed value", y = "Predicted value") +
+  scale_x_continuous(limits = c(-6, 2), breaks = seq(-6, 2, 2)) +
+  scale_y_continuous(limits = c(-3, 2), breaks = seq(-3, 2, 1)) +
+  theme_bw(base_size = 16) +
+  theme(panel.border = element_rect(colour = "black",
+                                    linewidth = 1,
+                                    fill = NA),
+        panel.grid = element_blank(),
+        axis.ticks.length.x = unit(-0.20, "cm"),
+        axis.ticks.length.y = unit(-0.20, "cm"))
+
+
+### 2.1.4 SHAP Analysis----
+bacteria.ridge.shap_long <- shap.prep(xgb_model = bacteria.ridge.final_model,
+                                      X_train = as.matrix(bacteria.ridge.train_data[, bacteria.target.gene])) %>%
+  data.frame() %>%
+  group_by(variable) %>%
+  mutate(across(stdfvalue, ~ (.-min(.)) / (max(.) - min(.))),
+         Type = case_when(variable %in% c("Exo_amylase", "Exo_cellulase", "Exo_hemicellulose",
+                                          "Exo_chitosanase") ~ "Exo_enzyme",
+                          variable %in% c("Endo_amylase", "Endo_cellulase", "Endo_hemicellulose",
+                                          "Endo_chitosanase") ~ "Endo_enzyme",
+                          .default = "TEA"))
+
+
+### 2.1.5 Variable importance----
+bacteria.ridge_importance <- bacteria.ridge.shap_long %>%
+  group_by(variable) %>%
+  summarise(mean_abs_shap = mean(abs(value))) %>%
+  arrange(desc(mean_abs_shap))
+
+head(bacteria.ridge.shap_long)
+
+
+### Fig.S8a----
+
+### 2.1.6 Swarm_Plot----
+bacteria.ridge_SHAP_Swarm_Plot <- bacteria.ridge.shap_long %>%
+  ggplot(aes(x = value, y = reorder(variable, mean_value))) +
+  geom_vline(xintercept = 0, linetype = 2, color = "black", linewidth = 0.5) +
+  geom_point(aes(fill = stdfvalue),
+             shape = 21, size = 3.5,
+             stroke = 0, alpha = 0.5, color = "black",
+             position = position_jitter(height = 0.06, seed = 1234)) +
+  scale_fill_gradientn(colours = c("blue", "red"),
+                       values = scales::rescale(c(0, 0.25, 0.5, 0.75, 1)),
+                       name = "Feature value",
+                       breaks = c(0, 1),
+                       labels = c("Low", "High"),
+                       guide = guide_colourbar(
+                         title.position = "bottom",
+                         title.hjust = 0.5,
+                         title.vjust = 4,
+                         barwidth = unit(8, "cm"),
+                         barheight = unit(0.2, "cm"))) +
+  labs(x = "SHAP value (Impact on model output)",
+       y = NULL, fill = NULL,
+       title = "Bacteria ridge") +
+  theme_bw(base_size = 16) +
+  theme(legend.position = "bottom",
+        panel.grid = element_blank(),
+        axis.title.x.bottom = element_text(vjust = -2),
+        legend.box.margin = margin(r = 10),
+        plot.margin = margin(10, 0, 5, 5),
+        axis.ticks.length = unit(-0.15, "cm"))
+
+
+### 2.1.7 Variable importance plot----
+bacteria.ridge_Feature_Importance_Plot <- bacteria.ridge_importance %>%
+  ggplot(aes(x = mean_abs_shap, y = reorder(variable, mean_abs_shap))) +
+  geom_col(fill = "#BF7843", width = 0.6, color = "black", alpha = 0.5) +
+  scale_x_continuous(limits = c(0, 0.18), breaks = seq(0, 0.18, 0.06),
+                     expand =  expansion(0, 0), position = "top") +
+  labs(x = "Mean |SHAP|", y = NULL) +
+  theme_minimal(base_size = 16) +
+  theme(axis.text.y = element_blank(),
+        panel.grid = element_blank(),
+        axis.line.x = element_line(),
+        axis.ticks.x = element_line(), 
+        plot.margin = margin(10, 10, 5, 0),
+        axis.title.x.top = element_text(vjust = 2),
+        axis.ticks.length = unit(-0.15, "cm"))
+
+
+### 2.1.8 Merge Graphics----
+bacteria.ridge_SHAP_Swarm_Plot + 
+  bacteria.ridge_Feature_Importance_Plot + 
+  plot_layout(widths = c(3.5, 1.5))
+
+bacteria.ridge.plot.variable <- bacteria.ridge.shap_long %>%
+  mutate(Type = factor(Type, levels = c("Exo_enzyme", "Endo_enzyme", "TEA"))) %>%
+  arrange(desc(mean_value)) %>%
+  distinct(Type, variable) %>%
+  group_by(Type) %>% 
+  dplyr::slice(1:2) %>%
+  pull(variable) %>% as.character()
+
+
+### Fig.5a----
+
+# Relationship between gene number and SHAP values
+bacteria.ridge.shap_long %>%
+  subset(variable %in% bacteria.ridge.plot.variable) %>%
+  mutate(variable = factor(variable, levels = bacteria.ridge.plot.variable)) %>%
+  ungroup() %>%
+  ggplot(aes(x = rfvalue, y = value)) +
+  geom_hline(yintercept = 0, linetype = 2, linewidth = 0.5) +
+  geom_point(size = 5, fill = "#FFC69B", shape = 21, color = "black") + 
+  geom_smooth(method = "lm", formula = y ~ log1p(x), fill = "#BF7843",
+              linewidth = 2, alpha = 1, color = "#E60012") + 
+  facet_wrap(~ variable, scale = "free", nrow = 1) +
+  facetted_pos_scales(
+    x = list(variable == bacteria.ridge.plot.variable[1] ~ scale_x_continuous(
+      limits = c(0, 20), breaks = seq(0, 20, 4),
+      expand = expansion(mult = 0.1, add = 0.1)),
+      variable == bacteria.ridge.plot.variable[2] ~ scale_x_continuous(
+        limits = c(0, 8), breaks = seq(0, 8, 2),
+        expand = expansion(mult = 0.1, add = 0.1)),
+      variable %in% bacteria.ridge.plot.variable[3:6] ~ scale_x_continuous(
+        limits = c(0, 6), breaks = seq(0, 6, 1),
+        expand = expansion(mult = 0.1, add = 0.1))),
+    y = list(variable %in% bacteria.ridge.plot.variable[1] ~ scale_y_continuous(
+      limits = c(-0.9, 0.3), breaks = round(seq(-0.9, 0.3, 0.3), 1)),
+      variable %in% bacteria.ridge.plot.variable[2:3] ~ scale_y_continuous(
+        limits = c(-0.6, 0.2), breaks = round(seq(-0.6, 0.2, 0.2), 1)),
+      variable %in% bacteria.ridge.plot.variable[c(4, 6)] ~ scale_y_continuous(
+        limits = c(-0.3, 0.1), breaks = round(seq(-0.3, 0.1, 0.1), 1)),
+      variable == bacteria.ridge.plot.variable[5] ~ scale_y_continuous(
+        limits = c(-1.2, 0.4), breaks = round(seq(-1.2, 0.4, 0.4), 1)))) +
+  labs(x = "Target KO count", y = "SHAP value") +
+  theme_bw(base_size = 16) +
+  theme(panel.grid = element_blank(),
+        axis.ticks.length = unit(-0.15, "cm"))
+
+
+## 2.2) Bacteria valley----
+
+### 2.2.1  Extract the optimal parameter----
+bacteria.valley.best_idx <- which.min(bacteria.valley.cv_results$rmse_at_best_nrounds)
+bacteria.valley.best_params <- param_grid[bacteria.valley.best_idx, ]
+bacteria.valley.best_nrounds <- bacteria.valley.cv_results$best_nrounds[bacteria.valley.best_idx]
+
+
+###  2.2.2 Train the optimal model----
+set.seed(20260430)
+
+bacteria.valley.final_model <- xgb.train(
+  params = list(
+    booster = "gbtree",
+    objective = "reg:squarederror",
+    eval_metric = "rmse",
+    eta = bacteria.valley.best_params$eta,
+    max_depth = bacteria.valley.best_params$max_depth,
+    min_child_weight = bacteria.valley.best_params$min_child_weight,
+    gamma = bacteria.valley.best_params$gamma,
+    subsample = bacteria.valley.best_params$subsample,
+    colsample_bytree = bacteria.valley.best_params$colsample_bytree,
+    lambda = bacteria.valley.best_params$lambda,
+    alpha = bacteria.valley.best_params$alpha,
+    nthread = 1
+  ),
+  data = bacteria.valley.dtrain,
+  nrounds = bacteria.valley.best_nrounds,
+  verbose = 1
+)
+
+
+### 2.2.3 Testing model performance----
+bacteria.valley.pred_test <- predict(bacteria.valley.final_model,
+                                     as.matrix(bacteria.valley.test_data[, bacteria.target.gene]))
+
+bacteria.valley.test.result <- data.frame(pred = bacteria.valley.pred_test,
+                                          obs = bacteria.valley.test_data$Abundance_shift)
+
+postResample(pred = bacteria.valley.test.result$pred, obs = bacteria.valley.test.result$obs)
+
+
+### Fig.S7_bacteria.valleye----
+bacteria.valley.test.result %>%
+  ggplot(aes(x = obs, y = pred)) +
+  geom_point(size = 6, shape = 21, fill = "#FB467A") +
+  stat_cor(size = 10) +
+  stat_smooth(geom = "smooth", formula = "y ~ x", alpha = 1,
+              se = T, method = "lm", fill = "#DC999E",
+              colour = "#F30013", linewidth = 1.5) +
+  labs(x = "Observed value", y = "Predicted value") +
+  scale_x_continuous(limits = c(-1, 2), breaks = seq(-1, 2, 0.5)) +
+  scale_y_continuous(limits = c(-0.4, 0.8), breaks = seq(-0.4, 0.8, 0.2)) +
+  theme_bw(base_size = 16) +
+  theme(panel.border = element_rect(colour = "black",
+                                    linewidth = 1,
+                                    fill = NA),
+        panel.grid = element_blank(),
+        axis.ticks.length.x = unit(-0.20, "cm"),
+        axis.ticks.length.y = unit(-0.20, "cm"))
+
+
+### 2.2.4 SHAP Analysis----
+bacteria.valley.shap_long <- shap.prep(xgb_model = bacteria.valley.final_model,
+                                       X_train = as.matrix(bacteria.valley.train_data[, bacteria.target.gene])) %>%
+  data.frame() %>%
+  group_by(variable) %>%
+  mutate(across(stdfvalue, ~ (.-min(.)) / (max(.) - min(.))),
+         Type = case_when(variable %in% c("Exo_amylase", "Exo_cellulase", "Exo_hemicellulose",
+                                          "Exo_chitosanase") ~ "Exo_enzyme",
+                          variable %in% c("Endo_amylase", "Endo_cellulase", "Endo_hemicellulose",
+                                          "Endo_chitosanase") ~ "Endo_enzyme",
+                          .default = "TEA"))
+
+
+### 2.2.5 Variable importance----
+bacteria.valley_importance <- bacteria.valley.shap_long %>%
+  group_by(variable) %>%
+  summarise(mean_abs_shap = mean(abs(value))) %>%
+  arrange(desc(mean_abs_shap))
+
+head(bacteria.valley.shap_long)
+
+
+### Fig.S8b----
+
+### 2.2.6 Swarm_Plot----
+bacteria.valley_SHAP_Swarm_Plot <- bacteria.valley.shap_long %>%
+  ggplot(aes(x = value, y = reorder(variable, mean_value))) +
+  geom_vline(xintercept = 0, linetype = 2, color = "black", linewidth = 0.5) +
+  geom_point(aes(fill = stdfvalue),
+             shape = 21, size = 3.5,
+             stroke = 0, alpha = 0.5, color = "black",
+             position = position_jitter(height = 0.06, seed = 1234)) +
+  scale_fill_gradientn(colours = c("blue", "red"),
+                       values = scales::rescale(c(0, 0.25, 0.5, 0.75, 1)),
+                       name = "Feature value",
+                       breaks = c(0, 1),
+                       labels = c("Low", "High"),
+                       guide = guide_colourbar(
+                         title.position = "bottom",
+                         title.hjust = 0.5,
+                         title.vjust = 4,
+                         barwidth = unit(8, "cm"),
+                         barheight = unit(0.2, "cm"))) +
+  labs(x = "SHAP value (Impact on model output)",
+       y = NULL, fill = NULL,
+       title = "Bacteria valley") +
+  scale_x_continuous(limits = c(-0.1, 0.2), breaks = seq(-0.1, 0.2, 0.05)) +
+  theme_bw(base_size = 16) +
+  theme(legend.position = "bottom",
+        panel.grid = element_blank(),
+        axis.title.x.bottom = element_text(vjust = -2),
+        legend.box.margin = margin(r = 10),
+        plot.margin = margin(10, 0, 5, 5),
+        axis.ticks.length = unit(-0.15, "cm"))
+
+
+### 2.2.7 Variable importance plot----
+bacteria.valley_Feature_Importance_Plot <- bacteria.valley_importance %>%
+  ggplot(aes(x = mean_abs_shap, y = reorder(variable, mean_abs_shap))) +
+  geom_col(fill = "#4A97BF", width = 0.6, color = "black", alpha = 0.5) +
+  scale_x_continuous(limits = c(0, 0.06), breaks = seq(0, 0.06, 0.02),
+                     expand =  expansion(0, 0), position = "top") +
+  labs(x = "Mean |SHAP|", y = NULL) +
+  theme_minimal(base_size = 16) +
+  theme(axis.text.y = element_blank(),
+        panel.grid = element_blank(),
+        axis.line.x = element_line(),
+        axis.ticks.x = element_line(), 
+        plot.margin = margin(10, 10, 5, 0),
+        axis.title.x.top = element_text(vjust = 2),
+        axis.ticks.length = unit(-0.15, "cm"))
+
+
+### 2.2.8 Merge Graphics----
+bacteria.valley_SHAP_Swarm_Plot + 
+  bacteria.valley_Feature_Importance_Plot + 
+  plot_layout(widths = c(3.5, 1.5))
+
+
+bacteria.valley.plot.variable <- bacteria.valley.shap_long %>%
+  mutate(Type = factor(Type, levels = c("Exo_enzyme", "Endo_enzyme", "TEA"))) %>%
+  arrange(desc(mean_value)) %>%
+  distinct(Type, variable) %>%
+  group_by(Type) %>% 
+  dplyr::slice(1:2) %>%
+  pull(variable) %>% as.character()
+
+
+### Fig.5b----
+
+# Relationship between gene number and SHAP values
+bacteria.valley.shap_long %>%
+  subset(variable %in% bacteria.valley.plot.variable) %>%
+  mutate(variable = factor(variable, levels = bacteria.valley.plot.variable)) %>%
+  ungroup() %>%
+  ggplot(aes(x = rfvalue, y = value)) +
+  geom_hline(yintercept = 0, linetype = 2, linewidth = 0.5) +
+  geom_point(size = 5, shape = 21, fill = "#A1DFFF") +
+  geom_smooth(method = "lm", formula = y ~ log1p(x), fill = "#4A97BF",
+              linewidth = 2, alpha = 1, color = "#0000FC") + 
+  facet_wrap(~ variable, scale = "free", nrow = 1) +
+  facetted_pos_scales(
+    x = list(variable == bacteria.valley.plot.variable[1] ~ scale_x_continuous(
+      limits = c(0, 20), breaks = seq(0, 20, 4),
+      expand = expansion(mult = 0.1, add = 0.1)),
+      variable %in% bacteria.valley.plot.variable[2] ~ scale_x_continuous(
+        limits = c(0, 16), breaks = seq(0, 16, 4),
+        expand = expansion(mult = 0.1, add = 0.1)),
+      variable %in% bacteria.valley.plot.variable[3] ~ scale_x_continuous(
+        limits = c(0, 8), breaks = seq(0, 8, 2),
+        expand = expansion(mult = 0.1, add = 0.1)),
+      variable %in% bacteria.valley.plot.variable[4:6] ~ scale_x_continuous(
+        limits = c(0, 6), breaks = seq(0, 6, 1),
+        expand = expansion(mult = 0.1, add = 0.1))),
+    y = list(variable %in% bacteria.valley.plot.variable[c(2:3, 5)] ~ scale_y_continuous(
+      limits = c(-0.12, 0.12), breaks = round(seq(-0.12, 0.12, 0.06), 2)),
+      variable %in% bacteria.valley.plot.variable[c(1, 4)] ~ scale_y_continuous(
+        limits = c(-0.1, 0.1), breaks = round(seq(-0.1, 0.1, 0.05), 2)),
+      variable %in% bacteria.valley.plot.variable[6] ~ scale_y_continuous(
+        limits = c(-0.08, 0.08), breaks = round(seq(-0.08, 0.08, 0.04), 2))
+      
+    )) +
+  labs(x = "Target KO count", y = "SHAP value") +
+  theme_bw(base_size = 16) +
+  theme(panel.grid = element_blank(),
+        axis.ticks.length = unit(-0.15, "cm"))
+
+
+## 2.3) Fungi ridge----
+
+### 2.3.1  Extract the optimal parameter----
+fungi.ridge.best_idx <- which.min(fungi.ridge.cv_results$rmse_at_best_nrounds)
+fungi.ridge.best_params <- param_grid[fungi.ridge.best_idx, ]
+fungi.ridge.best_nrounds <- fungi.ridge.cv_results$best_nrounds[fungi.ridge.best_idx]
+
+
+### 2.3.2 Train the optimal model----
+set.seed(20260430)
+
+fungi.ridge.final_model <- xgb.train(
+  params = list(
+    booster = "gbtree",
+    objective = "reg:squarederror",
+    eval_metric = "rmse",
+    eta = fungi.ridge.best_params$eta,
+    max_depth = fungi.ridge.best_params$max_depth,
+    min_child_weight = fungi.ridge.best_params$min_child_weight,
+    gamma = fungi.ridge.best_params$gamma,
+    subsample = fungi.ridge.best_params$subsample,
+    colsample_bytree = fungi.ridge.best_params$colsample_bytree,
+    lambda = fungi.ridge.best_params$lambda,
+    alpha = fungi.ridge.best_params$alpha,
+    nthread = 1
+  ),
+  data = fungi.ridge.dtrain,
+  nrounds = fungi.ridge.best_nrounds,
+  verbose = 1
+)
+
+
+### 2.3.3 Testing model performance----
+fungi.ridge.pred_test <- predict(fungi.ridge.final_model,
+                                 as.matrix(fungi.ridge.test_data[, fungi.target.gene]))
+
+fungi.ridge.test.result <- data.frame(pred = fungi.ridge.pred_test,
+                                      obs = fungi.ridge.test_data$Abundance_shift)
+
+postResample(pred = fungi.ridge.test.result$pred, obs = fungi.ridge.test.result$obs)
+
+
+### Fig.S7_fungi.ridge----
+fungi.ridge.test.result %>%
+  ggplot(aes(x = obs, y = pred)) +
+  geom_point(size = 6, shape = 21, fill = "#AB5DF9") +
+  stat_cor(size = 10) +
+  stat_smooth(geom = "smooth", formula = "y ~ x", alpha = 1,
+              se = T, method = "lm", fill = "#AD8DCD",
+              colour = "#CD4FE7", linewidth = 1.5) +
+  labs(x = "Observed value", y = "Predicted value") +
+  scale_x_continuous(limits = c(-7, 3), breaks = seq(-7, 3, 2)) +
+  scale_y_continuous(limits = c(-3, 2), breaks = seq(-3, 2, 1)) +
+  theme_bw(base_size = 16) +
+  theme(panel.border = element_rect(colour = "black",
+                                    linewidth = 1,
+                                    fill = NA),
+        panel.grid = element_blank(),
+        axis.ticks.length.x = unit(-0.20, "cm"),
+        axis.ticks.length.y = unit(-0.20, "cm"))
+
+
+### 2.3.4 SHAP Analysis----
+fungi.ridge.shap_long <- shap.prep(xgb_model = fungi.ridge.final_model,
+                                   X_train = as.matrix(fungi.ridge.train_data[, fungi.target.gene])) %>%
+  data.frame() %>%
+  group_by(variable) %>%
+  mutate(across(stdfvalue, ~ (.-min(.)) / (max(.) - min(.))),
+         Type = case_when(variable %in% c("Exo_amylase", "Exo_cellulase", "Exo_hemicellulose",
+                                          "Exo_chitosanase") ~ "Exo_enzyme",
+                          variable %in% c("Endo_amylase", "Endo_cellulase", "Endo_hemicellulose",
+                                          "Endo_chitosanase", "Ligninase") ~ "Endo_enzyme",
+                          .default = "TEA"))
+
+
+### 2.3.5 Variable importance
+fungi.ridge_importance <- fungi.ridge.shap_long %>%
+  group_by(variable) %>%
+  summarise(mean_abs_shap = mean(abs(value))) %>%
+  arrange(desc(mean_abs_shap))
+
+head(fungi.ridge.shap_long)
+
+
+### 2.3.6 Swarm_Plot----
+fungi.ridge_SHAP_Swarm_Plot <- fungi.ridge.shap_long %>%
+  ggplot(aes(x = value, y = reorder(variable, mean_value))) +
+  geom_vline(xintercept = 0, linetype = 2, color = "black", linewidth = 0.5) +
+  geom_point(aes(fill = stdfvalue),
+             shape = 21, size = 3.5,
+             stroke = 0, alpha = 1, color = "black",
+             position = position_jitter(height = 0.06, seed = 1234)) +
+  scale_fill_gradientn(colours = c("blue", "red"),
+                       values = scales::rescale(c(0, 0.25, 0.5, 0.75, 1)),
+                       name = "Feature value",
+                       breaks = c(0, 1),
+                       labels = c("Low", "High"),
+                       guide = guide_colourbar(
+                         title.position = "bottom",
+                         title.hjust = 0.5,
+                         title.vjust = 4,
+                         barwidth = unit(8, "cm"),
+                         barheight = unit(0.2, "cm"))) +
+  labs(x = "SHAP value (Impact on model output)",
+       y = NULL, fill = NULL,
+       title = "Fungi ridge") +
+  theme_bw(base_size = 16) +
+  theme(legend.position = "bottom",
+        panel.grid = element_blank(),
+        axis.title.x.bottom = element_text(vjust = -2),
+        legend.box.margin = margin(r = 10),
+        plot.margin = margin(10, 0, 5, 5),
+        axis.ticks.length = unit(-0.15, "cm"))
+
+
+### 2.3.7 Variable importance plot----
+fungi.ridge_Feature_Importance_Plot <- fungi.ridge_importance %>%
+  ggplot(aes(x = mean_abs_shap, y = reorder(variable, mean_abs_shap))) +
+  geom_col(fill = "grey80", width = 0.6, color = "black") +
+  scale_x_continuous(limits = c(0, 0.4), breaks = seq(0, 0.4, 0.2),
+                     expand =  expansion(0, 0), position = "top") +
+  labs(x = "Mean |SHAP|", y = NULL) +
+  theme_minimal(base_size = 16) +
+  theme(axis.text.y = element_blank(),
+        panel.grid = element_blank(),
+        axis.line.x = element_line(),
+        axis.ticks.x = element_line(), 
+        plot.margin = margin(10, 10, 5, 0),
+        axis.title.x.top = element_text(vjust = 2),
+        axis.ticks.length = unit(-0.15, "cm"))
+
+
+### 2.3.8 Merge Graphics----
+fungi.ridge_SHAP_Swarm_Plot + 
+  fungi.ridge_Feature_Importance_Plot + 
+  plot_layout(widths = c(3.5, 1.5))
+
+fungi.ridge.plot.variable <- fungi.ridge.shap_long %>%
+  mutate(Type = factor(Type, levels = c("Exo_enzyme", "Endo_enzyme", "TEA"))) %>%
+  arrange(desc(mean_value)) %>%
+  distinct(Type, variable) %>%
+  group_by(Type) %>% 
+  dplyr::slice(1:2) %>%
+  pull(variable) %>% as.character()
+
+
+### 2.3.9 Relationship between gene number and SHAP values----
+fungi.ridge.shap_long %>%
+  subset(variable %in% fungi.ridge.plot.variable) %>%
+  mutate(variable = factor(variable, levels = fungi.ridge.plot.variable)) %>%
+  ungroup() %>%
+  ggplot(aes(x = rfvalue, y = value)) +
+  geom_hline(yintercept = 0, linetype = 2, linewidth = 0.5) +
+  geom_point(size = 5, fill = "#FFC69B", shape = 21, color = "black") + 
+  geom_smooth(method = "lm", formula = y ~ log1p(x), fill = "#BF7843",
+              linewidth = 2, alpha = 1, colour = "#E60012") + 
+  facet_wrap(~ variable, scale = "free", nrow = 1) +
+  facetted_pos_scales(
+    x = list(variable == fungi.ridge.plot.variable[1] ~ scale_x_continuous(
+      limits = c(0, 50), breaks = seq(0, 50, 10),
+      expand = expansion(mult = 0.1, add = 0.1)),
+      variable == fungi.ridge.plot.variable[2] ~ scale_x_continuous(
+        limits = c(0, 5), breaks = seq(0, 5, 1),
+        expand = expansion(mult = 0.1, add = 0.1)),
+      variable == fungi.ridge.plot.variable[3] ~ scale_x_continuous(
+        limits = c(0, 10), breaks = seq(0, 10, 2),
+        expand = expansion(mult = 0.1, add = 0.1)),
+      variable %in% fungi.ridge.plot.variable[4] ~ scale_x_continuous(
+        limits = c(0, 50), breaks = seq(0, 50, 10),
+        expand = expansion(mult = 0.1, add = 0.1))),
+    y = list(variable %in% fungi.ridge.plot.variable[1:2] ~ scale_y_continuous(
+      limits = c(-0.9, 0.3), breaks = round(seq(-0.9, 0.3, 0.3), 1)),
+      variable %in% fungi.ridge.plot.variable[3] ~ scale_y_continuous(
+        limits = c(-1.5, 0.5), breaks = round(seq(-1.5, 0.5, 0.5), 1)),
+      variable == fungi.ridge.plot.variable[4] ~ scale_y_continuous(
+        limits = c(-1.5, 0.5), breaks = round(seq(-1.5, 0.5, 0.5), 1)))) +
+  labs(x = "Target KO count", y = "SHAP value") +
+  theme_bw(base_size = 16) +
+  theme(panel.grid = element_blank(),
+        axis.ticks.length = unit(-0.15, "cm"))
+
+
+## 2.4) Fungi valley----
+
+### 2.4.1  Extract the optimal parameter----
+fungi.valley.best_idx <- which.min(fungi.valley.cv_results$rmse_at_best_nrounds)
+fungi.valley.best_params <- param_grid[fungi.valley.best_idx, ]
+fungi.valley.best_nrounds <- fungi.valley.cv_results$best_nrounds[fungi.valley.best_idx]
+
+
+### 2.4.2 Train the optimal model----
+set.seed(20260430)
+
+fungi.valley.final_model <- xgb.train(
+  params = list(
+    booster = "gbtree",
+    objective = "reg:squarederror",
+    eval_metric = "rmse",
+    eta = fungi.valley.best_params$eta,
+    max_depth = fungi.valley.best_params$max_depth,
+    min_child_weight = fungi.valley.best_params$min_child_weight,
+    gamma = fungi.valley.best_params$gamma,
+    subsample = fungi.valley.best_params$subsample,
+    colsample_bytree = fungi.valley.best_params$colsample_bytree,
+    lambda = fungi.valley.best_params$lambda,
+    alpha = fungi.valley.best_params$alpha,
+    nthread = 1
+  ),
+  data = fungi.valley.dtrain,
+  nrounds = fungi.valley.best_nrounds,
+  verbose = 1
+)
+
+
+### 2.4.3 Testing model performance----
+fungi.valley.pred_test <- predict(fungi.valley.final_model,
+                                  as.matrix(fungi.valley.test_data[, fungi.target.gene]))
+
+fungi.valley.test.result <- data.frame(pred = fungi.valley.pred_test,
+                                       obs = fungi.valley.test_data$Abundance_shift)
+
+postResample(pred = fungi.valley.test.result$pred, obs = fungi.valley.test.result$obs)
+
+
+### Fig.S7_fungi.valley----
+fungi.valley.test.result %>%
+  ggplot(aes(x = obs, y = pred)) +
+  geom_point(size = 6, shape = 21, fill = "#AB5DF9") +
+  stat_cor(size = 10) +
+  stat_smooth(geom = "smooth", formula = "y ~ x", alpha = 1,
+              se = T, method = "lm", fill = "#AD8DCD",
+              colour = "#CD4FE7", linewidth = 1.5) +
+  labs(x = "Observed value", y = "Predicted value") +
+  scale_x_continuous(limits = c(-12, 4), breaks = seq(-12, 4, 4)) +
+  scale_y_continuous(limits = c(-2, 2), breaks = seq(-2, 2, 1)) +
+  theme_bw(base_size = 16) +
+  theme(panel.border = element_rect(colour = "black",
+                                    linewidth = 1,
+                                    fill = NA),
+        panel.grid = element_blank(),
+        axis.ticks.length.x = unit(-0.20, "cm"),
+        axis.ticks.length.y = unit(-0.20, "cm"))
+
+
+### 2.4.4 SHAP Analysis----
+fungi.valley.shap_long <- shap.prep(xgb_model = fungi.valley.final_model,
+                                    X_train = as.matrix(fungi.valley.train_data[, fungi.target.gene])) %>%
+  data.frame() %>%
+  group_by(variable) %>%
+  mutate(across(stdfvalue, ~ (.-min(.)) / (max(.) - min(.))),
+         Type = case_when(variable %in% c("Exo_amylase", "Exo_cellulase", "Exo_hemicellulose",
+                                          "Exo_chitosanase") ~ "Exo_enzyme",
+                          variable %in% c("Endo_amylase", "Endo_cellulase", "Endo_hemicellulose",
+                                          "Endo_chitosanase", "Ligninase") ~ "Endo_enzyme",
+                          .default = "TEA"))
+
+
+### 2.4.5 Variable importance----
+fungi.valley_importance <- fungi.valley.shap_long %>%
+  group_by(variable) %>%
+  summarise(mean_abs_shap = mean(abs(value))) %>%
+  arrange(desc(mean_abs_shap))
+
+head(fungi.valley.shap_long)
+
+
+### 2.4.6 Swarm_Plot----
+fungi.valley_SHAP_Swarm_Plot <- fungi.valley.shap_long %>%
+  ggplot(aes(x = value, y = reorder(variable, mean_value))) +
+  geom_vline(xintercept = 0, linetype = 2, color = "black", linewidth = 0.5) +
+  geom_point(aes(fill = stdfvalue),
+             shape = 21, size = 3.5,
+             stroke = 0, alpha = 1, color = "black",
+             position = position_jitter(height = 0.06, seed = 1234)) +
+  scale_fill_gradientn(colours = c("blue", "red"),
+                       values = scales::rescale(c(0, 0.25, 0.5, 0.75, 1)),
+                       name = "Feature value",
+                       breaks = c(0, 1),
+                       labels = c("Low", "High"),
+                       guide = guide_colourbar(
+                         title.position = "bottom",
+                         title.hjust = 0.5,
+                         title.vjust = 4,
+                         barwidth = unit(8, "cm"),
+                         barheight = unit(0.2, "cm"))) +
+  labs(x = "SHAP value (Impact on model output)",
+       y = NULL, fill = NULL,
+       title = "Fungi valley") +
+  theme_bw(base_size = 16) +
+  theme(legend.position = "bottom",
+        panel.grid = element_blank(),
+        axis.title.x.bottom = element_text(vjust = -2),
+        legend.box.margin = margin(r = 10),
+        plot.margin = margin(10, 0, 5, 5),
+        axis.ticks.length = unit(-0.15, "cm"))
+
+
+### 2.4.7 Variable importance plot----
+fungi.valley_Feature_Importance_Plot <- fungi.valley_importance %>%
+  ggplot(aes(x = mean_abs_shap, y = reorder(variable, mean_abs_shap))) +
+  geom_col(fill = "grey80", width = 0.6, color = "black") +
+  scale_x_continuous(limits = c(0, 0.2), breaks = seq(0, 0.2, 0.1),
+                     expand =  expansion(0, 0), position = "top") +
+  labs(x = "Mean |SHAP|", y = NULL) +
+  theme_minimal(base_size = 16) +
+  theme(axis.text.y = element_blank(),
+        panel.grid = element_blank(),
+        axis.line.x = element_line(),
+        axis.ticks.x = element_line(), 
+        plot.margin = margin(10, 10, 5, 0),
+        axis.title.x.top = element_text(vjust = 2),
+        axis.ticks.length = unit(-0.15, "cm"))
+
+
+### 2.4.8 Merge Graphics----
+fungi.valley_SHAP_Swarm_Plot + 
+  fungi.valley_Feature_Importance_Plot + 
+  plot_layout(widths = c(3.5, 1.5))
+
+fungi.valley.plot.variable <- fungi.valley.shap_long %>%
+  mutate(Type = factor(Type, levels = c("Exo_enzyme", "Endo_enzyme", "TEA"))) %>%
+  arrange(desc(mean_value)) %>%
+  distinct(Type, variable) %>%
+  group_by(Type) %>% 
+  dplyr::slice(1:2) %>%
+  pull(variable) %>% as.character()
+
+
+### 2.4.9 Relationship between gene number and SHAP values----
+fungi.valley.shap_long %>%
+  subset(variable %in% fungi.valley.plot.variable) %>%
+  mutate(variable = factor(variable, levels = fungi.valley.plot.variable)) %>%
+  ungroup() %>%
+  ggplot(aes(x = rfvalue, y = value)) +
+  geom_hline(yintercept = 0, linetype = 2, linewidth = 0.5) +
+  geom_point(size = 5, shape = 21, fill = "#A1DFFF") +
+  geom_smooth(method = "lm", formula = y ~ log1p(x), fill = "#4A97BF",
+              linewidth = 2, alpha = 1, color = "#0000FC") + 
+  facet_wrap(~ variable, scale = "free", nrow = 1) +
+  facetted_pos_scales(
+    x = list(
+      variable == fungi.valley.plot.variable[1] ~ scale_x_continuous(
+        limits = c(0, 5), breaks = seq(0, 5, 1),
+        expand = expansion(mult = 0.1, add = 0.1)),
+      variable == fungi.valley.plot.variable[2] ~ scale_x_continuous(
+        limits = c(0, 50), breaks = seq(0, 50, 10),
+        expand = expansion(mult = 0.1, add = 0.1)),
+      variable == fungi.valley.plot.variable[3] ~ scale_x_continuous(
+        limits = c(0, 10), breaks = seq(0, 10, 2),
+        expand = expansion(mult = 0.1, add = 0.1)),
+      variable %in% fungi.valley.plot.variable[4] ~ scale_x_continuous(
+        limits = c(0, 50), breaks = seq(0, 50, 10),
+        expand = expansion(mult = 0.1, add = 0.1))),
+    y = list(variable %in% fungi.valley.plot.variable[1] ~ scale_y_continuous(
+      limits = c(-1, 1), breaks = round(seq(-1, 1, 0.5), 1)),
+      variable %in% fungi.valley.plot.variable[2:3] ~ scale_y_continuous(
+        limits = c(-0.3, 0.3), breaks = round(seq(-0.3, 0.3, 0.15), 1)),
+      variable == fungi.valley.plot.variable[4] ~ scale_y_continuous(
+        limits = c(-0.5, 0.5), breaks = round(seq(-0.5, 0.5, 0.25), 1)))) +
+  labs(x = "Target KO count", y = "SHAP value") +
+  theme_bw(base_size = 16) +
+  theme(panel.grid = element_blank(),
+        axis.ticks.length = unit(-0.15, "cm"))
+
