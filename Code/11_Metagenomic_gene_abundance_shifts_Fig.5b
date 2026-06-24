@@ -1,0 +1,172 @@
+# Set the working directory
+setwd("~R_script")
+
+
+library(tidyverse)
+library(readxl)
+library(edgeR)
+library(pheatmap)
+library(RColorBrewer)
+
+path_microbial.trait <- file.path(getwd(), "Data", "Microbial_trait")
+path_microbial.strategies <- file.path(getwd(), "Data", "Microbial_strategies")
+path_soil_properties <- file.path(getwd(), "Data", "Soil_properties")
+path_result.output <- file.path(getwd(), "Result_output")
+
+
+# 1 Load data----
+
+## 1.1) Sample information table----
+sample.info <- read_excel(file.path(path_soil_properties,
+                                    "soil.properties.xlsx"), sheet = "Data") %>%
+  arrange(Topography, Pairs, Status) %>%
+  mutate(Pairs = factor(Pairs))
+
+sample.ridge <- sample.info %>%
+  subset(Topography == "Ridge") %>%
+  pull(Sample.ID)
+
+sample.valley <- sample.info %>%
+  subset(Topography == "Valley") %>%
+  pull(Sample.ID)
+
+
+## 1.2) gene catalog----
+gene.catalog <- 
+  read_excel(file.path(path_microbial.trait,
+                       "carbon_acquisition_TEA_utilization_gene_catalog.xlsx")) %>%
+  select(KO, Type) %>%
+  data.frame()
+
+gene.list <- c("Exo_amylase", "Exo_cellulase", "Exo_hemicellulose", "Exo_chitosanase",
+               "Endo_amylase", "Endo_cellulase", "Endo_hemicellulose", "Endo_chitosanase",
+               "Ligninase", "TEA_Oxygen", "TEA_Nitrate", "TEA_Sulfite")
+
+KEGG.annotation.list <- read.table(file.path(path_microbial.strategies, "gene.ko.annotation.txt"),
+                                   header = T)
+
+
+## 1.3) Gene count table----
+genes.count.cpm.table <- read.table(
+  file.path(path_microbial.strategies, "genes_count_table.txt"), header = TRUE) %>%
+  column_to_rownames("SeqID") %>%
+  cpm() %>% data.frame() %>%
+  mutate(SeqID = row.names(.))
+
+
+# 2 Differential analysis of functional genes----
+
+## 2.1) Aggregate genes by functional type----
+target.gene.count.table <- genes.count.cpm.table %>%
+  subset(SeqID %in% KEGG.annotation.list$SeqID) %>%
+  left_join(KEGG.annotation.list, by = "SeqID") %>%
+  subset(KO %in% gene.catalog$KO) %>%
+  left_join(gene.catalog, by = "KO") %>%
+  group_by(Type) %>%
+  summarise(across(sample.info$Sample.ID, ~sum(.x)), .groups = "drop") %>%
+  data.frame() %>%
+  column_to_rownames("Type")
+
+
+## 2.2) Ridge----
+
+### 2.2.1 Data preparation----
+group.ridge <- sample.info %>%
+  subset(Topography == "Ridge") %>%
+  pull(Status)
+
+paired.ridge <- sample.info %>%
+  subset(Topography == "Ridge") %>%
+  pull(Pairs) %>%
+  factor() %>%
+  as.character()
+
+design.ridge <- model.matrix(~ group.ridge + paired.ridge)
+
+count.table.ridge <- target.gene.count.table %>%
+  select(all_of(sample.ridge))
+
+
+### 2.2.2 Differential analysis----
+genes.count.diff.ridge <- DGEList(counts = count.table.ridge,
+                                  samples = sample.ridge,
+                                  group = group.ridge) %>%
+  estimateDisp(design = design.ridge) %>%
+  glmFit() %>%
+  glmLRT(coef = "group.ridgeDead") %>%
+  topTags(sort.by = "none", n = nrow(count.table.ridge),
+          adjust.method = "BH") %>%
+  data.frame() %>%
+  dplyr::slice(match(gene.list, row.names(.)))
+
+
+## 2.3) Valley----
+
+### 2.3.1 Data preparation----
+group.valley <- sample.info %>%
+  subset(Topography == "Valley") %>%
+  pull(Status)
+
+paired.valley <- sample.info %>%
+  subset(Topography == "Valley") %>%
+  pull(Pairs) %>%
+  factor() %>%
+  as.character()
+
+design.valley <- model.matrix(~ group.valley + paired.valley)
+
+count.table.valley <- target.gene.count.table %>%
+  select(all_of(sample.valley))
+
+
+### 2.3.2 Differential analysis----
+genes.count.diff.valley <- DGEList(counts = count.table.valley,
+                                   samples = sample.valley,
+                                   group = group.valley) %>%
+  estimateDisp(design = design.valley) %>%
+  glmFit() %>%
+  glmLRT(coef = "group.valleyDead") %>%
+  topTags(sort.by = "none", n = nrow(count.table.valley),
+          adjust.method = "BH") %>%
+  data.frame() %>%
+  dplyr::slice(match(gene.list, row.names(.)))
+
+
+# 3 Fig.5b----
+data.logFC <- data.frame(Ridge = genes.count.diff.ridge$logFC,
+                         Valley = genes.count.diff.valley$logFC,
+                         row.names = row.names(genes.count.diff.ridge)) %>%
+  mutate(across(c("Ridge", "Valley"), ~ round(.x, 3))) %>%
+  subset(row.names(.) %in% gene.list) %>%
+  dplyr::slice(match(gene.list, row.names(.)))
+
+plot.signif <- data.frame(Ridge = genes.count.diff.ridge$FDR,
+                          Valley = genes.count.diff.valley$FDR,
+                          row.names = row.names(genes.count.diff.ridge)) %>%
+  mutate(across(c("Ridge", "Valley"), ~ ifelse(.x < 0.05, "*", ""))) %>%
+  subset(row.names(.) %in% gene.list) %>%
+  dplyr::slice(match(gene.list, row.names(.)))
+
+pheatmap(t(data.logFC), 
+         display_numbers = t(plot.signif),  
+         color = colorRampPalette(rev(brewer.pal(11, "PiYG")[-c(4, 5, 7, 8)]))(99), 
+         fontsize_number = 30,
+         border_color = "#606060",
+         cluster_rows = F, cluster_cols = F,
+         breaks = seq(-0.6, 0.6,length.out = 100),
+         legend_breaks = c(-0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6))
+
+pheatmap(t(data.logFC), 
+         display_numbers = t(data.logFC),
+         color = colorRampPalette(rev(brewer.pal(11, "PiYG")[-c(4, 5, 7, 8)]))(99), 
+         fontsize_number = 12,
+         border_color = "#606060",
+         cluster_rows = F, cluster_cols = F,
+         breaks = seq(-0.6, 0.6,length.out = 101),
+         legend_breaks = c(-0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6))
+
+
+# 4. save results----
+save(target.gene.count.table,
+     genes.count.diff.ridge, genes.count.diff.valley,
+     file = file.path(path_result.output, "Gene_abundance_differential_analysis.Rdata"))
