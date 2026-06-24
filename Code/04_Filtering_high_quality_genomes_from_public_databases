@@ -153,7 +153,7 @@ page_token <- NULL
 page <- 1
 
 repeat {
-
+  
   # Set query parameters
   query_params <- list(
     "filters.reference_only" = "false",
@@ -425,7 +425,7 @@ nrow(fungal.genome.mapped.amplified.species.taxa)
 
 # Genus
 fungal.genome.mapped.amplified.genus.taxa <- fungi.genome %>%
-  subset(Genus %in% genus.taxonomy.info$Ncbi.name)
+  subset(Genus %in% Fungal.genus_taxonomic.name$Ncbi.name)
 
 nrow(fungal.genome.mapped.amplified.genus.taxa)
 
