@@ -1,0 +1,189 @@
+# Set the working directory
+setwd("~R_script")
+
+
+path_microbial.trait <- file.path(getwd(), "Data", "Microbial_trait")
+path_result.output <- file.path(getwd(), "Result_output")
+
+
+# load packages
+library(tidyverse)
+library(readxl)
+library(ape)
+library(castor)
+
+
+# 1 Load data----
+
+## 1.1) Phylogenetic tree----
+Phylogenetic.tree <- read.tree(file.path(path_microbial.trait,
+                                         "bac120_exact_dedup.rooted.tree"))
+is.rooted(Phylogenetic.tree)
+
+
+## 1.2) tree tips----
+bacteria.tips <- Phylogenetic.tree$tip.label
+length(bacteria.tips)
+
+
+## 1.3) Species list----
+load(file.path(path_result.output, "all_genome_target.gene.counts.Rdata"))
+
+Species.list <- bacterial.traits.variation_target.gene.counts %>%
+  subset(Accession %in% bacteria.tips) %>%
+  group_by(Phylum, Class, Order, Family, Genus, Species) %>%
+  summarise(N = n(), .groups = "drop") %>%
+  subset(N >= 20) %>%
+  pull(Species)
+
+length(Species.list)
+
+
+## 1.4) Gene presence-absence matrix----
+target.gene <- c("Exo_amylase", "Endo_amylase", "Exo_cellulase", "Endo_cellulase",
+                 "Exo_hemicellulose", "Endo_hemicellulose", "Exo_chitosanase", "Endo_chitosanase",
+                 "TEA_Oxygen", "TEA_Nitrate", "TEA_Sulfite")
+
+
+Gene.presence_absence.matrix <- bacterial.traits.variation_target.gene.counts %>%
+  subset(Accession %in% bacteria.tips &
+           Species %in% Species.list) %>%
+  mutate(across(all_of(target.gene), ~ ifelse(.x > 0, 1, 0)))
+
+nrow(Gene.presence_absence.matrix)
+
+
+# 2 Calculate tauD values----
+n_boot <- 1000
+gene.tau.res <- list()
+boot.results <- list()
+
+set.seed(20260514)
+for (i in 1:n_boot) {
+  
+  
+  # Sampling
+  cat("Bootstrap iteration ", i, "\n", sep = "")
+  bacteria.Accession.list <- Gene.presence_absence.matrix %>%
+    select(Accession:Strain) %>%
+    group_by(Phylum, Class, Order, Family, Genus, Species) %>%
+    slice_sample(n = 10, replace = F) %>%
+    ungroup() %>%
+    pull(Accession)
+  
+  
+  # Prune phylogenetic tree
+  trimmed.tree <- drop.tip(Phylogenetic.tree,
+                           setdiff(Phylogenetic.tree$tip.label,
+                                   bacteria.Accession.list))
+  
+  for (j in seq_along(target.gene)) {
+    
+    cat(target.gene[j], "(", paste(i, j, sep = "."), ")", "\n", sep = "")
+    
+    trait_vec <- Gene.presence_absence.matrix %>%
+      slice(match(trimmed.tree$tip.label, .$Accession)) %>%
+      select(all_of(c("Accession", target.gene[j]))) %>%
+      deframe()
+    
+    aligned_ok <- all(names(trait_vec) == trimmed.tree$tip.label)
+    
+    if (!aligned_ok) {
+      stop(paste("In bootstrap iteration", i,
+                 ", trait_vec is not aligned with trimmed.tree$tip.label for",
+                 target.gene[j]))
+    } else {
+      
+      n_present <- sum(trait_vec == 1, na.rm = TRUE)
+      n_absent  <- sum(trait_vec == 0, na.rm = TRUE)
+      
+      tau.res <- consentrait_depth(tree = trimmed.tree,
+                                   tip_states = trait_vec,
+                                   min_fraction = 0.9,
+                                   count_singletons = TRUE,
+                                   weighted = FALSE,
+                                   Npermutations = 100)
+      
+      
+      gene.tau.res[[j]] <- data.frame(bootstrap.id = i,
+                                      Gene = target.gene[j],
+                                      n_tip = Ntip(trimmed.tree),
+                                      n_present = n_present,
+                                      n_absent = n_absent,
+                                      tauD = tau.res$mean_depth,
+                                      mean_random_depth = tau.res$mean_random_depth)
+    }
+  }
+  
+  boot.results[[i]] <- gene.tau.res %>%
+    bind_rows()
+  
+}
+
+total.tauD.result <- boot.results %>%
+  bind_rows()
+
+
+# 3 Significance test----
+delta.tauD.result <- list()
+
+for (i in seq_along(target.gene)) {
+  
+  obs_tau <- total.tauD.result %>%
+    subset(Gene == target.gene[i]) %>%
+    pull(tauD)
+  
+  null_tau <- total.tauD.result %>%
+    subset(Gene == target.gene[i]) %>%
+    pull(mean_random_depth)
+  
+  
+  delta.tauD.result[[i]]  <- (obs_tau - null_tau) %>%
+    quantile(c(0.025, 0.5, 0.975), na.rm = TRUE) %>%
+    data.frame() %>%
+    t() %>% data.frame() %>%
+    setNames(c("q025","q500", "q975")) %>%
+    data.frame(row.names = target.gene[i])
+  
+}
+
+
+# Number of Species with target gene
+gene.number <- Gene.presence_absence.matrix %>%
+  group_by(Genus, Species) %>%
+  summarise(across(all_of(target.gene), mean), .groups = "drop") %>%
+  summarise(across(all_of(target.gene), ~ sum(.x > 0))) %>%
+  pivot_longer(cols = everything(),
+               names_to = "Target.gene",
+               values_to = "N") %>%
+  data.frame()
+
+bacteria.tauD.table <- delta.tauD.result %>%
+  bind_rows() %>%
+  rownames_to_column("Target.gene") %>%
+  left_join(gene.number, by = "Target.gene") %>%
+  mutate(Label = paste0("(", N, ")", sep = ""))
+
+
+## 3.1) Fig.S4----
+bacteria.tauD.table %>%
+  arrange(q975) %>%
+  mutate(Target.gene = factor(Target.gene, levels = Target.gene)) %>%
+  ggplot(aes(x = q500, y = Target.gene)) +
+  geom_errorbar(aes(xmin = q025, xmax = q975),
+                linewidth = 1, width = 0.2) +
+  geom_vline(xintercept = 0, linetype = 2, linewidth = 0.5) +
+  geom_label(aes(x = q975 + 0.02, y = Target.gene, label = Label),
+             label.size = 0, fill = NA,
+             vjust = 0.4, size = 4) +
+  scale_x_continuous(limits = c(-0.005, 0.3), breaks = seq(0, 0.3, 0.05)) +
+  labs(x = expression("Clade depth ("*tau[D]*")"), y = NULL) +
+  theme_bw(base_size = 16) +
+  theme(panel.grid = element_blank(),
+        axis.ticks.length.x = unit(-0.15, "cm"),
+        axis.ticks.length.y = unit(-0.15, "cm"))
+
+
+# 4 Save results----
+save(total.tauD.result, delta.tauD.result,
+     file = file.path(path_result.output, "tauD.result.Rdata"))
