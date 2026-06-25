@@ -14,45 +14,85 @@ This repository contains the R scripts used for the analyses. The complete proce
 The folder structure used by the analysis workflow is shown below. The Code/ folder is provided in this GitHub repository. The complete Data/ and Result_output/ folders are deposited in Zenodo. Only relatively small supporting data files are included in GitHub.
 
 tree-mortality-soil-carbon/
+
 ├── Code/
+
 │ ├── 01_soil_carbon_Fig.1_Fig.S1_Table.S1
+
 │ ├── 02_enzyme_PCA_Fig.2_Table.S2_Table.S3
+
 │ ├── 03_Microbial_composition_and_mortality_induced_shifts_Fig.3_Fig.S2_Table.S4
+
 │ ├── 04_Filtering_high_quality_genomes_from_public_databases
+
 │ ├── 05_Count_target_genes_of_genome_mapping_and_annotation
+
 │ ├── 06_Taxonomy_and_functions_of_amplicons_mapped_genome_Fig.4_Fig.S3_Table.S5
+
 │ ├── 07_Phylogenetic_analysis_of_bacterial_functional_traits_τD_Fig.S4
+
 │ ├── 08_Within_taxa_variation_in_target_gene_counts_WVP_Fig.S5_Fig.S6
+
 │ ├── 09_XGBoost_model_training
+
 │ ├── 10_XGBoost_model_results_visualization_Fig.5a_Fig.S7_Fig.S8
+
 │ └── 11_Metagenomic_gene_abundance_shifts_Fig.5b
+
 ├── Data/
+
 │ ├── Soil_properties/
+
 │ │ └── soil.properties.xlsx
+
 │ ├── Microbial_composition/
+
 │ │ ├── FeatureTable_16S.txt
+
 │ │ └── FeatureTable_ITS.txt
+
 │ ├── Microbial_trait/
+
 │ │ ├── all_genome_ko_list.RData
+
 │ │ ├── bac120_exact_dedup.rooted.tree
+
 │ │ ├── bac120_metadata_r226.tsv.gz
+
 │ │ ├── Bacterial.species_taxonomic.name.xlsx
+
 │ │ ├── carbon_acquisition_TEA_utilization_gene_catalog.xlsx
+
 │ │ ├── Fungal.genus_taxonomic.name.xlsx
+
 │ │ └── Fungal.species_taxonomic.name.xlsx
+
 │ └── Microbial_strategies/
+
 │ ├── gene.ko.annotation.txt
+
 │ └── genes_count_table.txt
+
 ├── Result_output/
+
 │ ├── all_genome_ko_list.RData
+
 │ ├── all_genome_target.gene.counts.Rdata
+
 │ ├── Gene_abundance_differential_analysis.Rdata
+
 │ ├── Genomic_taxonomy_info.RData
+
 │ ├── Microbial_traits_variation_results.RData
+
 │ ├── microbial_composition_results.RData
+
 │ ├── tauD.result.Rdata
+
 │ └── xgboost_major_machine_learning_results.RData
+
 ├── LICENSE
+
 └── README.md
 
 ## Description of folders
@@ -90,22 +130,30 @@ For a complete rerun from the beginning, the scripts should be run in numerical 
 For reproducing figures and tables more quickly, users may use the saved outputs already provided in Result_output/.
 
 ## Approximate runtime
-Approximate runtimes were estimated on a laptop computer with 16 GB RAM.
+Approximate runtimes were estimated on a laptop computer with 16 GB RAM. Scripts 05 and 07 each require approximately 5 min, script 08 requires approximately 10 h, and script 09 requires approximately 5 h. All other scripts can be completed within 1 min.
 
 Script	Approximate runtime
 01_soil_carbon_Fig.1_Fig.S1_Table.S1	< 1 min
-02_enzyme_PCA_Fig.2_Table.S2_Table.S3	< 1 min
-03_Microbial_composition_and_mortality_induced_shifts_Fig.3_Fig.S2_Table.S4	< 1 min
-04_Filtering_high_quality_genomes_from_public_databases	< 1 min
-05_Count_target_genes_of_genome_mapping_and_annotation	~5 min
-06_Taxonomy_and_functions_of_amplicons_mapped_genome_Fig.4_Fig.S3_Table.S5	< 1 min
-07_Phylogenetic_analysis_of_bacterial_functional_traits_τD_Fig.S4	~5 min
-08_Within_taxa_variation_in_target_gene_counts_WVP_Fig.S5_Fig.S6	~10 h
-09_XGBoost_model_training	~5 h
-10_XGBoost_model_results_visualization_Fig.5a_Fig.S7_Fig.S8	< 1 min
-11_Metagenomic_gene_abundance_shifts_Fig.5b	< 1 min
 
-Approximate runtimes were estimated on a laptop computer with 16 GB RAM. Scripts 05 and 07 each require approximately 5 min, script 08 requires approximately 10 h, and script 09 requires approximately 5 h. All other scripts can be completed within 1 min.
+02_enzyme_PCA_Fig.2_Table.S2_Table.S3	< 1 min
+
+03_Microbial_composition_and_mortality_induced_shifts_Fig.3_Fig.S2_Table.S4	< 1 min
+
+04_Filtering_high_quality_genomes_from_public_databases	< 1 min
+
+05_Count_target_genes_of_genome_mapping_and_annotation	~5 min
+
+06_Taxonomy_and_functions_of_amplicons_mapped_genome_Fig.4_Fig.S3_Table.S5	< 1 min
+
+07_Phylogenetic_analysis_of_bacterial_functional_traits_τD_Fig.S4	~5 min
+
+08_Within_taxa_variation_in_target_gene_counts_WVP_Fig.S5_Fig.S6	~10 h
+
+09_XGBoost_model_training	~5 h
+
+10_XGBoost_model_results_visualization_Fig.5a_Fig.S7_Fig.S8	< 1 min
+
+11_Metagenomic_gene_abundance_shifts_Fig.5b	< 1 min
 
 ## Software environment
 The analyses were conducted in R. The manuscript reports analyses using R v4.5.1.
@@ -117,13 +165,4 @@ This repository is intended to be used together with the complete Zenodo dataset
 
 ## Citation
 If you use this code or dataset, please cite the associated manuscript and the Zenodo dataset: https://doi.org/10.5281/zenodo.17606854
-
-
-
-
-
-
-
-
-
 
