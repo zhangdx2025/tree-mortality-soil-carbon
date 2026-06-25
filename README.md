@@ -3,14 +3,14 @@
 ## Overview
 This repository contains the R scripts used to process data, perform statistical analyses, train machine-learning models, generate figures, and save numerical outputs for the manuscript:
 
-The complete processed dataset associated with the revised manuscript is available in Zenodo: 
+The complete processed dataset associated with the revised manuscript is available in Zenodo (V2): 
 https://doi.org/10.5281/zenodo.20849331
 
 This GitHub repository contains the analysis code and a subset of small supporting data files required for running the scripts. Large data files and the complete data package are deposited in Zenodo.
 
 Repository structure
 
-This repository contains the R scripts used for the analyses. The complete processed dataset and saved analysis outputs are available in Zenodo: 
+This repository contains the R scripts used for the analyses. The complete processed dataset and saved analysis outputs are available in Zenodo (V2): 
 https://doi.org/10.5281/zenodo.20849331
 
 The folder structure used by the analysis workflow is shown below. The Code/ folder is provided in this GitHub repository. The complete Data/ and Result_output/ folders are deposited in Zenodo. Only relatively small supporting data files are included in GitHub.
@@ -166,5 +166,5 @@ Required R packages are loaded within the individual scripts. Users should insta
 This repository is intended to be used together with the complete Zenodo dataset. Because only small supporting data files are stored in GitHub, reproducing the full workflow may require downloading the complete dataset from Zenodo and placing the files under the expected folder structure.
 
 ## Citation
-If you use this code or dataset, please cite the associated manuscript and the Zenodo dataset: https://doi.org/10.5281/zenodo.20849331
+If you use this code or dataset, please cite the associated manuscript and the Zenodo dataset (V2): https://doi.org/10.5281/zenodo.20849331
 
