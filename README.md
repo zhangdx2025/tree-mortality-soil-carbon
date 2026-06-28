@@ -132,7 +132,7 @@ For a complete rerun from the beginning, the scripts should be run in numerical 
 For reproducing figures and tables more quickly, users may use the saved outputs already provided in Result_output/.
 
 ## Approximate runtime
-Approximate runtimes were estimated on a laptop computer with 16 GB RAM. Scripts 05 and 07 each require approximately 5 min, script 08 requires approximately 10 h, and script 09 requires approximately 5 h. All other scripts can be completed within 1 min.
+Approximate runtimes were estimated on a laptop computer with 16 GB RAM. Scripts 04, 05, and 07 each require approximately 5 min, script 11 requires approximately 10 min, script 08 requires approximately 10 h, and script 09 requires approximately 5 h. All other scripts can be completed within 1 min.
 
 Script	Approximate runtime
 01_soil_carbon_Fig.1_Fig.S1_Table.S1	< 1 min
@@ -141,7 +141,7 @@ Script	Approximate runtime
 
 03_Microbial_composition_and_mortality_induced_shifts_Fig.3_Fig.S2_Table.S4	< 1 min
 
-04_Filtering_high_quality_genomes_from_public_databases	< 1 min
+04_Filtering_high_quality_genomes_from_public_databases	~ 5 min
 
 05_Count_target_genes_of_genome_mapping_and_annotation	~5 min
 
@@ -155,7 +155,7 @@ Script	Approximate runtime
 
 10_XGBoost_model_results_visualization_Fig.5a_Fig.S7_Fig.S8	< 1 min
 
-11_Metagenomic_gene_abundance_shifts_Fig.5b	< 1 min
+11_Metagenomic_gene_abundance_shifts_Fig.5b	~ 10 min
 
 ## Software environment
 The analyses were conducted in R. The manuscript reports analyses using R v4.5.1.
