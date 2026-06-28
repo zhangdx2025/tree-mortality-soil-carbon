@@ -165,6 +165,3 @@ Required R packages are loaded within the individual scripts. Users should insta
 ## Reproducibility note
 This repository is intended to be used together with the complete Zenodo dataset. Because only small supporting data files are stored in GitHub, reproducing the full workflow may require downloading the complete dataset from Zenodo and placing the files under the expected folder structure.
 
-## Citation
-If you use this code or dataset, please cite the associated manuscript and the Zenodo dataset (V2): https://doi.org/10.5281/zenodo.20849331
-
